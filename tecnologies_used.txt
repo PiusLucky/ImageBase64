@@ -3,7 +3,7 @@ BACKEND
 ##############################################
 1. Python
 2. Django Web Framework
-
+3. Request Library
 
 ##############################################
 FRONTEND
@@ -11,3 +11,4 @@ FRONTEND
 1. ParticleJS
 2. Noty (for notification)
     [ https://ned.im/noty/v2/, https://ned.im/noty/#/]
+3. IntroJS
