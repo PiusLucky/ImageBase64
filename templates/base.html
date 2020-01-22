@@ -1,0 +1,267 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  {% block title %}
+  <title>{{title}} - {{name}}</title>
+  {% endblock title %}
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Icon -->
+  <link rel="icon" type="assets/image/png" href="{% static 'front-end/front_end/assets/images/icon.png' %}">
+  <!-- introjs -->
+  <link rel="stylesheet" type="text/css" href='{% static "front-end/second-part/introjs.min.css" %}'>
+  <!-- Bootstrap -->
+  <link rel="stylesheet" type="text/css" href="{% static 'front-end/assets/bower_components/bootstrap/dist/css/bootstrap.min.css' %}" />
+  <!-- FontAwesome -->
+  <link rel="stylesheet" type="text/css" href="{% static 'front-end/assets/bower_components/font-awesome/css/font-awesome.min.css' %}" /> 
+  <!-- Youplay -->
+  <link rel="stylesheet" type="text/css" href="{% static 'front-end/assets/youplay/css/youplay.min.css' %}" />
+  <link rel="stylesheet" type="text/css" href='{% static "front-end/second-part/style.css" %}'>
+  </head>
+
+  <body>
+    <!-- Preloader -->
+    <div class="page-preloader preloader-wrapp">
+      <img src="{% static 'front-end/front_end/assets/images/nav_icon2.svgz' %}" alt="">
+      <div class="preloader"></div>
+    </div>
+    <!-- /Preloader -->
+    {% block navigation %}
+    <!-- Navbar -->
+    <nav class="navbar-youplay navbar navbar-default navbar-fixed-top ">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="off-canvas" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="navbar-brand" href="index-2.html">
+            <img src="{% static 'front-end/front_end/assets/images/nav_icon2.svgz' %}" alt=""> 
+          </div>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown dropdown-hover ">
+              <a href="/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                Home <span class="label">Start</span>
+              </a>
+            </li>
+            {% if request.path == '/' %}
+            <li class="dropdown dropdown-hover" id="selective_guide">
+              <a href="javascript:void(0);" onclick="javascript:introJs().setOption('showBullets', false).start();" class="dropdown-toggle"  data-toggle="dropdown" role="button" aria-expanded="false">
+                Guide <span class="label">How to Use</span>
+              </a>
+            </li>
+            {% endif %}
+            <li class="dropdown dropdown-hover" id="selective_guide">
+              <a href="" >
+                Data <span class="label">data collected</span>
+              </a>
+            </li>
+            <li class="dropdown dropdown-hover ">
+              <a href="#!" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                FAQ <span class="caret"></span> <span class="label">Answers</span>
+              </a>
+              <div class="dropdown-menu">
+                <!--  <span class="badge bg-default">New</span></a> -->
+                <ul role="menu">
+                  <li><a href="widgets.html">Frequently Asked Questions <span class="badge bg-default">Answers</span></a>
+                  </li>
+                  <li><a href="contact.html">Contact Us</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown dropdown-hover">
+              <a href="#!" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                Visitor <span class="badge bg-default">{% if track == 'new_user' %}new{% else %}old{% endif %}</span> <span class="caret"></span> <span class="label">Enjoy!</span>
+              </a>
+              <div class="dropdown-menu">
+                <ul role="menu">
+                  <li><a>Visitor's ID ({% if status == "Public" %}{{visitor_id}}{% else %}{{status}}{% endif %})</a>
+                  </li>
+                  <li class="divider"></li>
+                  <li><a>{{message_track}}</a>
+                  </li>
+
+                </ul>
+              </div>
+            </li>
+            <li class="dropdown dropdown-hover dropdown-cart">
+              <a href="#!" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">UPDATES<span class="caret"></span> <span class="label">Don't miss it!</span>
+              </a>
+              <div class="dropdown-menu" style="width: 300px;">
+                <div class="row youplay-side-news">
+                  <div class="col-xs-3 col-md-4">
+                    <a href="#" class="angled-img">
+                      <div class="img">
+
+                        <img src="{% static 'front-end/front_end/assets/images/update.svgz' %}" alt="">
+                      </div>
+                    </a>
+                  </div>
+                  <div class="col-xs-9 col-md-8">
+                    <a href="#" style="text-decoration: none;" class="pull-right mr-10"></a>
+                    <h4 class="ellipsis"><a href="">
+                    {% for each_update in updates %}
+                    {% if forloop.first %}
+                    Update {{each_update.version_of_update}}
+                    {% endif %}
+                    {% endfor %}
+                    </a></h4>
+                    <span class="quantity"><span class="amount">{% for each_update in updates %}{% if forloop.first %}{{each_update.updated}}{% endif %}{% endfor %}</span></span>
+                  </div>
+                </div>
+
+                <div class="btn-group pull-right m-15">
+                  {% for each_update in updates %}
+                  {% if forloop.first %}
+                  <a href="{% url 'main:update' each_update.update_id  %}" class="btn btn-default btn-sm">View Update <span class="badge bg-primary">new</span></a>
+                  {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- /Navbar -->
+    {% endblock navigation %}
+
+    {% block body %}
+    {% block messages %}
+    {% endblock messages %}
+
+    <!-- Main Content -->
+    <section class="content-wrap">
+      {% block banner1 %}
+      <!-- Banner -->
+      <section class="youplay-banner banner-top youplay-banner-parallax">
+        <div class="image" id="particles-js">
+        </div>
+        
+        <div class="info" style="text-align: center;">
+          <div>
+            <div class="container">
+              <h2 style="text-transform:unset;">ImageBase64<a id="quick_t" href="javascript:void(0);" onclick="javascript:introJs().setOption('showBullets', false).start();"><sup><span class="badge bg-primary">Quick Tour</span></sup></a></h2>
+              <div><em>"Conveniently convert png, jpg, webp and gif to base64 string - Encode</em></div>
+              <div><em>and also, convert your base64 string in any format to Image - Decode"</em></div>
+              <br>
+              <div>
+                <a href="{% url 'main:home' %}" class="bt"  data-step="1" data-intro='Encoding turns your image into a large chunk of Base64 string while retaining the original image pixels and format. The resultant output will look like<br> <code>data:image/png;base64,iVAAAAN...</code>'  >Encode Now</a>
+                  <a class="bt" data-step="2" data-intro="Decoding basically turns your base64 string into the original image, you can never go wrong!<br>
+                  <div style='text-align: center;'><img src='{% static 'front-end/front_end/assets/images/baby.svgz' %}' style='border-style:solid; border-width:1px;border-color:whitesmoke;border-top-left-radius: 12px; border-bottom-right-radius: 12px;' alt='baby'></div>
+                    "  href="{% url 'main:home_decode' %}">Decode Now</a>
+                  <div>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <!-- /Banner -->
+            {% endblock banner1 %}
+
+            {% block footer %}
+            <!-- Footer -->
+            <footer class="youplay-footer-parallax">
+              <div class="wrapper youback">
+
+              <div class="social">
+                <div class="container">
+                  <h3>Select a <strong>Category</strong></h3>
+
+                  <div class="social-icons">
+                    <div class="social-icon">
+                      <a href="{% url 'main:home' %}">
+                        <img src="{% static 'front-end/front_end/assets/images/base64.svg' %}" alt="">
+                        <span>Encode Image to Base64</span>
+                      </a>
+                    </div>
+                    <div class="social-icon">
+                      <a href="{% url 'main:home_decode' %}">
+                        <img src="{% static 'front-end/front_end/assets/images/image-icon.svg' %}" alt="">
+                        <span>Decode Base64 to Image</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Copyright -->
+              <div class="copyright">
+                <div class="container">
+                  <!-- Credit --> 
+                  Image by <a href="https://pixabay.com/users/nastya_gepp-3773230/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3660673" target="_blank">Анастасия Гепп</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3660673" target="_blank">Pixabay</a>
+                  <strong>ImageBase64</strong> &copy; 2020. All rights reserved
+                </div>
+              </div>
+              <!-- /Copyright -->
+            </div>
+          </footer>
+          <!-- /Footer -->
+        {% endblock footer %}
+        </section>
+        <!-- /Main Content -->
+        {% endblock body %}
+                <!-- introjs -->
+        <script type="text/javascript" src='{% static "front-end/second-part/intro.min.js" %}'></script>
+
+        <!-- jQuery --> 
+        <script type="text/javascript" src="{% static 'front-end/assets/bower_components/jquery/dist/jquery.min.js' %}"></script>
+
+        <!-- Bootstrap -->
+        <script type="text/javascript" src="{% static 'front-end/assets/bower_components/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+
+        <!-- Jarallax -->
+        <script type="text/javascript" src="{% static 'front-end/assets/bower_components/jarallax/dist/jarallax.min.js' %}"></script>
+
+        <!-- Smooth Scroll -->
+        <script type="text/javascript" src="{% static 'front-end/assets/bower_components/smoothscroll-for-websites/SmoothScroll.js' %}"></script>
+
+
+        <!--   ParticleJS -->
+        <script src="{% static 'front-end/particles/js/particles.min.js' %}"></script>
+        <script src="{% static 'front-end/particles/js/json_particle_loader.js' %}"></script>
+
+        <!-- Youplay -->
+        <script type="text/javascript" src="{% static 'front-end/assets/youplay/js/youplay.min.js' %}"></script>
+        <script type='text/javascript'>$(document).ready(function(){
+          var win = $(this);
+          if (win.width() >= 497) {
+
+            $('.bt').addClass('btn btn-lg');
+
+          } else {
+            $('.bt').removeClass('btn btn-lg');
+            $('.bt').addClass('btn btn-sm');
+          };
+          if (win.width() <= 767) {
+            $("sup").show().css("visibility", "visible");
+            $("#selective_guide").hide().css("visibility", "hidden");
+            // $('a.bt').removeAttr('data-intro');
+
+          }else{
+             $("sup").hide().css("visibility", "hidden");
+          }
+        });
+        </script>
+      <!-- init youplay -->
+        <script>
+          if(typeof youplay !== 'undefined') {
+            youplay.init({
+              parallax:true,
+              navbarSmall:false,
+              fadeBetweenPages:true,
+
+            });
+          }
+        </script>
+    </body>
+    </html>
