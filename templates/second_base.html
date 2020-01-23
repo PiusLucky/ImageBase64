@@ -106,7 +106,7 @@
                 {% block main %}
                     <div class="row justify-content-center">
                         <div class="col-lg-10 col-md-12 col-sm-12">
-                            <h3 class="font-weight-bold ml-md-0 mx-auto text-center text-sm-left"><i class="fas fa-code"></i>&nbsp;Encode Image </h3>
+                            <h3 class="font-weight-bold ml-md-0 mx-auto text-center text-sm-left"><img src='{% static "front-end/front_end/assets/images/browser_icons/encode.svgz" %}' alt="">&nbsp;Encode Image </h3>
                             <p class="mt-md-4 ml-md-0 ml-2 text-justify text-sm-left"> Convert your image to a Base64 string, you have the option to either paste in a direct link of the image or 'Drag n Drop' the image into the upload box directly.</p>
                            
 
@@ -136,7 +136,7 @@
                             </form>
                         </div> 
                     </div>
-                    <div style="text-align: center;"><hr> <i class="far fa-upload"  style="color:#248bcc;"></i> Upload Image file directly Instead?<hr></div>
+                    <div style="text-align: center;margin-top:-1.2rem"><hr> <i class="far fa-upload"  style="color:#248bcc;"></i> Upload Image file directly Instead?<hr></div>
                     <br>
                     <form method="post" enctype="multipart/form-data">
                         {% csrf_token %}    
@@ -154,7 +154,7 @@
                             </div>
                         </div>
                         <br>
-                        <div class="row justify-content-center" style="text-align: center;">
+                        <div class="row justify-content-center" style="text-align: center;margin-top:-1.2rem">
                             <div class="col-md-12 col-lg-10 col-12">
                                 <div class="row justify-content-start mb-5">
                                     <div class="col-lg-4 col-auto ">

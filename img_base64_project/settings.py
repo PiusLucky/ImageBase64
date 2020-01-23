@@ -117,8 +117,8 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
-
-DOMAIN_NAME =  "https://imagebase64.herokuapp.com"
+DOMAIN_NAME =  "http://localhost:8000"
+# DOMAIN_NAME =  "https://imagebase64.herokuapp.com"
 
 SITE_NAME  = "img2Base64.io"
 # Static files (CSS, JavaScript, Images)

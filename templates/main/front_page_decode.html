@@ -17,8 +17,8 @@
 {% block main %}
 <div class="row justify-content-center">
   <div class="col-lg-10 col-md-12 col-sm-12">
-    <h3 class="font-weight-bold ml-md-0 mx-auto text-center text-sm-left"><i class="fas fa-code"></i>&nbsp;Decode Image </h3>
-    <p class="mt-md-4 ml-md-0 ml-2 text-center text-sm-left"> Decode your Base64 string to original image, you have the option to input a link (of a .txt/.html file) that contains Base64 or you can paste the entire Base64 string directly into the empty box below, you can also 'Drag n Drop' the file (always .txt/.html file) that contains the Base64 string into the upload box directly.</p>
+    <h3 class="font-weight-bold ml-md-0 mx-auto text-center text-sm-left"><img src='{% static "front-end/front_end/assets/images/browser_icons/decode.svgz" %}' alt="">&nbsp;Decode Image </h3>
+    <p class="mt-md-4 ml-md-0 ml-2 text-justify text-sm-left"> Decode your Base64 string to original image, you have the option to input a link (of a .txt/.html file) that contains Base64 or you can paste the entire Base64 string directly into the empty box below, you can also 'Drag n Drop' the file (always .txt/.html file) that contains the Base64 string into the upload box directly.</p>
 
     <div class="media">
       <div class="media-body">
@@ -49,7 +49,7 @@
   </div> 
 </div>
 
-<div style="text-align: center;">
+<div style="text-align: center;margin-top:-1.9rem;">
   <hr> <i class="fad fa-paste"  style="color:#248bcc;"></i> Paste in Base64 string down here!<hr>
 </div>
 
@@ -68,7 +68,7 @@
 </form>
 
 
-<div style="text-align: center;">
+<div style="text-align: center;margin-top:-1.2rem">
   <hr> <i class="far fa-upload"  style="color:#248bcc;"></i> Upload text file or html file Instead?<hr>
 </div>
 <br>

@@ -69,6 +69,9 @@
                 #btn_style{
                     border-radius: 0px;
                 }
+                @media screen and (max-width:767px){
+                    .table-font{font-size: 12px}
+                }
             </style>
             <!-- start buttons -->
               <div  class="d-flex justify-content-between">
@@ -86,7 +89,7 @@
         {% if file %}
         {% for file in file %}
         <div>Properties of uploaded image file:</div>
-            <table class="table table-bordered table_background">
+            <table class="table table-bordered table_background table-responsive w-100 d-block d-md-table">
             <thead>
                 <tr>
                     <th scope="col">*</th>
@@ -130,7 +133,7 @@
         {% endif %}
         <p>Below is a list of what you can do with the encoded Base64 string:</p>
         <!-- table for instructions -->
-        <table class="table table-hover table-white">
+        <table class="table table-hover table-white table-font">
           <thead>
             <tr>
               <th scope="col"><i class="fas fa-check" style="color:#248bcc;"></i></th>

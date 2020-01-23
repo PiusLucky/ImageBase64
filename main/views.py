@@ -274,7 +274,7 @@ def detail(request, id):
             for each_image in all_images:
                 each_image.delete()
     else:
-        expired_link = "Error > The link has expired!"
+        expired_link = "The link has expired!"
         template = get_template('main/_expired_link.html').render({"expired_link":expired_link})
         messages.error(request, template,"alert alert-warning alert-dismissible")
         return redirect(reverse("main:home")) 
