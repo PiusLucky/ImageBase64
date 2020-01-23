@@ -132,7 +132,7 @@ def home(request):
             if form1.is_valid():           
                 instance = form1.save(commit=False)
                 instance.slug = instance.slug_for_title
-                instance.unique_id = instance.unique_id
+                # instance.unique_id = instance.unique_id
                 instance.save()
                 context = {
                     "form1":form1,
