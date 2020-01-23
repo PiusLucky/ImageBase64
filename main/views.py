@@ -94,7 +94,6 @@ def landing(request):
 ########################################################
 # ENCODE SECTION BY LUCKY P. (JUST ANOTHER PROGRAMMER)
 ########################################################
-
 def home(request):
     title = "Encode"
     form = UploadForm(request.POST or None, request.FILES or None)
@@ -131,8 +130,6 @@ def home(request):
         elif request.POST.get('get_link_name') == 'get_link_value':
             if form1.is_valid():           
                 instance = form1.save(commit=False)
-                instance.slug = instance.slug_for_title
-                # instance.unique_id = instance.unique_id
                 instance.save()
                 context = {
                     "form1":form1,
@@ -292,10 +289,11 @@ def detail(request, id):
     }
     return render(request,'main/detail_page.html',context)
 
-def detail_link(request, slug, unique_id):
+def detail_link(request, encode_id):
     title = "Link Detail"
     # Arrangements doesnt really matter here
-    specific_link = Link_Model.objects.filter(slug=slug, unique_id=unique_id)
+    link_id_strip = encode_id.replace("encoded_link_","")
+    specific_link = Link_Model.objects.filter(unique_id_link=link_id_strip)
     link_head_url = settings.ENCODE_URL
     if specific_link:
         for each_item in specific_link:
@@ -388,7 +386,7 @@ def detail_link(request, slug, unique_id):
                                 with open(filename, 'wb') as f:
                                     f.write(image_data)
                                 # delete call...
-                                all_links = Link_Model.objects.all().exclude(slug=slug, unique_id=unique_id)
+                                all_links = Link_Model.objects.all().exclude(unique_id_link=link_id_strip)
                                 # Delete all other images excluding the current one.
                                 for each_link in all_links:
                                     each_link.delete()

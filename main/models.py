@@ -50,30 +50,24 @@ class Image_Model(models.Model):
 
 class Link_Model(models.Model):
 	url = models.URLField(blank=False, null=False, max_length=2000, help_text="https://www.google.com/example.jpg")
-	slug = models.SlugField(unique=False, blank=True, null=True)
-	unique_id = models.CharField(
-	verbose_name=_('unique_id'), max_length=18,
-	default = generate_unique_id
+	unique_id_link = models.CharField(
+	verbose_name=_('unique_link_encode'), max_length=28,
+	default = generate_unique_id_link
 	)
-	@property
-	def slug_for_title(self):
-	    return slugify(self.url)
+	timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
 
 	def get_absolute_url(self):
+		encode_id = u"encoded_link_{0}".format(self.unique_id_link)
 		return reverse("main:detail2",
-		args = [self.slug, self.unique_id
+		args = [encode_id
 		])
-	timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
-	def imgs(self):
-		return self.image
 	def __str__(self):
 		# This will basically return the the objects ID(s) in cases like
-		# print(Link_Model.objects.all()) --- when called in view.py
+		# print(Link_Model_Decode.objects.all()) --- when called in view.py
 	    return str(self.url)
 	class Meta:
 		# abstract = True #if the model Post is abstract,it cannot be registered with admin.
 		ordering = ["-timestamp"]
-
 
 
 ##########################################################################################
