@@ -3,7 +3,7 @@ import base64
 import requests
 import re
 import urllib.request
-
+import posixpath
 
 from django.shortcuts import render
 from django.urls import reverse
@@ -20,12 +20,17 @@ from PIL import Image
 from django.http import JsonResponse
 from datetime import datetime
 from main.utils import generate_session_id
+from urllib.parse import urlsplit, unquote
+
 
 # This should take the domain(or sub-domain) upon production
 domain_name = settings.DOMAIN_NAME 
 
 
 name = settings.SITE_NAME
+
+
+image_formats = ("image/png", "image/jpeg", "image/jpg", "image/webp", "image/gif")
 
 
 def csrf_byepass(request, reason=""):
@@ -159,6 +164,44 @@ def home(request):
     "form1":form1,
      }
     return render(request,'main/front_page.html',context)
+
+
+# def is_url_image(url):
+#     r = requests.head(url)
+#     if r.headers["content-type"] in image_formats:
+#         extension = r.headers["content-type"]
+#         image_extension = extension.split("/")[-1]
+#         #Getting imagename
+#         urlpath = urlsplit(url).path
+#         basename = posixpath.basename(unquote(urlpath))
+#         if (os.path.basename(basename) != basename or
+#         unquote(posixpath.basename(urlpath)) != basename):
+#             raise ValueError  # reject '%2f' or 'dir%5Cbasename.ext' on Windows
+#         # This will basically add .jpeg in links that contains it
+#         # Lets fix that
+#         if str(image_extension) in basename: 
+#             new_image_name = basename.replace("." + str(image_extension), "")
+#             image_name_without_extension = new_image_name
+#             print(image_extension)
+#             print(image_name_without_extension)
+#             image_name_with_extension = image_name_without_extension + ".{0}".format(image_extension)
+#             print(image_name_with_extension)
+#         else:
+#             if image_extension == "jpeg":
+#                 image_extension = "jpg"
+#                 new_image_name = basename.replace("." + str(image_extension), "")
+#                 image_name_without_extension = new_image_name
+#                 print(image_extension)
+#                 print(image_name_without_extension)
+#                 image_name_with_extension = image_name_without_extension + ".{0}".format(image_extension)
+#                 print(image_name_with_extension)
+                
+#     else:
+#         print ("NO image")
+# # https://images.pexels.com/photos/1386604/pexels-photo-1386604.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500
+# is_url_image("https://thechive.com/wp-content/uploads/2020/01/lead2-6.jpg")
+
+
 
 def detail(request, id):
     specific_file = Image_Model.objects.filter(id=id)
@@ -299,14 +342,106 @@ def detail_link(request, encode_id):
         for each_item in specific_link:
             formatedDate = each_item.timestamp.strftime("%Y-%m-%d %H:%M:%S")
             try:
-                url = each_item.url
-                if url:          
-                    if url.endswith(".jpg") or url.endswith(".png") or url.endswith(".jpeg") or url.endswith(".webp") or url.endswith(".gif"):
-                        # http://localhost:8000/media/uploads-image/2020/01/02/CR7.jpg
-                        image_name = url.split("/")[-1]
-                        if "http://" or "https://" or "www." in url:
+                url = each_item.url       
+                r = requests.head(url)
+                if r.headers["content-type"] in image_formats:
+                    extension = r.headers["content-type"]
+                    image_extension = extension.split("/")[-1]
+                    #Getting imagename
+                    urlpath = urlsplit(url).path
+                    basename = posixpath.basename(unquote(urlpath))
+                    if (os.path.basename(basename) != basename or
+                    unquote(posixpath.basename(urlpath)) != basename):
+                        template = get_template('main/_confused.html').render()
+                        messages.error(request, template,"alert alert-warning alert-dismissible")
+                        return redirect(reverse("main:home")) 
+                    if str(image_extension) in basename: 
+                        new_image_name = basename.replace("." + str(image_extension), "")
+                        image_name_without_extension = new_image_name
+                        image_name_with_extension = image_name_without_extension + ".{0}".format(image_extension)
+                        image_name_with_txt_extension = image_name_without_extension + ".txt"
+                        second_part = requests.get(url).content
+                        filenamex =  image_name_with_extension
+                        r = requests.get(url, allow_redirects=False)
+                        full_file_path = os.path.join(settings.ENCODE_ROOT, str(filenamex))
+                        with open(str(full_file_path), 'wb+') as f:
+                            f.write(r.content)
+                        # Removing all other files (that are of image extensions only) 
+                        # in the directory except the specified
+                        for each_file in os.listdir(str(settings.ENCODE_ROOT)):
+                        # Since we needed the extension to take a lower case, we split as follows
+                            if "." in each_file:
+                                each_file_extension = each_file.split(".")[-1]
+                                each_file_extension_lower = each_file_extension.lower()
+                                if each_file_extension_lower:
+                                    str_extension = "." + str(each_file_extension_lower)
+                                    file_name_without_extension = filenamex.replace(str_extension, "") 
+                                    if each_file_extension_lower == "jpg" or  each_file_extension_lower == "txt"  or each_file_extension_lower == "jpeg" or each_file_extension_lower == "png" or each_file_extension_lower == "webp" or each_file_extension_lower == "gif":
+                                        # This removes otherfiles except the current
+                                        if not file_name_without_extension in each_file:
+                                            full_path_remove =  os.path.join(settings.ENCODE_ROOT, str(each_file))
+                                            os.remove(full_path_remove)
+
+                        width, height = Image.open(full_file_path).size
+                        image_dimension = (u"{0} x {1}".format(width, height))
+                        # Getting file size using logic in logic.py
+                        image_size = os.path.getsize(full_file_path)
+                        # lets authenticate the size of the image here
+                        maximum_size_image= 1048576 # This is 1MB in bytes
+                        # Converting Bytes
+                        converted_byte = humanbytes(image_size)
+                        if image_size < maximum_size_image:
+                            with open(full_file_path, 'wb+') as image:
+                                image.write(second_part)
+                            # Getting the base64 string
+                            with open(full_file_path, "rb+") as x:
+                            # This is the string that is transformed to image
+                                wierdo_string = base64.b64encode(x.read())
+                                # Not really the code that is transformed to image
+                                extension = full_file_path.split(".")[-1]
+                                full_base64 = u"data:image/{0};base64,{1}".format(extension, wierdo_string).replace("b'", "").replace("'","")
+
+                            txt_path = os.path.join(settings.ENCODE_ROOT, str(image_name_with_txt_extension))
+                            with open(str(txt_path), 'w+') as f:
+                                f.write(full_base64)
+                                f.close()
+
+                            with open(full_file_path, "rb+") as image_file:
+                                encoded_string = base64.b64encode(image_file.read())
+                            image_data = base64.b64decode(encoded_string)
+                            filename = full_file_path
+                            with open(filename, 'wb') as f:
+                                f.write(image_data)
+                            # delete call...
+                            all_links = Link_Model.objects.all().exclude(unique_id_link=link_id_strip)
+                            # Delete all other images excluding the current one.
+                            for each_link in all_links:
+                                each_link.delete()
+                        else:
+                            # remove all files from database
+                            all_files = Link_Model.objects.all()
+                            for each_file in all_files:
+                                each_file.delete()
+                            # remove all files from the encode directory as well
+                            for each_file in os.listdir(str(settings.ENCODE_ROOT)):
+                                full_path_remove =  os.path.join(settings.ENCODE_ROOT, str(each_file))
+                            os.remove(full_path_remove)
+                            image_size_formatted = humanbytes(image_size)
+                            maximum_size_formatted = humanbytes(maximum_size_image)
+                            response = u' Image size {0} exceeds the max of {1}'.format(image_size_formatted,maximum_size_formatted)
+                            template = get_template('main/_wrong_file_size.html').render({"response":response})
+                            messages.error(request, template,"alert alert-warning alert-dismissible")
+                            return redirect(reverse("main:home"))  
+                    # if image extension not in name - a case of conflict b/w jpeg/jpg
+                    else:
+                        if image_extension == "jpeg":
+                            image_extension = "jpg"
+                            new_image_name = basename.replace("." + str(image_extension), "")
+                            image_name_without_extension = new_image_name
+                            image_name_with_extension = image_name_without_extension + ".{0}".format(image_extension)
+                            image_name_with_txt_extension = image_name_without_extension + ".txt"
                             second_part = requests.get(url).content
-                            filenamex =  image_name
+                            filenamex =  image_name_with_extension
                             r = requests.get(url, allow_redirects=False)
                             full_file_path = os.path.join(settings.ENCODE_ROOT, str(filenamex))
                             with open(str(full_file_path), 'wb+') as f:
@@ -326,6 +461,7 @@ def detail_link(request, encode_id):
                                             if not file_name_without_extension in each_file:
                                                 full_path_remove =  os.path.join(settings.ENCODE_ROOT, str(each_file))
                                                 os.remove(full_path_remove)
+
                             width, height = Image.open(full_file_path).size
                             image_dimension = (u"{0} x {1}".format(width, height))
                             # Getting file size using logic in logic.py
@@ -344,35 +480,6 @@ def detail_link(request, encode_id):
                                     # Not really the code that is transformed to image
                                     extension = full_file_path.split(".")[-1]
                                     full_base64 = u"data:image/{0};base64,{1}".format(extension, wierdo_string).replace("b'", "").replace("'","")
-                                ########################################
-                                # Getting full path with ext. 
-                                ########################################
-
-                                path = full_file_path.split(".")
-                                wiki = path.pop(len(path)-1)
-                                ziga = path.append(str(extension))
-                                part = '.'
-                                new_file_path = part.join(path)
-
-                                ########################################
-                                # Getting image name with & without ext. 
-                                ########################################
-                                # Lets remove the last value of the list
-                                x = full_file_path.split(".")
-                                v = x.pop(len(x)-1)
-                                # Lets grab the image name without extension
-                                delimiter = '.'
-                                w = delimiter.join(x)
-                                w = w.split("/")
-                                image_name_without_extension = w[-1]
-                                x.append(str(extension))
-                                # Converting the above list to string
-                                delimiter = '.'
-                                w = delimiter.join(x)
-                                w = w.split("/")
-                                image_name_with_extension = w[-1]
-                                image_name_with_txt_extension = image_name_without_extension + ".txt"
-                                full_image_name = image_name_with_extension
 
                                 txt_path = os.path.join(settings.ENCODE_ROOT, str(image_name_with_txt_extension))
                                 with open(str(txt_path), 'w+') as f:
@@ -406,15 +513,13 @@ def detail_link(request, encode_id):
                                 messages.error(request, template,"alert alert-warning alert-dismissible")
                                 return redirect(reverse("main:home"))  
                             
-                    else:
-                        # if url does not end with any of the provided suffix
-                        # delete all the files
-                        all_files = Link_Model.objects.all()
-                        for each_file in all_files:
-                            each_file.delete()
-                        template = get_template('main/_invalid_url.html').render()
-                        messages.error(request, template,"alert alert-warning alert-dismissible")
-                        return redirect(reverse("main:home")) 
+                else:
+                    all_files = Link_Model.objects.all()
+                    for each_file in all_files:
+                        each_file.delete()
+                    template = get_template('main/_wrong_format.html').render()
+                    messages.error(request, template,"alert alert-warning alert-dismissible")
+                    return redirect(reverse("main:home")) 
             except:
                 template = get_template('main/_network_error.html').render()
                 messages.error(request, template,"alert alert-warning alert-dismissible")
@@ -431,7 +536,7 @@ def detail_link(request, encode_id):
     "link_head_url":link_head_url,
     "file":specific_link,
     "wierdo_string":full_base64,
-    "image_name":image_name,
+    "image_name":image_name_with_extension,
     "image_dimension":image_dimension,
     "converted_byte":converted_byte,
     }
