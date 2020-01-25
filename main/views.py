@@ -123,7 +123,7 @@ def home(request):
                 "form1":form1,
                 }
             else:
-                template = get_template('main/_wrong_file_type.html').render()
+                template = get_template('main/_wrong_type.html').render()
                 messages.error(request, template,"alert alert-warning alert-dismissible")
                 form1 = LinkUpload()
                 # if the form is not valid ,the command clears the LinkUpload and leave validation error message present in Upload_Form...
