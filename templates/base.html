@@ -101,23 +101,18 @@
               </a>
               <div class="dropdown-menu" style="width: 300px;">
                 <div class="row youplay-side-news">
-                  <div class="col-xs-3 col-md-4">
-                    <a href="#" class="angled-img">
-                      <div class="img">
-
-                        <img src="{% static 'front-end/front_end/assets/images/update.svgz' %}" alt="">
-                      </div>
-                    </a>
-                  </div>
-                  <div class="col-xs-9 col-md-8">
+                  <div class="col-xs-12 col-md-12">
                     <a href="#" style="text-decoration: none;" class="pull-right mr-10"></a>
-                    <h4 class="ellipsis"><a href="">
-                    {% for each_update in updates %}
-                    {% if forloop.first %}
-                    Update {{each_update.version_of_update}}
-                    {% endif %}
-                    {% endfor %}
-                    </a></h4>
+
+                    <h4 class="ellipsis">
+                      {% for each_update in updates %}
+                      {% if forloop.first %}
+                      <a href="{% url 'main:update' each_update.update_id  %}">
+                      Update {{each_update.version_of_update}}
+                      </a>
+                      {% endif %}
+                      {% endfor %}
+                    </h4>
                     <span class="quantity"><span class="amount">{% for each_update in updates %}{% if forloop.first %}{{each_update.updated}}{% endif %}{% endfor %}</span></span>
                   </div>
                 </div>
@@ -160,7 +155,7 @@
               <div>
                 <a href="{% url 'main:home' %}" class="bt"  data-step="1" data-intro='Encoding turns your image into a large chunk of Base64 string while retaining the original image pixels and format. The resultant output will look like<br> <code>data:image/png;base64,iVAAAAN...</code>'  >Encode Now</a>
                   <a class="bt" data-step="2" data-intro="Decoding basically turns your base64 string into the original image, you can never go wrong!<br>
-                  <div style='text-align: center;'><img src='{% static 'front-end/front_end/assets/images/baby.svgz' %}' style='border-style:solid; border-width:1px;border-color:whitesmoke;border-top-left-radius: 12px; border-bottom-right-radius: 12px;' alt='baby'></div>
+                  <div style='text-align: center;'><img src='{% static 'front-end/front_end/assets/images/baby.png' %}' style='border-style:solid; border-width:1px;border-color:whitesmoke;border-top-left-radius: 12px; border-bottom-right-radius: 12px;' alt='baby'></div>
                     "  href="{% url 'main:home_decode' %}">Decode Now</a>
                   <div>
                   </div>
