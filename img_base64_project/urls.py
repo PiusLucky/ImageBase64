@@ -36,6 +36,6 @@ if settings.DEBUG or not settings.DEBUG:
 
 
 
-admin.site.site_header = 'TipArticle.com Administrator@Pius_Lucky'
-admin.site.site_title = 'TipArticle.com Administrator@Pius_Lucky'
+admin.site.site_header = 'ImageBase64 Administrator@Pius_Lucky'
+admin.site.site_title = 'ImageBase64 Administrator@Pius_Lucky'
 
