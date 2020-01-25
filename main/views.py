@@ -82,8 +82,8 @@ def landing(request):
         if old_session_key:
             track = 'new_user'
             track_anonymous = "set"
-            status = "Private"
-            message = "Using Private Browser"
+            status = "First Time User"
+            message = "New User (Read the Guide)"
     
     context = {
     "title":title,
@@ -164,44 +164,6 @@ def home(request):
     "form1":form1,
      }
     return render(request,'main/front_page.html',context)
-
-
-# def is_url_image(url):
-#     r = requests.head(url)
-#     if r.headers["content-type"] in image_formats:
-#         extension = r.headers["content-type"]
-#         image_extension = extension.split("/")[-1]
-#         #Getting imagename
-#         urlpath = urlsplit(url).path
-#         basename = posixpath.basename(unquote(urlpath))
-#         if (os.path.basename(basename) != basename or
-#         unquote(posixpath.basename(urlpath)) != basename):
-#             raise ValueError  # reject '%2f' or 'dir%5Cbasename.ext' on Windows
-#         # This will basically add .jpeg in links that contains it
-#         # Lets fix that
-#         if str(image_extension) in basename: 
-#             new_image_name = basename.replace("." + str(image_extension), "")
-#             image_name_without_extension = new_image_name
-#             print(image_extension)
-#             print(image_name_without_extension)
-#             image_name_with_extension = image_name_without_extension + ".{0}".format(image_extension)
-#             print(image_name_with_extension)
-#         else:
-#             if image_extension == "jpeg":
-#                 image_extension = "jpg"
-#                 new_image_name = basename.replace("." + str(image_extension), "")
-#                 image_name_without_extension = new_image_name
-#                 print(image_extension)
-#                 print(image_name_without_extension)
-#                 image_name_with_extension = image_name_without_extension + ".{0}".format(image_extension)
-#                 print(image_name_with_extension)
-                
-#     else:
-#         print ("NO image")
-# # https://images.pexels.com/photos/1386604/pexels-photo-1386604.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500
-# is_url_image("https://thechive.com/wp-content/uploads/2020/01/lead2-6.jpg")
-
-
 
 def detail(request, id):
     specific_file = Image_Model.objects.filter(id=id)

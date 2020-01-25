@@ -86,6 +86,13 @@
                                 <a class="nav-link" href="/decode/">Decode Instead?</a>
                             </li>
                             {% endif %}
+                            {% for each_update in updates %}
+                            {% if forloop.first %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'main:update' each_update.update_id  %}" class="btn btn-default btn-sm">Updates</a>
+                            </li>
+                            {% endif %}
+                            {% endfor %}
                             <li class="nav-item">
                                 <a class="nav-link" href="#">FAQ</a>
                             </li>
