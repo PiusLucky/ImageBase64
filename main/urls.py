@@ -2,6 +2,7 @@ from django.urls import path, re_path, include
 from main.views import (
 home, 
 update,
+faq,
 detail, 
 landing, 
 detail_link,
@@ -17,6 +18,7 @@ urlpatterns = [
 		path(r'', landing, name="landing"),
 		path(r'encode/', home, name="home"),
 		re_path(r'^update/(?P<update_id>[-\w]+)$', update, name="update"),
+		path(r'faq/', faq, name="faq"),
 		path(r'encode/<int:id>/', detail, name='detail'),
 		re_path(r'^encode/(?P<encode_id>[-\w.=+]+)$', detail_link, name='detail2'),
 		path(r'decode/', home_decode, name="home_decode"),

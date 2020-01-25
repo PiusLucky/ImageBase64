@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Image_Model, Link_Model, File_Model, Field_Model, Link_Model_Decode, Update_Model
+from .models import Image_Model, Link_Model, File_Model, Field_Model, Link_Model_Decode, Update_Model, Faq_Model
 
 class Image_ModelAdmin(admin.ModelAdmin):
 	list_display = ["id","timestamp"]
@@ -55,3 +55,12 @@ class Update_ModelAdmin(admin.ModelAdmin):
 		exclude = ("updated",)
 		model = Update_Model
 admin.site.register(Update_Model, Update_ModelAdmin)
+
+
+class Faq_ModelAdmin(admin.ModelAdmin):
+	list_display = ["updated","Q1"]
+	list_display_links = ["updated"]
+	list_filter = ["Q1"]
+	class Meta:
+		model = Faq_Model
+admin.site.register(Faq_Model, Faq_ModelAdmin)

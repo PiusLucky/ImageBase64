@@ -7,7 +7,7 @@ import posixpath
 
 from django.shortcuts import render
 from django.urls import reverse
-from .models import Image_Model, Link_Model, File_Model, Field_Model, Link_Model_Decode, Update_Model
+from .models import Image_Model, Link_Model, File_Model, Field_Model, Link_Model_Decode, Update_Model, Faq_Model
 from .logic import humanbytes
 from .forms import UploadForm, LinkUpload, LinkDecodeForm, FieldForm, FileForm
 from django.conf import settings
@@ -1016,3 +1016,18 @@ def update(request, update_id):
     "other_update":other_update,
     }
     return render(request,'update/update.html',context)
+
+
+
+########################################################
+#  FAQ SECTION BY LUCKY P. (JUST ANOTHER PROGRAMMER)
+########################################################
+def faq(request):
+    title = "FAQDetail"
+    specific_faq = Faq_Model.objects.all()
+    context = {
+    "title":title,
+    "name":name,
+    "faq":specific_faq,
+    }
+    return render(request,'faq/faq.html',context)

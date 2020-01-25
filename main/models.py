@@ -154,7 +154,6 @@ class Link_Model_Decode(models.Model):
 ##########################################################################################
 				# UPDATE SECTION BY LUCKY P. (JUST ANOTHER PROGRAMMER)
 ##########################################################################################
-# Recall 1MB = 1048576 bytes (in Binary)
 
 class Update_Model(models.Model):
 	top_update = models.TextField(
@@ -190,6 +189,51 @@ class Update_Model(models.Model):
 
 	def __str__(self):
 	    return str(self.update_id)
+		
+	class Meta:
+		# abstract = True #if the model Post is abstract,it cannot be registered with admin.
+		ordering = ["-updated"]
+
+
+##########################################################################################
+				# UPDATE SECTION BY LUCKY P. (JUST ANOTHER PROGRAMMER)
+##########################################################################################
+
+class Faq_Model(models.Model):
+	Q1 = models.TextField(
+	verbose_name=_('Question One'), max_length= 100000,blank=True, null=True
+	)
+	Q2 = models.TextField(
+	verbose_name=_('Question Two'), max_length= 100000,blank=True, null=True
+	)
+	Q3 = models.TextField(
+	verbose_name=_('Question Three'), max_length= 100000,blank=True, null=True
+	)
+	Q4 = models.TextField(
+	verbose_name=_('Question Four'), max_length= 100000,blank=True, null=True
+	)
+	Q5 = models.TextField(
+	verbose_name=_('Question Five'), max_length= 100000,blank=True, null=True
+	)
+	Q6 = models.TextField(
+	verbose_name=_('Question Six'), max_length= 100000,blank=True, null=True
+	)
+	Q7 = models.TextField(
+	verbose_name=_('Question Seven'), max_length= 100000,blank=True, null=True
+	)
+	Q8 = models.TextField(
+	verbose_name=_('Question Eight'), max_length= 100000,blank=True, null=True
+	)
+	Q9 = models.TextField(
+	verbose_name=_('Question Nine'), max_length= 100000,blank=True, null=True
+	)
+	Q10 = models.TextField(
+	verbose_name=_('Question Ten'), max_length= 100000,blank=True, null=True
+	)
+	updated = models.DateTimeField(default= datetime.now())
+	
+	def __str__(self):
+	    return str(self.updated)
 		
 	class Meta:
 		# abstract = True #if the model Post is abstract,it cannot be registered with admin.
