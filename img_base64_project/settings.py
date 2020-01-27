@@ -60,6 +60,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'main.contextprocessors.landing',
                 'main.contextprocessors.update',
+                'main.contextprocessors.contact_count',
             ],
         },
     },

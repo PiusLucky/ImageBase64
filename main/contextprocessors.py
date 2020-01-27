@@ -1,6 +1,6 @@
 import requests
 from main.utils import generate_session_id
-from main.models import Update_Model
+from main.models import Update_Model, Contact_Me_Model
 from django.conf import settings
 from django.shortcuts import render
 
@@ -67,4 +67,9 @@ def update(request):
     "updates":specific_update,
     }
 
+def contact_count(request):
+    all_msg = Contact_Me_Model.objects.all().count
+    return {
+    'count_contacts' : all_msg,
+    }
 

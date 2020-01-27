@@ -8,6 +8,7 @@
   {% block title %}
   <title>{{title}} - {{name}}</title>
   {% endblock title %}
+  {% block head_no_title %}
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Icon -->
@@ -21,6 +22,7 @@
   <!-- Youplay -->
   <link rel="stylesheet" type="text/css" href="{% static 'front-end/assets/youplay/css/youplay.min.css' %}" />
   <link rel="stylesheet" type="text/css" href='{% static "front-end/second-part/style.css" %}'>
+  {% endblock head_no_title %}
   </head>
   <style type="text/css">
     @media screen and (max-width:767px){
@@ -28,12 +30,14 @@
     }
   </style>
   <body>
+    {% block preloader %}
     <!-- Preloader -->
     <div class="page-preloader preloader-wrapp">
       <img src="{% static 'front-end/front_end/assets/images/nav_icon2.svgz' %}" alt="">
       <div class="preloader"></div>
     </div>
     <!-- /Preloader -->
+    {% endblock preloader %}
     {% block navigation %}
     <!-- Navbar -->
     <nav class="navbar-youplay navbar navbar-default navbar-fixed-top ">
@@ -74,8 +78,12 @@
                 <ul role="menu">
                   <li><a href="{% url 'main:faq' %}">Frequently Asked Questions <span class="badge bg-default">Answers</span></a>
                   </li>
-                  <li><a href="/">Contact Us</a>
+                  <li><a href="{% url 'main:cnt' %}">Contact Us</a>
                   </li>
+                  {% if request.user.is_superuser %}
+                  <li><a href="/admin/main/contact_me_model/">Messages <span class="badge bg-default">{{count_contacts}}</span></a>
+                  </li>
+                  {% endif %}
                 </ul>
               </div>
             </li>

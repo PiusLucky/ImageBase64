@@ -7,9 +7,9 @@ import posixpath
 
 from django.shortcuts import render
 from django.urls import reverse
-from .models import Image_Model, Link_Model, File_Model, Field_Model, Link_Model_Decode, Update_Model, Faq_Model
+from .models import Image_Model, Link_Model, File_Model, Field_Model, Link_Model_Decode, Update_Model, Faq_Model, My_Contact_Model, Contact_Me_Model
 from .logic import humanbytes
-from .forms import UploadForm, LinkUpload, LinkDecodeForm, FieldForm, FileForm
+from .forms import UploadForm, LinkUpload, LinkDecodeForm, FieldForm, FileForm, Contact_Me_Form
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 from django.contrib import messages
@@ -1023,7 +1023,7 @@ def update(request, update_id):
 #  FAQ SECTION BY LUCKY P. (JUST ANOTHER PROGRAMMER)
 ########################################################
 def faq(request):
-    title = "FAQDetail"
+    title = "FAQ"
     specific_faq = Faq_Model.objects.all()
     context = {
     "title":title,
@@ -1031,3 +1031,47 @@ def faq(request):
     "faq":specific_faq,
     }
     return render(request,'faq/faq.html',context)
+
+
+########################################################
+#  MY_CONTACT SECTION BY LUCKY P. (JUST ANOTHER PROGRAMMER)
+########################################################
+def my_contact(request):
+    title = "Contact"
+    specific_cnt = My_Contact_Model.objects.all()
+    form = Contact_Me_Form(request.POST or None)
+    if request.method == 'GET':
+        form = Contact_Me_Form()
+    elif request.method == "POST":
+        if request.POST.get('form_submit_name') == 'form_submit_value':
+            if form["seven_digit_auth_code"].value() == form["seven_digit_auth_code_enter"].value():      
+                if form.is_valid():   
+                    instance = form.save(commit=False)
+                    instance.save()
+                    t_id = instance.ticket_id
+                    template = get_template('contact/_valid.html').render({"t_id":t_id})
+                    messages.success(request, template,"alert alert-warning alert-dismissible")
+                    return redirect(reverse("main:cnt"))
+                else:
+                    template = get_template('main/_wrong_type.html').render()
+                    messages.error(request, template,"alert alert-warning alert-dismissible")
+                    form1 = LinkUpload()
+                    # if the form is not valid ,the command clears the LinkUpload and leave validation error message present in Upload_Form...
+                    return render(request, 'main/front_page.html', {"title": title, 
+                    "name":name,
+                    "form":form,
+                        } )
+            else:
+                auth_code = form["seven_digit_auth_code"].value
+                template = get_template('contact/_unmatch_auth_code.html').render({"auth_code":auth_code})
+                messages.error(request, template,"alert alert-warning alert-dismissible")
+                return redirect(reverse("main:cnt"))
+    context = {
+    "title":title,
+    "name":name,
+    "cnt":specific_cnt,
+    "form":form,
+    }
+    return render(request,'contact/contact.html',context) 
+
+

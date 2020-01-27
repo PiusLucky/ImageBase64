@@ -12,6 +12,8 @@ from .utils import (
 	generate_unique_id_file,
 	generate_unique_id_link,
 	update_unique_id,
+	auth_code,
+	ticket_id,
 )
 from django.core.files.storage import FileSystemStorage
 from datetime import datetime, timezone
@@ -44,7 +46,6 @@ class Image_Model(models.Model):
 	    return str(self.id)
 		
 	class Meta:
-		# abstract = True #if the model Post is abstract,it cannot be registered with admin.
 		ordering = ["-timestamp"]
 
 
@@ -66,7 +67,6 @@ class Link_Model(models.Model):
 		# print(Link_Model_Decode.objects.all()) --- when called in view.py
 	    return str(self.url)
 	class Meta:
-		# abstract = True #if the model Post is abstract,it cannot be registered with admin.
 		ordering = ["-timestamp"]
 
 
@@ -101,7 +101,6 @@ class File_Model(models.Model):
 	    return str(self.file_field)
 		
 	class Meta:
-		# abstract = True #if the model Post is abstract,it cannot be registered with admin.
 		ordering = ["-timestamp"]
 
 class Field_Model(models.Model):
@@ -123,7 +122,6 @@ class Field_Model(models.Model):
 		# print(Link_Model.objects.all()) --- when called in view.py
 	    return str(self.paste)
 	class Meta:
-		# abstract = True #if the model Post is abstract,it cannot be registered with admin.
 		ordering = ["-timestamp"]
 
 class Link_Model_Decode(models.Model):
@@ -146,7 +144,6 @@ class Link_Model_Decode(models.Model):
 		# print(Link_Model_Decode.objects.all()) --- when called in view.py
 	    return str(self.url)
 	class Meta:
-		# abstract = True #if the model Post is abstract,it cannot be registered with admin.
 		ordering = ["-timestamp"]
 
 
@@ -191,12 +188,11 @@ class Update_Model(models.Model):
 	    return str(self.update_id)
 		
 	class Meta:
-		# abstract = True #if the model Post is abstract,it cannot be registered with admin.
 		ordering = ["-updated"]
 
 
 ##########################################################################################
-				# UPDATE SECTION BY LUCKY P. (JUST ANOTHER PROGRAMMER)
+				# FAQ SECTION BY LUCKY P. (JUST ANOTHER PROGRAMMER)
 ##########################################################################################
 
 class Faq_Model(models.Model):
@@ -236,5 +232,77 @@ class Faq_Model(models.Model):
 	    return str(self.updated)
 		
 	class Meta:
-		# abstract = True #if the model Post is abstract,it cannot be registered with admin.
 		ordering = ["-updated"]
+
+
+##########################################################################################
+				# CONTACT SECTION (My Details) BY LUCKY P. (JUST ANOTHER PROGRAMMER)
+##########################################################################################
+
+class My_Contact_Model(models.Model):
+	name = models.CharField(
+	verbose_name=_('Name'), max_length= 100000, blank=True, null=True
+	)
+	email = models.EmailField(
+	verbose_name=_('Email'), max_length= 100000, blank=True, null=True
+	)
+	phone = models.CharField(
+	verbose_name=_('Phone'), max_length= 100000, blank=True, null=True
+	)
+	address = models.TextField(
+	verbose_name=_('Address'), max_length= 100000, blank=True, null=True
+	)
+	additional = models.TextField(
+	verbose_name=_('Extra'), max_length= 100000, blank=True, null=True
+	)
+	updated = models.DateTimeField(default= datetime.now())
+	
+	def __str__(self):
+	    return str(self.updated)
+		
+	class Meta:
+		ordering = ["-updated"]
+
+
+
+
+
+##########################################################################################
+				# CONTACT SECTION (Outside World) BY LUCKY P. (JUST ANOTHER PROGRAMMER)
+##########################################################################################
+
+class Contact_Me_Model(models.Model):
+	name = models.CharField(
+	verbose_name=_('Name'), max_length= 100000, blank=False, null=False
+	)
+	email = models.EmailField(
+	verbose_name=_('Email'), max_length= 100000, blank=False, null=False
+	)
+	whatsapp_contact = models.CharField(
+	verbose_name=_('Whatsapp contact'), max_length= 100000, blank=True, null=True
+	)
+	query = models.TextField(
+	verbose_name=_('Query'), max_length= 100000, blank=False, null=False
+	)
+	ticket_id = models.CharField(
+	verbose_name=_('Ticket_ID'), default=ticket_id, max_length= 100000, blank=False, null=False
+	)
+	seven_digit_auth_code = models.CharField(
+	verbose_name=_('Auth_code'), max_length=40,
+	default = auth_code,  blank=False, null=False
+	)
+	seven_digit_auth_code_enter = models.CharField(
+	verbose_name=_('Auth_code_enter'), max_length=40,  blank=False, null=False
+	)
+	updated = models.DateTimeField(default= datetime.now())
+
+	def updated_formatted(self):
+		return (self.updated.strftime("%Y-%m-%d %H:%M:%S"))
+    
+	def __str__(self):
+	    return str(self.updated)
+		
+	class Meta:
+		ordering = ["-updated"]
+
+

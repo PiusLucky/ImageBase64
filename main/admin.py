@@ -1,5 +1,15 @@
 from django.contrib import admin
-from .models import Image_Model, Link_Model, File_Model, Field_Model, Link_Model_Decode, Update_Model, Faq_Model
+from .models import (
+Image_Model, 
+Link_Model,
+File_Model,
+Field_Model,
+Link_Model_Decode,
+Update_Model,
+Faq_Model,
+My_Contact_Model,
+Contact_Me_Model,
+)
 
 class Image_ModelAdmin(admin.ModelAdmin):
 	list_display = ["id","timestamp"]
@@ -64,3 +74,22 @@ class Faq_ModelAdmin(admin.ModelAdmin):
 	class Meta:
 		model = Faq_Model
 admin.site.register(Faq_Model, Faq_ModelAdmin)
+
+
+class My_Contact_ModelAdmin(admin.ModelAdmin):
+	list_display = ["email","updated"]
+	list_display_links = ["email"]
+	list_filter = ["email"]
+	class Meta:
+		model = My_Contact_Model
+admin.site.register(My_Contact_Model, My_Contact_ModelAdmin)
+
+
+class Contact_Me_ModelAdmin(admin.ModelAdmin):
+	list_display = ["email","updated"]
+	list_display_links = ["email"]
+	list_filter = ["email"]
+	class Meta:
+		model = Contact_Me_Model
+admin.site.register(Contact_Me_Model, Contact_Me_ModelAdmin)
+

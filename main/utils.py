@@ -1,5 +1,6 @@
 import string
 import secrets
+from random import randint
 
 
 def generate_unique_id():
@@ -42,6 +43,22 @@ def update_unique_id():
     secret_key = secrets.token_hex(16)[0:length]
     generated_id =  str(secret_key)
     return generated_id
+
+
+def auth_code():
+    length = 7
+    initial = "authentication_token_"
+    secret_key = secrets.token_hex(16)[0:length]
+    generated_id =  initial + str(secret_key)
+    return generated_id
+
+
+
+def ticket_id():
+    n = 7
+    generated = ''.join(["{}".format(randint(0, 9)) for num in range(0, n)])
+    return generated
+
 
 
 
