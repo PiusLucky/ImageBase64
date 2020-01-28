@@ -62,17 +62,13 @@
 
       <div class="row">
         <div class="col-md-9 col-md-push-3">
-          {% if messages %}
-          {% for message in messages %}
-          <div class="custom-container" style="display: block;"></div>  
-          {% endfor %}
-          {% endif %}
+          <div id="message_box"></div>  
          <!-- Contact Form -->
          <div class="youplay-form p-0">
            <h2 class="mt-0">Send us a Query</h2>
             <em>#Always check under contact information for the authentication token!</em>
               <hr class="hr_style">
-           <form  method="post" enctype="multipart/form-data">
+           <form  method="post" enctype="multipart/form-data" id="contactForm">
             {% csrf_token %}
              <div class="row">
                <div class="col-md-6">
@@ -130,7 +126,7 @@
           <br>Email: {{cnt.email}}
           <br>Additional Info: {{cnt.additional}}
           <br>
-          <div onkeydown="return false" onmousedown="return false" onselect="return false"><code style="padding-top: 2px;padding-bottom: 2px;" class="disabled">{{form.seven_digit_auth_code.value}}</code></div>       
+          <div onkeydown="return false" onmousedown="return false" onselect="return false" style="margin-top: 0.5rem;"><code style="padding-top: 2px;padding-bottom: 2px;" class="disabled" >{{form.seven_digit_auth_code.value}}</code></div>       
           <br>
         </div>
       </div>
@@ -141,21 +137,26 @@
   </section>
   {% endfor %}
   {% endif %}
-   <script>
-    $('.custom-container').noty({
-    text: `<html>{% for message in messages %}{{message}} {% endfor %}</html>`,
-    type: 'information',
-    theme: 'metroui',
-    timeout: 100000,
-    progressBar: true,
-    animation: {
-    open: {height: 'toggle'},
-    close: {height: 'toggle'},
-    easing: 'swing',
-    speed: 500 // opening & closing animation speed
-    }
-    });
-   
+  <script type="text/javascript">
+  $(document).ready(function(){
+     $("#contactForm").submit(function(e){
+    // prevent from normal form behaviour
+          e.preventDefault();
+        // serialize the form data  
+          var serializedData = $(this).serialize();
+          $.ajax({
+            type : 'POST',
+            url :  "{% url 'main:cnt_submit' %}",
+            data : serializedData,
+            success : function(response){
+              $("#message_box").html(`${response.post_context.msg1}`);
+            },
+            error : function(response){
+              console.log(response)
+            }
+          });
+     });
+  });
   </script>
   <!-- /Main Content -->
 {% endblock banner1 %}

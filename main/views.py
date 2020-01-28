@@ -42,7 +42,7 @@ def csrf_byepass(request, reason=""):
 
 
 def landing(request):
-    title = "LandingPage" 
+    title = "Encode/Decode" 
     session_key = request.session.session_key
     request.session.modified = True
     if not session_key is None:
@@ -1040,32 +1040,6 @@ def my_contact(request):
     title = "Contact"
     specific_cnt = My_Contact_Model.objects.all()
     form = Contact_Me_Form(request.POST or None)
-    if request.method == 'GET':
-        form = Contact_Me_Form()
-    elif request.method == "POST":
-        if request.POST.get('form_submit_name') == 'form_submit_value':
-            if form["seven_digit_auth_code"].value() == form["seven_digit_auth_code_enter"].value():      
-                if form.is_valid():   
-                    instance = form.save(commit=False)
-                    instance.save()
-                    t_id = instance.ticket_id
-                    template = get_template('contact/_valid.html').render({"t_id":t_id})
-                    messages.success(request, template,"alert alert-warning alert-dismissible")
-                    return redirect(reverse("main:cnt"))
-                else:
-                    template = get_template('main/_wrong_type.html').render()
-                    messages.error(request, template,"alert alert-warning alert-dismissible")
-                    form1 = LinkUpload()
-                    # if the form is not valid ,the command clears the LinkUpload and leave validation error message present in Upload_Form...
-                    return render(request, 'main/front_page.html', {"title": title, 
-                    "name":name,
-                    "form":form,
-                        } )
-            else:
-                auth_code = form["seven_digit_auth_code"].value
-                template = get_template('contact/_unmatch_auth_code.html').render({"auth_code":auth_code})
-                messages.error(request, template,"alert alert-warning alert-dismissible")
-                return redirect(reverse("main:cnt"))
     context = {
     "title":title,
     "name":name,
@@ -1073,5 +1047,52 @@ def my_contact(request):
     "form":form,
     }
     return render(request,'contact/contact.html',context) 
+
+
+def post_contact_view(request):
+    if request.method == "POST" and request.is_ajax():
+        form = Contact_Me_Form(request.POST)
+        ticket_list = []
+        if form["seven_digit_auth_code"].value() == form["seven_digit_auth_code_enter"].value():
+            form_current_ticket = form["ticket_id"].value()
+            all_tickets = Contact_Me_Model.objects.all()
+            for each_item in all_tickets:
+                ticket_list.append(each_item.ticket_id)
+            if form_current_ticket in ticket_list:
+                t_id = form_current_ticket
+                post_context =  {
+                "t_id":t_id,
+                "msg1": get_template('contact/_ticket_already_exists.html').render({"t_id":t_id})
+                }
+                return JsonResponse({"post_context":post_context}, status=200)
+            else:
+                if form.is_valid():   
+                    instance = form.save(commit=False)
+                    instance.save()
+                    t_id = instance.ticket_id
+                    # template = get_template('contact/_valid.html').render({"t_id":t_id})
+                    # messages.success(request, template,"alert alert-warning alert-dismissible")
+                    post_context =  {
+                    "t_id":t_id,
+                    "msg1": get_template('contact/_valid.html').render({"t_id":t_id})
+                    }
+                    return JsonResponse({"post_context":post_context}, status=200)
+                else:
+                    template = get_template('main/_wrong_type.html').render()
+                    messages.error(request, template,"alert alert-warning alert-dismissible")
+                    return JsonResponse({"success":False}, status=400)
+        else:
+            auth_code = form["seven_digit_auth_code"].value()
+            template = get_template('contact/_unmatch_auth_code.html').render({"auth_code":auth_code})
+            post_context =  {
+            "auth_code":auth_code,
+            "msg1": template,
+            }
+            return JsonResponse({"post_context":post_context}, status=200)
+        return JsonResponse({"success":True}, status=200)
+    return JsonResponse({})
+
+        
+    
 
 
