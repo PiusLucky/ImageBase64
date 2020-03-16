@@ -1,0 +1,21 @@
+##############################################
+BACKEND
+##############################################
+1. Python
+2. Django Web Framework
+<<<<<<< HEAD
+3. Request Library
+=======
+
+>>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
+
+##############################################
+FRONTEND
+##############################################
+1. ParticleJS
+2. Noty (for notification)
+    [ https://ned.im/noty/v2/, https://ned.im/noty/#/]
+<<<<<<< HEAD
+3. IntroJS
+=======
+>>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e

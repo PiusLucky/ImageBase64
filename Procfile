@@ -1,0 +1,1 @@
+web: gunicorn img_base64_project.wsgi

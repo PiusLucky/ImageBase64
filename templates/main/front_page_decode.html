@@ -1,0 +1,132 @@
+{% extends "second_base.html" %}
+{% load static %}
+
+{% block script1 %}
+<script type='text/javascript'>$(document).ready(function(){
+    $(".files").attr('data-before',"Drag n Drop your base64 text/html file");
+    $('input[type="file"]').change(function(e){
+        var fileName = e.target.files[0].name;
+        var fileNameArray = fileName.split(".");
+        var fileNameExtension = fileNameArray[fileNameArray.length-1];
+        $(".files").attr('data-before',shortenFileName(fileName, 25,.75,'...'));
+        $("#extension").html(`(${fileNameExtension} file)`);
+    });
+});</script>
+{% endblock script1 %}
+
+{% block main %}
+<div class="row justify-content-center">
+  <div class="col-lg-10 col-md-12 col-sm-12">
+<<<<<<< HEAD
+    <h3 class="font-weight-bold ml-md-0 mx-auto text-center text-sm-left"><img src='{% static "front-end/front_end/assets/images/browser_icons/decode.svgz" %}' alt="">&nbsp;Decode Image </h3>
+    <p class="mt-md-4 ml-md-0 ml-2 text-justify text-sm-left"> Decode your Base64 string to original image, you have the option to input a link (of a .txt/.html file) that contains Base64 or you can paste the entire Base64 string directly into the empty box below, you can also 'Drag n Drop' the file (always .txt/.html file) that contains the Base64 string into the upload box directly.</p>
+=======
+    <h3 class="font-weight-bold ml-md-0 mx-auto text-center text-sm-left"><i class="fas fa-code"></i>&nbsp;Decode Image </h3>
+    <p class="mt-md-4 ml-md-0 ml-2 text-center text-sm-left"> Decode your Base64 string to original image, you have the option to input a link (of a .txt/.html file) that contains Base64 or you can paste the entire Base64 string directly into the empty box below, you can also 'Drag n Drop' the file (always .txt/.html file) that contains the Base64 string into the upload box directly.</p>
+>>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
+
+    <div class="media">
+      <div class="media-body">
+        {% if messages %}
+        <h5 class="mt-0 mb-1">Quick Info: </h5>
+        <div class="custom-container" style="display: block;"></div>  
+        {% else %}
+        <h5 class="mt-0 mb-1">Quick Info: </h5>
+        <p style="color:#248bcc;" ><i class="fas fa-info-square"></i> Keep image size to be 1MB or less for either upload, pasted base64 string or pasted link</p>
+        {% endif %} 
+      </div> 
+      <img src='{% static "front-end/front_end/assets/images/arrowhead.svgz" %}'class="ml-3" alt="...">
+    </div>
+    <!--  Drafting the first form -->
+    <form method="post" enctype="multipart/form-data" id="first_form">
+      {% csrf_token %}
+      <div class="form-group"><label for="id_url">Paste Link</label><input type="url" name="url" maxlength="2000" required id="id_url" class="form-control size" placeholder="Type/Paste URL (https://www.google.com/example.txt)"> </div>
+      <div class="row justify-content-start mb-5">
+        <div class="col-lg-4 col-auto ">
+          <button  type="submit" class="btn btn-primary btn-block" value="form_value" name="form_name">
+            <small class="font-weight-bold"><i class="fas fa-stream"></i>&nbsp;Decode Now!</small>
+          </button> 
+        </div>
+      </div>
+    </form>
+
+
+  </div> 
+</div>
+
+<<<<<<< HEAD
+<div style="text-align: center;margin-top:-1.9rem;">
+=======
+<div style="text-align: center;">
+>>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
+  <hr> <i class="fad fa-paste"  style="color:#248bcc;"></i> Paste in Base64 string down here!<hr>
+</div>
+
+<!--  Drafting the second form -->
+<form method="post" enctype="multipart/form-data">
+{% csrf_token %}
+<div class="row justify-content-center">
+  <div class="col-md-12 col-lg-10 col-12">
+    <div class="form-group"> <label for="exampleFormControlTextarea2">Base64 String</label> <textarea class="form-control rounded-0 size" id="exampleFormControlTextarea2 id_paste" rows="5" name="paste" cols="40" placeholder="data:image/png;base64,iVr...." required></textarea>
+    <p style="color:#248bcc;" ><i class="fas fa-info-square"></i> INFO:</span>&nbsp;Pasting in large chunk of base64 string takes 10 seconds or less to reflect</p></div>
+    <div class="row justify-content-start mb-5">
+      <div class="col-lg-4 col-auto "> <button class="btn btn-primary btn-block"  type="submit" value="form1_value" name="form1_name"><small class="font-weight-bold"><i class="fas fa-stream"></i>&nbsp;Decode Now!</small></button>  </div>
+    </div>
+  </div>
+</div>
+</form>
+
+
+<<<<<<< HEAD
+<div style="text-align: center;margin-top:-1.2rem">
+=======
+<div style="text-align: center;">
+>>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
+  <hr> <i class="far fa-upload"  style="color:#248bcc;"></i> Upload text file or html file Instead?<hr>
+</div>
+<br>
+  <!--  Drafting the third form -->
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}    
+  <div class="row justify-content-center">
+    <div class="col-md-12 col-lg-10 col-12">
+      <div class="form-group files" style="display: block;word-wrap: break-word;">
+        <p style="color:#248bcc;" ><i class="fas fa-info-square"></i> INFO:</span>&nbsp;@Upload .txt and .html file of 2MB or Less.</p>
+        <label class="my-auto" for="id_file_field">Upload your .txt/.html file with base64 content </label> 
+        <input type="file" name="file_field" required id="id_file_field" class="form-control"  accept="text/plain,text/html" /> 
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="row justify-content-center" style="text-align: center;margin-top: -3.0rem">
+    <div class="col-md-12 col-lg-10 col-12">
+      <div class="row justify-content-start mb-5">
+        <div class="col-lg-4 col-auto ">
+          <button class="btn btn-primary btn-block"  type="submit" value="form2_value" name="form2_name"><small class="font-weight-bold"><i class="fas fa-stream"></i>&nbsp;Decode Now!</small></button> 
+        </div>
+      </div>
+
+    </div>
+  </div>
+</form>
+
+{% endblock main %}
+
+   {% block script2 %}
+   <script>
+    $(".mb-1,.ml-3").fadeOut(5000);
+    $('.custom-container').noty({
+    text: `<html>{% for message in messages %}{{message}} {% endfor %}</html>`,
+    type: 'information',
+    theme: 'metroui',
+    timeout: 10000,
+    progressBar: true,
+    animation: {
+    open: {height: 'toggle'},
+    close: {height: 'toggle'},
+    easing: 'swing',
+    speed: 500 // opening & closing animation speed
+    }
+    });
+    </script>
+   {% endblock script2 %}

@@ -1,0 +1,162 @@
+{% extends "base.html" %}
+{% load static %}
+{% block head_no_title %}
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Icon -->
+<link rel="icon" type="assets/image/png" href="{% static 'front-end/front_end/assets/images/icon.png' %}">
+<!-- introjs -->
+<link rel="stylesheet" type="text/css" href='{% static "front-end/second-part/introjs.min.css" %}'>
+<!-- Bootstrap -->
+<link rel="stylesheet" type="text/css" href="{% static 'front-end/assets/bower_components/bootstrap/dist/css/bootstrap.min.css' %}" />
+<!-- FontAwesome -->
+<link rel="stylesheet" type="text/css" href="{% static 'front-end/assets/bower_components/font-awesome/css/font-awesome.min.css' %}" /> 
+<!-- Youplay -->
+<link rel="stylesheet" type="text/css" href='{% static "front-end/second-part/all.min.css" %}'>
+<link rel="stylesheet" type="text/css" href="{% static 'front-end/assets/youplay/css/youplay.min.css' %}" />
+<link rel="stylesheet" type="text/css" href='{% static "front-end/second-part/style_limited.css" %}'>
+<script type='text/javascript' src='{% static "front-end/second-part/jquery.min.js" %}'></script>
+<link rel="stylesheet" type="text/css" href='{% static "front-end/second-part/noty.min.css" %}'>
+<script type="text/javascript" src='{% static "front-end/second-part/noty.min.js" %}'></script>
+<script type="text/javascript" src='{% static "front-end/second-part/javascript_logic.js" %}'></script>
+<script type="text/javascript" src='{% static "front-end/second-part/jquery.noty.packaged.js" %}'></script>
+{% endblock head_no_title %}
+ {% block banner1 %}
+ <style type="text/css">
+   #image_stylee{
+    background-image: url('../../static/front-end/front_end/assets/images/cnt.svgz');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+   background-size: cover;
+   }
+ </style>
+ {% if cnt %}
+ {% for cnt in cnt %}
+  <section class="content-wrap">
+    <!-- Banner -->
+    <div class="youplay-banner youplay-banner-parallax banner-top">
+      <div class="image" id="image_stylee">
+      </div>
+
+      <div class="info">
+        <div>
+          <div class="container">
+
+            <div class="pt-40 pb-40">
+              <div class="row">
+                <div class="col-xs-12 text-center">
+                  <h1>Support Ticket #{{form.ticket_id.value}}</h1>
+                  <div class="h5 mnt-10 mb-40">We are here to serve you!</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /Banner -->
+    <!-- /Banner -->
+    <div class="container youplay-content">
+
+      <div class="row">
+        <div class="col-md-9 col-md-push-3">
+          <div id="message_box"></div>  
+         <!-- Contact Form -->
+         <div class="youplay-form p-0">
+           <h2 class="mt-0">Send us a Query</h2>
+            <em>#Always check under contact information for the authentication token!</em>
+              <hr class="hr_style">
+           <form  method="post" enctype="multipart/form-data" id="contactForm">
+            {% csrf_token %}
+             <div class="row">
+               <div class="col-md-6">
+                 <div class="youplay-input form-group">
+                   <input type="text" name="name" maxlength="100000" required id="id_name"  placeholder="Name">
+                 </div>
+               </div>
+               <div class="col-md-6">
+                 <div class="youplay-input form-group">
+                   <input type="email" name="email" maxlength="100000" required id="id_email"  placeholder="Email">
+                 </div>
+               </div>
+               <div class="col-md-12">
+                 <div class="youplay-input form-group">
+                   <input type="text" name="whatsapp_contact" maxlength="100000" id="id_whatsapp_contact"  placeholder="Whatsapp Contact (Optional)">
+                 </div>
+               </div>
+               <div class="col-md-6" style="display: none;">
+                 <div class="youplay-input form-group">
+                   <input  type="text" name="ticket_id" value="{{form.ticket_id.value}}" maxlength="100000" required id="id_ticket_id"> <input type="hidden" name="initial-ticket_id" value="{{form.ticket_id.value}}" id="initial-id_ticket_id">
+                 </div>
+               </div>
+               <div class="col-md-6" style="display: none">
+                 <div class="youplay-input form-group">
+                   <input  type="text" name="updated" value="{{form.updated.value|date:'Y-m-d H:i:s'}}" required id="id_updated">
+                 </div>
+               </div>
+               </div>
+               <div class="row">
+               <div class="col-md-0">
+               <div class="youplay-input form-group" style="display: none;">
+                 <input type="text" name="seven_digit_auth_code" value="{{form.seven_digit_auth_code.value}}" maxlength="40" required id="id_seven_digit_auth_code"  placeholder="{{form.seven_digit_auth_code.value}}">
+               </div>
+               </div>
+                <div class="col-md-12">
+               <div class="youplay-input form-group">
+                 <input  placeholder= "Enter Authentication Token (Verification)"  type="text" name="seven_digit_auth_code_enter" maxlength="40" required id="id_seven_digit_auth_code_enter">
+               </div>
+               </div>
+               </div>
+             <div class="youplay-textarea form-group">
+               <textarea name="query" maxlength="100000" id="id_query" placeholder="Query" rows="5" required></textarea>
+             </div>
+             <button type="submit" class="btn btn-default" name="form_submit_name" value="form_submit_value">Submit Ticket</button>
+           </form>
+         </div>
+          <hr class="hr_style">
+         <!-- /Contact Form -->
+        </div>
+        <div class="col-md-3 col-md-pull-9">
+          <h2 class="mt-0">Contact Information</h2>
+          <br>Founder: {{cnt.name}}
+          <br>Address: {{cnt.address}}<br>
+          <br>Phone: {{cnt.phone}}
+          <br>Email: {{cnt.email}}
+          <br>Additional Info: {{cnt.additional}}
+          <br>
+          <div onkeydown="return false" onmousedown="return false" onselect="return false" style="margin-top: 0.5rem;"><code style="padding-top: 2px;padding-bottom: 2px;" class="disabled" >{{form.seven_digit_auth_code.value}}</code></div>       
+          <br>
+        </div>
+      </div>
+
+    </div>
+
+
+  </section>
+  {% endfor %}
+  {% endif %}
+  <script type="text/javascript">
+  $(document).ready(function(){
+     $("#contactForm").submit(function(e){
+    // prevent from normal form behaviour
+          e.preventDefault();
+        // serialize the form data  
+          var serializedData = $(this).serialize();
+          $.ajax({
+            type : 'POST',
+            url :  "{% url 'main:cnt_submit' %}",
+            data : serializedData,
+            success : function(response){
+              $("#message_box").html(`${response.post_context.msg1}`);
+            },
+            error : function(response){
+              console.log(response)
+            }
+          });
+     });
+  });
+  </script>
+  <!-- /Main Content -->
+{% endblock banner1 %}

@@ -1,0 +1,9 @@
+<span style="color: whitesmoke;"><strong>Invalid URL</strong><br>
+    {% if request.path == "/encode/" %}
+    Sorry, Invalid URL. Input url like "https:google.com/abc.png"
+    {% elif request.path == "/decode/" %}
+    Sorry, Invalid URL. Input url like "https:google.com/abc.txt"
+    {% else %}
+    {{invalid_url}}
+    {% endif %}
+</span>

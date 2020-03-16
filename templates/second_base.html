@@ -1,0 +1,329 @@
+{% load static %}
+<!doctype html>
+<html>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>{{title}} - {{name}}</title> 
+<!-- Icon -->
+<link rel="icon" type="assets/image/png" href="{% static 'front-end/front_end/assets/images/icon.png' %}">
+{% block external_links %}
+<link href='{% static "front-end/second-part/bootstrap.min.css" %}' rel='stylesheet'>
+<link rel="stylesheet" type="text/css" href='{% static "front-end/second-part/all.min.css" %}'>
+<link rel="stylesheet" type="text/css" href='{% static "front-end/second-part/style.css" %}'>
+<script type='text/javascript' src='{% static "front-end/second-part/jquery.min.js" %}'></script>
+<script type='text/javascript' src='{% static "front-end/second-part/bootstrap.min.js" %}'></script>
+<link rel="stylesheet" type="text/css" href='{% static "front-end/second-part/noty.min.css" %}'>
+<script type="text/javascript" src='{% static "front-end/second-part/noty.min.js" %}'></script>
+<script type="text/javascript" src='{% static "front-end/second-part/javascript_logic.js" %}'></script>
+<script type="text/javascript" src='{% static "front-end/second-part/jquery.noty.packaged.js" %}'></script>
+{% endblock external_links %}
+{% block script1 %}
+<script type='text/javascript'>$(document).ready(function(){
+    $(".files").attr('data-before',"Drag your image here or click the upload button");
+    $('input[type="file"]').change(function(e){
+        var fileName = e.target.files[0].name;
+        var fileNameArray = fileName.split(".");
+        var fileNameExtension = fileNameArray[fileNameArray.length-1];
+        $(".files").attr('data-before',shortenFileName(fileName, 25,.75,'...'));
+        $("#extension").html(`(${fileNameExtension} file)`);
+    });
+});</script>
+{% endblock script1 %}
+</head>
+<body>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
+<div id="particle_id"></div>
+<div class="container card-0 justify-content-center" style="margin-top: -52%" >
+    <div class="card-body px-sm-4 px-0">
+
+        <div class="row justify-content-center mb-5" id="nav">
+            <div class="col-md-10 col">
+             <!-- Navigation -->
+             <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+                <div class="container">
+                    <a class="navbar-brand" href="/">
+                        <img src='{% static "front-end/front_end/assets/images/nav_icon2.svgz" %}' alt="">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarResponsive">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/">Home
+                                </a>
+                            </li>
+                            {% if request.path == '/encode/' %}
+                            <li class="nav-item  active">
+                                <a class="nav-link" href="{% url 'main:home' %}">Encode Image</a>
+                                 <span class="sr-only">(current)</span>
+                            </li>
+                            {% elif title == "Encode Detail" or title == "Link Detail" %}
+                            <li class="nav-item  active">
+                                <a class="nav-link" href="" >Encode <sup style="color:#6dd5ed;"><i class="fad fa-arrow-alt-to-top"></i></sup></a>
+                                 <span class="sr-only">(current)</span>
+                            </li>
+                            {% elif title == "FileDetail" or title == "PasteDetail" or title == "LinkDecodeDetail" %}
+                            <li class="nav-item  active">
+                                <a class="nav-link" href="" >Decode <sup style="color:#6dd5ed;"><i class="fad fa-arrow-alt-to-bottom"></i></sup></a>
+                                 <span class="sr-only">(current)</span>
+                            </li>
+                            {% endif %}
+
+                            {% if request.path == '/decode/' %}
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/decode/">Decode Base64</a>
+                                <span class="sr-only">(current)</span>
+                            </li>
+                            {% endif %}
+                           {% if title == "FileDetail" or title == "PasteDetail" or title == "LinkDecodeDetail" or title == "Decode"  %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/encode/">Encode Instead?</a>
+                            </li>
+                            {% elif title == "Encode Detail" or title == "Link Detail" or title == "Encode" %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/decode/">Decode Instead?</a>
+                            </li>
+                            {% endif %}
+<<<<<<< HEAD
+                            {% for each_update in updates %}
+                            {% if forloop.first %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'main:update' each_update.update_id  %}" class="btn btn-default btn-sm">Updates</a>
+                            </li>
+                            {% endif %}
+                            {% endfor %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'main:faq' %}">FAQ</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/api/doc/">API</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'main:cnt' %}">Contact</a>
+=======
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">FAQ</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Contact</a>
+>>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav> 
+            <br>
+        </div>
+    </div>
+    <div class="row justify-content-center round " >
+        <div class="col-lg-10 col-md-12 ">
+            <div class="card shadow-lg card-1">
+                <div class="card-body inner-card">
+                {% block main %}
+                    <div class="row justify-content-center">
+                        <div class="col-lg-10 col-md-12 col-sm-12">
+<<<<<<< HEAD
+                            <h3 class="font-weight-bold ml-md-0 mx-auto text-center text-sm-left"><img src='{% static "front-end/front_end/assets/images/browser_icons/encode.svgz" %}' alt="">&nbsp;Encode Image </h3>
+                            <p class="mt-md-4 ml-md-0 ml-2 text-justify text-sm-left"> Convert your image to a Base64 string, you have the option to either paste in a direct link of the image or 'Drag n Drop' the image into the upload box directly.</p>
+                           
+=======
+                            <h3 class="font-weight-bold ml-md-0 mx-auto text-center text-sm-left"><i class="fas fa-code"></i>&nbsp;Encode Image </h3>
+                            <p class="mt-md-4 ml-md-0 ml-2 text-center text-sm-left"> Convert your image to a Base64 string, you have the option to either paste in a direct link of the image or 'Drag n Drop' the image into the upload box directly.</p>
+>>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
+
+                            <div class="media">
+                                <div class="media-body">
+                                    {% if messages %}
+                                    <h5 class="mt-0 mb-1">Quick Info: </h5>
+                                    <div class="custom-container" style="display: block;"></div>  
+                                    {% else %}
+                                    <h5 class="mt-0 mb-1">Quick Info: </h5>
+                                    <p style="color:#248bcc;" ><i class="fas fa-info-square"></i> Keep image size to be 1MB or less for either upload or pasted link</p>
+                                    {% endif %} 
+                                </div> 
+                                <img src='{% static "front-end/front_end/assets/images/arrowhead.svgz" %}'class="ml-3" alt="...">
+                            </div>
+                            <!--  Drafting the first form -->
+                            <form method="post" enctype="multipart/form-data" id="first_form">
+                                {% csrf_token %}
+<<<<<<< HEAD
+                                <div class="form-group"><label for="id_url">Paste Link</label><input type="url" name="url" maxlength="2000" required id="id_url" class="form-control size" placeholder="Paste in direct image url(link) here!"> </div>
+=======
+                                <div class="form-group"><label for="id_url">Paste Link</label><input type="url" name="url" maxlength="2000" required id="id_url" class="form-control size" placeholder="Type/Paste URL (https://www.google.com/example.png)"> </div>
+>>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
+                                <div class="row justify-content-start mb-5">
+                                    <div class="col-lg-4 col-auto ">
+                                        <button  type="submit" class="btn btn-primary btn-block" value="get_link_value" name="get_link_name">
+                                            <small class="font-weight-bold"><i class="fas fa-stream"></i>&nbsp;Encode Now!</small>
+                                        </button> 
+                                    </div>
+                                </div>
+                            </form>
+<<<<<<< HEAD
+                        </div> 
+                    </div>
+                    <div style="text-align: center;margin-top:-1.2rem"><hr> <i class="far fa-upload"  style="color:#248bcc;"></i> Upload Image file directly Instead?<hr></div>
+=======
+
+
+                        </div> 
+                    </div>
+                    <div style="text-align: center;"><hr> <i class="far fa-upload"  style="color:#248bcc;"></i> Upload Image file directly Instead?<hr></div>
+>>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
+                    <br>
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}    
+                        <div class="row justify-content-center">
+                            <div class="col-md-12 col-lg-10 col-12">
+                                <div class="form-group files" style="display: block;word-wrap: break-word;"><label class="my-auto" for="id_image">Upload Your File </label> 
+                                    <input type="file" name="image" required id="id_image" class="form-control" accept="image/jpg,image/png,image/jpeg, image/webp, image/gif" />
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-10 col-12" align="middle">
+<<<<<<< HEAD
+                                <img src="#" style="display: none;max-width: 100%;max-height:auto;
+=======
+                                <img src="#" style="display: none; height: 400px;
+                                width:400px;max-width: 100%;max-height:auto;
+>>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
+                                object-fit: cover;" id="imagee">
+                                <div  style="text-align: center;vertical-align: middle;display: none;" id="image_stand" ><i class="fas fa-check" style="color: green;"></i> Image preview window&nbsp;<span id="extension"></span></div>
+                            </div>
+                        </div>
+                        <br>
+<<<<<<< HEAD
+                        <div class="row justify-content-center" style="text-align: center;margin-top:-1.2rem">
+=======
+                        <div class="row justify-content-center" style="text-align: center;">
+>>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
+                            <div class="col-md-12 col-lg-10 col-12">
+                                <div class="row justify-content-start mb-5">
+                                    <div class="col-lg-4 col-auto ">
+                                        <button class="btn btn-primary btn-block"  type="submit" value="get_upload_value" name="get_upload_name"><small class="font-weight-bold"><i class="fas fa-stream"></i>&nbsp;Encode Now!</small></button> 
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </form>
+
+                
+                {% endblock main %}
+               </div>
+               
+               <!--  Broser supports -->
+               <style type="text/css">
+                   .icons{
+                    background: whitesmoke;
+                    border-top-style:double;
+                    border-bottom-style:double;
+                    padding-top:5px;
+                    padding-bottom:5px;
+                    border-top-color:#7cbfcf;
+                    border-bottom-color:#7cbfcf;
+                    border-top-width:8px;
+                    border-bottom-width:8px;
+                   }
+                   .icon_images{
+                    margin-bottom: 1.5%;
+                   }
+                   .padd{
+                    padding-left: 10%;
+                    padding-right: 10%;
+                   }
+               </style>
+               <div class="col-md-12" style="text-align: center;" id="main_icon">
+<<<<<<< HEAD
+                <div class="icons padd text-justify">
+                    <div style="text-align: center;"><b>Browser Support</b></div>
+                    <hr>
+                    <p >The following browsers are fully supported and tested compatible with encode to Base64 string and decode to image (with .png, .jpeg, .webp and .gif extensions).</p>
+                    <div class="icon_images">
+                    <img src='{% static "front-end/front_end/assets/images/browser_icons/chrome.png" %}' alt="" style="max-width: 100%;max-height: auto;">
+                    Chrome (/Brave)
+                    <img src='{% static "front-end/front_end/assets/images/browser_icons/firefox.png" %}' alt="" style="max-width: 100%;max-height: auto;">
+                    Firefox
+                    <img src='{% static "front-end/front_end/assets/images/browser_icons/opera.png" %}' alt="" style="max-width: 100%;max-height: auto;">
+                    Opera (Do turn Datasaving off)
+=======
+                <div class="icons padd" style="text-align: center;">
+                    <b>Browser Support</b>
+                    <p >The following browsers are fully supported and tested compatible with encode to Base64 string and decode to image (with .png, .jpeg, .webp and .gif extensions).</p>
+                    <div class="icon_images">
+                    <img src='{% static "front-end/front_end/assets/images/browser_icons/chrome.png" %}' alt="" style="max-width: 100%;max-height: auto;">
+                    Chrome
+                    <img src='{% static "front-end/front_end/assets/images/browser_icons/firefox.png" %}' alt="" style="max-width: 100%;max-height: auto;">
+                    Firefox
+                    <img src='{% static "front-end/front_end/assets/images/browser_icons/opera.png" %}' alt="" style="max-width: 100%;max-height: auto;">
+                    Opera
+>>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
+                    <img src='{% static "front-end/front_end/assets/images/browser_icons/safari.png" %}' alt="" style="max-width: 100%;max-height: auto;">
+                    Safari
+                    <img src='{% static "front-end/front_end/assets/images/browser_icons/edge.png" %}' alt="" style="max-width: 100%;max-height: auto;">
+                    Edge
+                    <img src='{% static "front-end/front_end/assets/images/browser_icons/ie9.png" %}' alt="" style="max-width: 100%;max-height: auto;">
+                    Internet Explorer (No preview functionality for older versions of IE!)
+                    </div>
+                </div>
+                </div>
+               
+                <div style="background: black;width: 100%;border-bottom-right-radius: 30px;border-bottom-left-radius: 30px; width: 100%;text-align: center;margin-top:1.5%;">
+                    <img src='{% static "front-end/front_end/assets/images/nav_icon2.svgz" %}' alt="" style="width: 200px;height: 50px; max-width: 100%;max-height: auto;">
+                </div>
+        </div>
+    </div>
+    </div>
+</div>
+</div>
+
+
+   {% block script2 %}
+   <script>
+    $(".mb-1,.ml-3").fadeOut(5000);
+    $('.custom-container').noty({
+    text: `<html>{% for message in messages %}{{message}} {% endfor %}</html>`,
+    type: 'information',
+    theme: 'metroui',
+    timeout: 10000,
+    progressBar: true,
+    animation: {
+    open: {height: 'toggle'},
+    close: {height: 'toggle'},
+    easing: 'swing',
+    speed: 500 // opening & closing animation speed
+    }
+    });
+      // a script to enable preview
+    function preview_script(input) {
+        document.getElementById("imagee").style["display"] = "block";
+        document.getElementById("image_stand").style["display"] = "block";
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('#imagee').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#id_image").change(function() {
+        preview_script(this);
+    });
+    
+    </script>
+   {% endblock script2 %}
+
+<!--   ParticleJS -->
+<script src='{% static "front-end/particles/js/particles.min.js" %}'></script>
+<script src='{% static "front-end/particles/js/particle_loder.js" %}'></script>
+<script type="text/javascript" src='{% static "front-end/second-part/all.min.js" %}'></script>
+</body>
+</html>

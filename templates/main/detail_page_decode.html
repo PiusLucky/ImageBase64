@@ -1,0 +1,333 @@
+{% extends 'second_base.html' %}
+{% load static %}
+{% block script1 %}
+<link rel="stylesheet" type="text/css" href='{% static "front-end/second-part/style.css" %}'>
+<!-- momentJS -->
+<script src="{% static 'front-end/second-part/moment.min.js' %}"></script>
+<script src="{% static 'front-end/second-part/moment-timezone.min.js' %}"></script>
+<!-- momentJS end -->
+
+<!-- fancybox -->
+<link href="{% static 'front-end/second-part/jquery.fancybox.min.css' %}" rel="stylesheet">
+<script src="{% static 'front-end/second-part/jquery.fancybox.min.js' %}"></script>
+<!-- fancybox end -->
+
+<!-- Cod Box Copy begin -->
+<link href="{% static 'front-end/code-box-copy/prism/prism.min.css' %}" rel="stylesheet">
+<link href="{% static 'front-end/code-box-copy/code-box-copy/css/code-box-copy.css' %}" rel="stylesheet">
+<script src="{% static 'front-end/code-box-copy/prism/prism.min.js' %}"></script>
+<script src="{% static 'front-end/code-box-copy/clipboard/clipboard.min.js' %}"></script>
+<script src="{% static 'front-end/code-box-copy/code-box-copy/js/code-box-copy.js' %}"></script>
+<!-- Cod Box Copy end -->
+<script type='text/javascript'>
+    $(document).ready(function(){
+        // for image
+        var imageNameRaw = `{% if link_head_url %}{{full_image_name}} {% else %}{{file_name}} {% endif %}`;
+        var imageName = imageNameRaw.trim();
+        var imageNameArray = imageName.split(".");
+        var imageNameExtension = imageNameArray[imageNameArray.length-1];
+        var imageNameExtension = imageNameExtension.toUpperCase();
+        var imageNameExtensionLower = imageNameExtension.toLowerCase();
+        $(".image_name").html(shortenFileName(imageName, 25,.75,'...'));
+        $("#extension").html(`${imageNameExtension}`);
+        $("#extension_lower").html(`${imageNameExtensionLower}`);
+        const formatedDate = `{{formatedDate}}`
+        setInterval(()=>{
+            // # moment.utc accounts for UTC since the formattedDate is coming from the server 
+            // # which has UTC=True
+            const time = moment.utc(formatedDate).fromNow()
+            const time_track = document.getElementById("time")
+            time_track.innerHTML = time
+        }, 1000)
+
+       
+
+        
+
+});
+
+</script>
+{% if not title == "PasteDetail" %}
+<script type="text/javascript">
+    $(document).ready(function(){
+    // for file (upload)
+    // for file (link)
+    var fileNameRaw = `{% for file in file %} {% if file.url %}{{filename}}{% endif%}{% endfor %}`;
+    var fileName = fileNameRaw.trim();
+    var fileNameArray = fileName.split(".");
+    var fileNameExtension = fileNameArray[fileNameArray.length-1];
+    var fileNameExtension = fileNameExtension.toUpperCase();
+    $(".file_name").html(shortenFileName(fileName, 25,.75,'...'));
+    $("#file_extension").html(`${fileNameExtension}`);
+    const formatedDateFile = `{{formatedDate}}`
+    setInterval(()=>{
+        // # moment.utc accounts for UTC since the formattedDate is coming from the server 
+        // # which has UTC=True
+        const time = moment.utc(formatedDateFile).fromNow()
+        const time_track = document.getElementById("file_time")
+        time_track.innerHTML = time
+    }, 1000)
+
+    var fileNameRaw = `{% for file in file %} {% if file.file_field %}{{file.file_field.name}}{% endif%}{% endfor %}`;
+    var fileName = fileNameRaw.trim();
+    var fileNameArray = fileName.split(".");
+    var fileNameExtension = fileNameArray[fileNameArray.length-1];
+    var fileNameExtension = fileNameExtension.toUpperCase();
+    $(".file_name_upload").html(shortenFileName(fileName, 25,.75,'...'));
+    $("#file_extension_upload").html(`${fileNameExtension}`);
+    const formatedDateUpload = `{{formatedDate}}`
+    setInterval(()=>{
+        // # moment.utc accounts for UTC since the formattedDate is coming from the server 
+        // # which has UTC=True
+        const time_upload = moment.utc(formatedDateUpload).fromNow()
+        const time_track_upload = document.getElementById("file_time")
+        time_track_upload.innerHTML = time_upload
+    }, 1000)
+});
+</script>
+{% endif %}
+{% endblock script1 %}
+{% block main %}
+<div class="row justify-content-center">
+<div class="col-lg-10 col-md-12 col-sm-12">
+<!-- <h3 class="font-weight-bold ml-md-0 mx-auto text-center text-sm-left"><i class="fas fa-code"></i>&nbsp;Encode Image </h3> -->
+<div style="margin-top: -1.1rem;text-align: center;">
+<img src='{% static "front-end/front_end/assets/images/detail_base64_2.svgz" %}' alt="" style="width: 300px;height: 100px; max-width: 100%;max-height: auto;">
+</div>
+<div  style="text-align:center;" align="middle">
+    <div  align="middle">
+        <img src="#" style="display: none; height: 400px;
+        width:400px;max-width: 100%;max-height:auto;
+        object-fit: cover;" id="imagee">
+        <div  style="text-align: center; vertical-align: middle;" id="image_stand" >
+            <style type="text/css">
+                li.li{
+                    list-style-type: none;
+                    margin:0 5px 0 -15px;
+                }
+                .color_add{
+                    color: :#248bcc;
+                }
+                .table_background{
+                    background: #16222A;  /* fallback for old browsers */
+                    background: -webkit-linear-gradient(to right, #3A6073, #16222A);  /* Chrome 10-25, Safari 5.1-6 */
+                    background: linear-gradient(to right, #3A6073, #16222A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+                    color: whitesmoke;
+                }
+                .align_text{
+                    text-align: left;
+                }
+                #btn_style{
+                    border-radius: 0px;
+                }
+<<<<<<< HEAD
+                @media screen and (max-width:767px){
+                    .table-font{font-size: 12px}
+                }
+=======
+>>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
+            </style>
+            <!-- start buttons -->
+              <div  class="d-flex justify-content-between">
+                <div>
+                 <button type="button" class="btn btn-primary" onclick="window.history.go(-1)" id="btn_style"><i class="fal fa-arrow-alt-square-left"></i>&nbsp;Return</button>
+                </div>
+                <div>
+                 {% if title == "Encode Detail" or title == "Link Detail" %}
+                 <a href="/decode/" ><button type="button" class="btn btn-primary" id="btn_style">Decode&nbsp;<i class="fal fa-arrow-alt-square-right"></i></button></a> 
+                 {% elif title == "FileDetail" or title == "PasteDetail" or title == "LinkDecodeDetail"  %}
+                 <a href="/encode/" ><button type="button" class="btn btn-primary" id="btn_style">Encode&nbsp;<i class="fal fa-arrow-alt-square-right"></i></button></a>
+                 {% endif %}
+                 </div>       
+             </div>
+            <!-- end buttons -->
+        <!-- table for details  -->
+        <div>Properties of uploaded image file:</div>
+<<<<<<< HEAD
+            <table class="table table-bordered table_background table-responsive w-100 d-block d-md-table">
+=======
+            <table class="table table-bordered table_background table-responsive table-responsive w-100 d-block d-md-table">
+>>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
+            <thead>
+                <tr>
+                    <th scope="col">*</th>
+                    <th scope="col">Properties</th>
+                    {% if not title == "PasteDetail" %}
+                    <th scope="col">File Value</th>
+                    {% endif %}
+                    <th scope="col">Image Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row"><i class="fad fa-clock"></i></th>
+                    <td>Time Encoded</td>
+                    {% if not title == "PasteDetail" %}
+                    <td id="file_time"></td>
+                    {% endif %}
+                    <td id="time"></td>
+                    
+                </tr>
+                <tr>
+                    <th scope="row"><i class="fad fa-camera-retro"></i></th>
+                    <td>Name</td>
+                    {% if title == "LinkDecodeDetail" %}
+                    <td><span class="file_name"></span></td>
+                    {% elif title == "FileDetail" %}
+                    <td><span class="file_name_upload"></span></td> 
+                    {% endif %}
+                    <td><span class="image_name"></span></td>
+                    
+                </tr>
+                <tr>
+                    <th scope="row"><i class="fad fa-file-import"></i></th>
+                    <td>Extension</td>
+                     {% if title == "LinkDecodeDetail" %}
+                    <td><span id="file_extension"></span></td>
+                    {% elif title == "FileDetail" %}
+                     <td><span id="file_extension_upload"></span></td> 
+                    {% endif %}
+                    <td><span id="extension"></span></td>
+                </tr>
+               <tr>
+                    <th scope="row"><i class="far fa-image-polaroid"></i></th>
+                    <td>Size</td>
+                    {% if not title == "PasteDetail" %}
+                    <td>
+                    {% for file in file %}
+                    {% if file.file_field  %}
+                    {{ file.file_field.size|filesizeformat }}
+                    {% elif file.url %}
+                    {{ file_size }}
+                    {% endif %}
+                    {% endfor %}
+                    </td>
+                    {% endif %}
+                    {% if title == "PasteDetail" or title == "LinkDecodeDetail" or "FileDetail" %}
+                    <td>{{converted_byte}}</td>
+                    {% endif %}
+                    
+                    
+                </tr>
+                 <tr>
+                    <th scope="row"><i class="fad fa-arrows"></i></th>
+                    <td>Dimension</td>
+                    {% if not title == "PasteDetail" %}
+                    <td>No Dimension</td>
+                    {% endif %}
+                    <td>{{ image_dimension }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>Below is a list of what you can do with the encoded Base64 string:</p>
+        <!-- table for instructions -->
+<<<<<<< HEAD
+        <table class="table table-hover table-white table-responsive w-100 d-block d-md-table table-font">
+=======
+        <table class="table table-hover table-white table-responsive w-100 d-block d-md-table">
+>>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
+          <thead>
+            <tr>
+              <th scope="col"><i class="fas fa-check" style="color:#248bcc;"></i></th>
+              <th scope="col">Item</th>
+              <th scope="col">Nature</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% if title == "LinkDecodeDetail" or title == "FileDetail" %}
+            <tr>
+              <th scope="row">1</th>
+              <td  class="align_text">You can copy the link to the file with Base64 content</td>
+              <td>Link Copy</td>
+            </tr>
+            {% endif %}
+            <tr>
+              <th scope="row">{% if title == "LinkDecodeDetail" or title == "FileDetail" %}2{% else %}1{% endif %}</th>
+              <td class="align_text">You can also copy the link to the image directly</td>
+              <td>Link Copy</td>
+            </tr>
+            
+            <tr>
+              <th scope="row">{% if title == "LinkDecodeDetail" or title == "FileDetail" %}3{% else %}2{% endif %}</th>
+              <td class="align_text">You can download the original image (The downloaded image will take its original file format)</td>
+              <td>Download</td>  
+            </tr>
+          </tbody>
+        </table>
+
+       
+
+
+        </div>
+        <b>Image Link</b>
+        <div class="code-box-copy">
+            <button class="code-box-copy__btn" data-clipboard-target="#raw_copy" title="Copy"></button>
+           
+<<<<<<< HEAD
+            <pre><code class="language-html" id="raw_copy"> {% if link_head_url %}{{domain_name}}{{link_head_url}}{{full_image_name}}{% else %}{{domain_name}}{{file_head_url}}{{file_name}}{% endif %}</code></pre>
+=======
+            <pre><code class="language-html" id="raw_copy"> {% if link_head_url %}{{domain_name}}{{file_head_url}}{{full_image_name}}{% else %}{{domain_name}}{{file_head_url}}{{file_name}}{% endif %}</code></pre>
+>>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
+            
+
+        </div>
+        {% if title == "LinkDecodeDetail" or title == "FileDetail" %}
+        <b>File Link</b>
+        <div class="code-box-copy">
+            <button class="code-box-copy__btn" data-clipboard-target="#css_copy" title="Copy"></button>
+            <pre><code class="language-html" id="css_copy">{% for file in file %}{% if file.file_field  %}{{domain_name}}{{file_head_url}}{{file.file_field.name}}{% else %}{{domain_name}}{{link_head_url}}{{filename}}{% endif %}{% endfor %}</code></pre>
+        </div>
+        {% endif %}
+        <br>
+       <div class="bottom_border">
+         <span class="size text_in_border">
+           View Arena
+         </span>
+       </div>
+       <br>
+       <br> 
+         <a href="{% if link_head_url %} {{link_head_url}}{{full_image_name}}{% else %}{{file_head_url}}{{file_name}}{% endif %}" data-fancybox="images"  
+         data-caption="{% if title == 'PasteDetail' or title == 'FileDetail' %} {{file_name}}{% else %} {{full_image_name}} {% endif %}"  data-width="{{width}}" data-height="{{height}}">
+        <div class="col-md-12 col-lg-10 col-12" align="middle">       
+            <img src="{% if link_head_url %} {{link_head_url}}{{full_image_name}}{% else %}{{file_head_url}}{{file_name}}{% endif %}" style="max-width: 100%;max-height:auto;
+            object-fit: cover;" id="imagee">     
+        </div>
+        </a>
+
+         <br>
+       <div class="bottom_border">
+                <span class="size text_in_border">
+                  Download Arena
+                </span>
+              </div>
+        <br>
+        <br>
+         <b >Download (image)</b>
+         <div style="text-align: center;">
+            <a href="{% if link_head_url %} {{link_head_url}}{{full_image_name}}{% else %}{{file_head_url}}{{file_name}}{% endif %}" download><button type="button" class="btn btn-primary" id="btn_style">
+                Download <span class="badge badge-light" id="extension_lower"></span>
+                <span class="sr-only">unread messages</span>
+            </button></a>    
+        </div>
+        <script>
+            $('.code-box-copy').codeBoxCopy({
+                tooltipText: ' Link Copied',
+                tooltipShowTime: 1000,
+                tooltipFadeInTime: 300,
+                tooltipFadeOutTime: 300
+            });
+        </script>
+    </div>
+
+
+</div>
+</div>
+</div>
+
+
+{% endblock main %}
+
+
+
+{% block script2 %}
+{% endblock script2 %}

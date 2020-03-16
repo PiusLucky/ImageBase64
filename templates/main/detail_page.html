@@ -1,0 +1,216 @@
+{% extends 'second_base.html' %}
+{% load static %}
+{% block script1 %}
+<!-- momentJS -->
+<script src="{% static 'front-end/second-part/moment.min.js' %}"></script>
+<script src="{% static 'front-end/second-part/moment-timezone.min.js' %}"></script>
+<!-- momentJS end -->
+
+
+<!-- Cod Box Copy begin -->
+<link href="{% static 'front-end/code-box-copy/prism/prism.min.css' %}" rel="stylesheet">
+<link href="{% static 'front-end/code-box-copy/code-box-copy/css/code-box-copy.css' %}" rel="stylesheet">
+<script src="{% static 'front-end/code-box-copy/prism/prism.min.js' %}"></script>
+<script src="{% static 'front-end/code-box-copy/clipboard/clipboard.min.js' %}"></script>
+<script src="{% static 'front-end/code-box-copy/code-box-copy/js/code-box-copy.js' %}"></script>
+<!-- Cod Box Copy end -->
+<script type='text/javascript'>
+    $(document).ready(function(){
+        var imageNameRaw = `{% if file %}{% for file in file %} {{image_name}} {% endfor %} {% endif %}`;
+        var imageName = imageNameRaw.trim();
+        var imageNameArray = imageName.split(".");
+        var imageNameExtension = imageNameArray[imageNameArray.length-1];
+        var imageNameExtension = imageNameExtension.toUpperCase();
+        $(".image_name").html(shortenFileName(imageName, 25,.75,'...'));
+        $("#extension").html(`${imageNameExtension}`);
+        const formatedDate = `{{formatedDate}}`
+        setInterval(()=>{
+            // # moment.utc accounts for UTC since the formattedDate is coming from the server 
+            // # which has UTC=True
+            const time = moment.utc(formatedDate).fromNow()
+            const time_track = document.getElementById("time")
+            time_track.innerHTML = time
+        }, 1000)
+
+
+
+});</script>
+{% endblock script1 %}
+{% block main %}
+<div class="row justify-content-center">
+<div class="col-lg-10 col-md-12 col-sm-12">
+<!-- <h3 class="font-weight-bold ml-md-0 mx-auto text-center text-sm-left"><i class="fas fa-code"></i>&nbsp;Encode Image </h3> -->
+<div style="margin-top: -1.1rem;text-align: center;">
+<img src='{% static "front-end/front_end/assets/images/detail_base64.svgz" %}' alt="" style="width: 300px;height: 100px; max-width: 100%;max-height: auto;">
+</div>
+<div  style="text-align:center;" align="middle">
+    <div  align="middle">
+        <img src="#" style="display: none; height: 400px;
+        width:400px;max-width: 100%;max-height:auto;
+        object-fit: cover;" id="imagee">
+        <div  style="text-align: center; vertical-align: middle;" id="image_stand" >
+            <style type="text/css">
+                li.li{
+                    list-style-type: none;
+                    margin:0 5px 0 -15px;
+                }
+                .color_add{
+                    color: :#248bcc;
+                }
+                .table_background{
+                    background: #16222A;  /* fallback for old browsers */
+                    background: -webkit-linear-gradient(to right, #3A6073, #16222A);  /* Chrome 10-25, Safari 5.1-6 */
+                    background: linear-gradient(to right, #3A6073, #16222A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+                    color: whitesmoke;
+                }
+                .align_text{
+                    text-align: left;
+                }
+                #btn_style{
+                    border-radius: 0px;
+                }
+<<<<<<< HEAD
+                @media screen and (max-width:767px){
+                    .table-font{font-size: 12px}
+                }
+=======
+>>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
+            </style>
+            <!-- start buttons -->
+              <div  class="d-flex justify-content-between">
+                <div>
+                 <button type="button" class="btn btn-primary" onclick="window.history.go(-1)" id="btn_style"><i class="fal fa-arrow-alt-square-left"></i>&nbsp;Return</button>
+                </div>
+                <div>
+                 {% if title == "Encode Detail" or title == "Link Detail"  %}
+                 <a href="/decode/" ><button type="button" class="btn btn-primary" id="btn_style">Decode&nbsp;<i class="fal fa-arrow-alt-square-right"></i></button></a> 
+                 {% endif %}
+                 </div>       
+             </div>
+            <!-- end buttons -->
+        <!-- table for details  -->
+        {% if file %}
+        {% for file in file %}
+        <div>Properties of uploaded image file:</div>
+<<<<<<< HEAD
+            <table class="table table-bordered table_background table-responsive w-100 d-block d-md-table">
+=======
+            <table class="table table-bordered table_background">
+>>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
+            <thead>
+                <tr>
+                    <th scope="col">*</th>
+                    <th scope="col">Properties</th>
+                    <th scope="col">Values</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row"><i class="fad fa-clock"></i></th>
+                    <td>Time Encoded</td>
+                    <td id="time"></td>
+                </tr>
+                <tr>
+                    <th scope="row"><i class="fad fa-camera-retro"></i></th>
+                    <td>Image name</td>
+                    <td><span class="image_name"></span></td>
+                </tr>
+                <tr>
+                    <th scope="row"><i class="fad fa-file-import"></i></th>
+                    <td>Image Extension</td>
+                    <td><span id="extension"></span></td>
+                </tr>
+               <tr>
+                    <th scope="row"><i class="far fa-image-polaroid"></i></th>
+                    <td>Image size</td>
+                    {% if file.image %}
+                    <td>{{ file.image.size|filesizeformat }}</td>
+                    {% else %}
+                    <td>{{ converted_byte }}</td>
+                    {% endif %}
+                </tr>
+                 <tr>
+                    <th scope="row"><i class="fad fa-arrows"></i></th>
+                    <td>Image dimension</td>
+                    <td>{{ image_dimension }}</td>
+                </tr>
+            </tbody>
+        </table>
+        {% endfor %}
+        {% endif %}
+        <p>Below is a list of what you can do with the encoded Base64 string:</p>
+        <!-- table for instructions -->
+<<<<<<< HEAD
+        <table class="table table-hover table-white table-font">
+=======
+        <table class="table table-hover table-white">
+>>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
+          <thead>
+            <tr>
+              <th scope="col"><i class="fas fa-check" style="color:#248bcc;"></i></th>
+              <th scope="col">Item</th>
+              <th scope="col">Nature</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td  class="align_text">You can copy the raw encoded base64 string which can be used in the image tag in your HTML</td>
+              <td>Raw Copy</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td class="align_text">You can also copy the CSS version of the string and use in your webpage directly</td>
+              <td>CSS copy</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td class="align_text">You can download the raw encoded base64 string itself (The downloaded  string will be compiled in a text file)</td>
+              <td>Download</td>  
+            </tr>
+          </tbody>
+        </table>
+
+       
+
+
+        </div>
+        <b>Raw Copy</b>
+        <div class="code-box-copy">
+            <button class="code-box-copy__btn" data-clipboard-target="#raw_copy" title="Copy"></button>
+            <pre><code class="language-html" id="raw_copy"> {{wierdo_string}}</code></pre>
+        </div>
+        <b>CSS Copy</b>
+        <div class="code-box-copy">
+            <button class="code-box-copy__btn" data-clipboard-target="#css_copy" title="Copy"></button>
+            <pre><code class="language-html" id="css_copy"> url('{{wierdo_string}}')</code></pre>
+        </div>
+         <b >Download (.txt file)</b>
+         <div style="text-align: center;">
+            <a href="{% if file %}{% for file in file %}{% if file.image %}{{media_head_url}}{% else %}{{link_head_url}}{% endif %}{% endfor%}{% endif %}{{image_name_with_txt_extension}}" download><button type="button" class="btn btn-primary" id="btn_style">
+                Download <span class="badge badge-light">text file</span>
+                <span class="sr-only">unread messages</span>
+            </button></a>    
+        </div>
+        <script>
+            $('.code-box-copy').codeBoxCopy({
+                tooltipText: ' Base64 Copied',
+                tooltipShowTime: 1000,
+                tooltipFadeInTime: 300,
+                tooltipFadeOutTime: 300
+            });
+        </script>
+    </div>
+
+
+</div>
+</div>
+</div>
+
+
+{% endblock main %}
+
+
+
+{% block script2 %}
+{% endblock script2 %}
