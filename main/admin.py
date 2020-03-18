@@ -93,5 +93,3 @@ class Contact_Me_ModelAdmin(admin.ModelAdmin):
 		model = Contact_Me_Model
 admin.site.register(Contact_Me_Model, Contact_Me_ModelAdmin)
 
-
-admin.site.register(Update_Model, Update_ModelAdmin)

@@ -69,8 +69,8 @@ REST_FRAMEWORK = {
     "DEFAULT_SCHEMA_CLASS":"rest_framework.schemas.coreapi.AutoSchema"
 }
 
-DOMAIN_NAME =  "http://localhost:8000"
-# DOMAIN_NAME =  "https://imagebase64.herokuapp.com"
+# DOMAIN_NAME =  "http://localhost:8000"
+DOMAIN_NAME =  "https://imagebase64.herokuapp.com"
 
 API_URL =  u'{0}/{1}'.format(DOMAIN_NAME,"api/v1/")
 
