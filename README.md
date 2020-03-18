@@ -209,5 +209,5 @@ The explanations go thus:
 
 </div>
 
-<p align="center"><b> Made with &#x2764; by Pius Lucky </b></p>
+<p align="right"><b> Made with &#x2764; by Pius Lucky </b></p>
 
