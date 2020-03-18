@@ -9,9 +9,13 @@
   <title>{{title}} - {{name}}</title>
   {% endblock title %}
 <<<<<<< HEAD
+<<<<<<< HEAD
   {% block head_no_title %}
 =======
 >>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
+=======
+  {% block head_no_title %}
+>>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Icon -->
@@ -26,6 +30,9 @@
   <link rel="stylesheet" type="text/css" href="{% static 'front-end/assets/youplay/css/youplay.min.css' %}" />
   <link rel="stylesheet" type="text/css" href='{% static "front-end/second-part/style.css" %}'>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
   {% endblock head_no_title %}
   </head>
   <style type="text/css">
@@ -35,11 +42,14 @@
   </style>
   <body>
     {% block preloader %}
+<<<<<<< HEAD
 =======
   </head>
 
   <body>
 >>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
+=======
+>>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
     <!-- Preloader -->
     <div class="page-preloader preloader-wrapp">
       <img src="{% static 'front-end/front_end/assets/images/nav_icon2.svgz' %}" alt="">
@@ -47,9 +57,13 @@
     </div>
     <!-- /Preloader -->
 <<<<<<< HEAD
+<<<<<<< HEAD
     {% endblock preloader %}
 =======
 >>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
+=======
+    {% endblock preloader %}
+>>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
     {% block navigation %}
     <!-- Navbar -->
     <nav class="navbar-youplay navbar navbar-default navbar-fixed-top ">
@@ -62,16 +76,22 @@
             <span class="icon-bar"></span>
           </button>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
           <a href="/">
           <div class="navbar-brand"  id="navvy" >
             <img src="{% static 'front-end/front_end/assets/images/nav_icon2.svgz' %}" alt=""> 
           </div>
          </a>
+<<<<<<< HEAD
 =======
           <div class="navbar-brand" href="index-2.html">
             <img src="{% static 'front-end/front_end/assets/images/nav_icon2.svgz' %}" alt=""> 
           </div>
 >>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
+=======
+>>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -88,6 +108,7 @@
             </li>
             {% endif %}
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
             <li class="dropdown dropdown-hover" id="selective_guide">
               <a href="" >
@@ -95,6 +116,8 @@
               </a>
             </li>
 >>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
+=======
+>>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
             <li class="dropdown dropdown-hover ">
               <a href="#!" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                 FAQ <span class="caret"></span> <span class="label">Answers</span>
@@ -103,6 +126,9 @@
                 <!--  <span class="badge bg-default">New</span></a> -->
                 <ul role="menu">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
                   <li><a href="{% url 'main:faq' %}">Frequently Asked Questions <span class="badge bg-default">Answers</span></a>
                   </li>
                   <li><a href="{% url 'main:cnt' %}">Contact Us</a>
@@ -114,6 +140,7 @@
                 </ul>
               </div>
             </li>
+<<<<<<< HEAD
 
             <li class="">
               <a href="/api/doc/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -129,6 +156,8 @@
               </div>
             </li>
 >>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
+=======
+>>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown dropdown-hover">
@@ -152,6 +181,9 @@
               <div class="dropdown-menu" style="width: 300px;">
                 <div class="row youplay-side-news">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
                   <div class="col-xs-12 col-md-12">
                     <a href="#" style="text-decoration: none;" class="pull-right mr-10"></a>
 
@@ -164,6 +196,7 @@
                       {% endif %}
                       {% endfor %}
                     </h4>
+<<<<<<< HEAD
 =======
                   <div class="col-xs-3 col-md-4">
                     <a href="#" class="angled-img">
@@ -183,6 +216,8 @@
                     {% endfor %}
                     </a></h4>
 >>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
+=======
+>>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
                     <span class="quantity"><span class="amount">{% for each_update in updates %}{% if forloop.first %}{{each_update.updated}}{% endif %}{% endfor %}</span></span>
                   </div>
                 </div>
@@ -226,10 +261,14 @@
                 <a href="{% url 'main:home' %}" class="bt"  data-step="1" data-intro='Encoding turns your image into a large chunk of Base64 string while retaining the original image pixels and format. The resultant output will look like<br> <code>data:image/png;base64,iVAAAAN...</code>'  >Encode Now</a>
                   <a class="bt" data-step="2" data-intro="Decoding basically turns your base64 string into the original image, you can never go wrong!<br>
 <<<<<<< HEAD
+<<<<<<< HEAD
                   <div style='text-align: center;'><img src='{% static 'front-end/front_end/assets/images/baby.png' %}' style='border-style:solid; border-width:1px;border-color:whitesmoke;border-top-left-radius: 12px; border-bottom-right-radius: 12px;' alt='baby'></div>
 =======
                   <div style='text-align: center;'><img src='{% static 'front-end/front_end/assets/images/baby.svgz' %}' style='border-style:solid; border-width:1px;border-color:whitesmoke;border-top-left-radius: 12px; border-bottom-right-radius: 12px;' alt='baby'></div>
 >>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
+=======
+                  <div style='text-align: center;'><img src='{% static 'front-end/front_end/assets/images/baby.png' %}' style='border-style:solid; border-width:1px;border-color:whitesmoke;border-top-left-radius: 12px; border-bottom-right-radius: 12px;' alt='baby'></div>
+>>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
                     "  href="{% url 'main:home_decode' %}">Decode Now</a>
                   <div>
                   </div>
@@ -266,10 +305,14 @@
               </div>
               <!-- Copyright -->
 <<<<<<< HEAD
+<<<<<<< HEAD
               <div class="copyright" id="bottom-footer">
 =======
               <div class="copyright">
 >>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
+=======
+              <div class="copyright" id="bottom-footer">
+>>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
                 <div class="container">
                   <!-- Credit --> 
                   Image by <a href="https://pixabay.com/users/nastya_gepp-3773230/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3660673" target="_blank">Анастасия Гепп</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3660673" target="_blank">Pixabay</a>

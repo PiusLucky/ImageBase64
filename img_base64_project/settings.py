@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 <<<<<<< HEAD
+<<<<<<< HEAD
     'django.contrib.sites',
     # 3rd party
     'rest_framework', 
@@ -90,13 +91,18 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
 =======
+=======
+>>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
     'main'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+<<<<<<< HEAD
 >>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
+=======
+>>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -104,6 +110,7 @@ MIDDLEWARE = [
     'main.middleware.RequestDataTooBigMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+<<<<<<< HEAD
 <<<<<<< HEAD
 # Use this in production
 # CORS_ORIGIN_WHITELIST = (
@@ -118,6 +125,10 @@ ROOT_URLCONF = 'img_base64_project.urls'
 
 # ROOT_URLCONF = 'img_base64_project.urls'
 >>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
+=======
+
+ROOT_URLCONF = 'img_base64_project.urls'
+>>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -132,9 +143,13 @@ TEMPLATES = [
                 'main.contextprocessors.landing',
                 'main.contextprocessors.update',
 <<<<<<< HEAD
+<<<<<<< HEAD
                 'main.contextprocessors.contact_count',
 =======
 >>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
+=======
+                'main.contextprocessors.contact_count',
+>>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
             ],
         },
     },
@@ -192,12 +207,18 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 =======
 DOMAIN_NAME =  "http://localhost:8000"
 
 >>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
+=======
+# DOMAIN_NAME =  "http://localhost:8000"
+DOMAIN_NAME =  "https://imagebase64.herokuapp.com"
+
+>>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
 SITE_NAME  = "img2Base64.io"
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/

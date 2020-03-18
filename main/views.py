@@ -4,6 +4,7 @@ import requests
 import re
 import urllib.request
 <<<<<<< HEAD
+<<<<<<< HEAD
 import posixpath
 from django.shortcuts import render
 from django.urls import reverse
@@ -20,6 +21,15 @@ from .models import Image_Model, Link_Model, File_Model, Field_Model, Link_Model
 from .logic import humanbytes
 from .forms import UploadForm, LinkUpload, LinkDecodeForm, FieldForm, FileForm
 >>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
+=======
+import posixpath
+
+from django.shortcuts import render
+from django.urls import reverse
+from .models import Image_Model, Link_Model, File_Model, Field_Model, Link_Model_Decode, Update_Model, Faq_Model, My_Contact_Model, Contact_Me_Model
+from .logic import humanbytes
+from .forms import UploadForm, LinkUpload, LinkDecodeForm, FieldForm, FileForm, Contact_Me_Form
+>>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 from django.contrib import messages
@@ -31,10 +41,15 @@ from django.http import JsonResponse
 from datetime import datetime
 from main.utils import generate_session_id
 <<<<<<< HEAD
+<<<<<<< HEAD
 from urllib.parse import urlsplit, unquote
 
 =======
 >>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
+=======
+from urllib.parse import urlsplit, unquote
+
+>>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
 
 # This should take the domain(or sub-domain) upon production
 domain_name = settings.DOMAIN_NAME 
@@ -44,11 +59,17 @@ name = settings.SITE_NAME
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 image_formats = ("image/png", "image/jpeg", "image/jpg", "image/webp", "image/gif")
 
 
 =======
 >>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
+=======
+image_formats = ("image/png", "image/jpeg", "image/jpg", "image/webp", "image/gif")
+
+
+>>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
 def csrf_byepass(request, reason=""):
     message = "Refresh page before encoding/decoding..."
     template = get_template('main/_csrf_failure.html').render({"csrf_custom":message})
@@ -57,6 +78,7 @@ def csrf_byepass(request, reason=""):
     
 
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 class LandingView(View):
     template_name = 'main/landing.html'
@@ -117,6 +139,10 @@ class LandingView(View):
 =======
 def landing(request):
     title = "LandingPage" 
+=======
+def landing(request):
+    title = "Encode/Decode" 
+>>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
     session_key = request.session.session_key
     request.session.modified = True
     if not session_key is None:
@@ -156,8 +182,13 @@ def landing(request):
         if old_session_key:
             track = 'new_user'
             track_anonymous = "set"
+<<<<<<< HEAD
             status = "Private"
             message = "Using Private Browser"
+=======
+            status = "First Time User"
+            message = "New User (Read the Guide)"
+>>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
     
     context = {
     "title":title,
@@ -169,11 +200,15 @@ def landing(request):
     "visitor_id":key_upper,
     }
     return render(request,'main/landing.html',context)
+<<<<<<< HEAD
 >>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
+=======
+>>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
 
 ########################################################
 # ENCODE SECTION BY LUCKY P. (JUST ANOTHER PROGRAMMER)
 ########################################################
+<<<<<<< HEAD
 <<<<<<< HEAD
 class HomeView(View):
     template_name = 'main/front_page.html'
@@ -218,6 +253,8 @@ class HomeView(View):
                 instance = form1.save(commit=False)
 =======
 
+=======
+>>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
 def home(request):
     title = "Encode"
     form = UploadForm(request.POST or None, request.FILES or None)
@@ -242,7 +279,11 @@ def home(request):
                 "form1":form1,
                 }
             else:
+<<<<<<< HEAD
                 template = get_template('main/_wrong_file_type.html').render()
+=======
+                template = get_template('main/_wrong_type.html').render()
+>>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
                 messages.error(request, template,"alert alert-warning alert-dismissible")
                 form1 = LinkUpload()
                 # if the form is not valid ,the command clears the LinkUpload and leave validation error message present in Upload_Form...
@@ -254,9 +295,12 @@ def home(request):
         elif request.POST.get('get_link_name') == 'get_link_value':
             if form1.is_valid():           
                 instance = form1.save(commit=False)
+<<<<<<< HEAD
                 instance.slug = instance.slug_for_title
                 instance.unique_id = instance.unique_id
 >>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
+=======
+>>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
                 instance.save()
                 context = {
                     "form1":form1,
@@ -264,21 +308,28 @@ def home(request):
                 return HttpResponseRedirect(instance.get_absolute_url())
                 context = {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "name": name, 
                 "title":self.title,
                 "form":self.form,
                 "form1":self.form1,
 =======
+=======
+>>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
                 "title":title,
                 "name":name,
                 "form":form,
                 "form1":form1,
+<<<<<<< HEAD
 >>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
+=======
+>>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
                 }
             else:   
                 template = get_template('main/_https_failed.html').render()
                 messages.error(request, template,"alert alert-warning alert-dismissible")
                 form = UploadForm()
+<<<<<<< HEAD
 <<<<<<< HEAD
                 # if the form is not valid ,the command clears the UploadForm and leave validation 
                 # error message present in LinkUpload Form...
@@ -291,6 +342,8 @@ def home(request):
 
                        
 =======
+=======
+>>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
                 # if the form is not valid ,the command clears the UploadForm and leave validation error message present in LinkUpload Form...
                 return render(request, 'main/front_page.html', {"title": title, 
                 "name":name,
@@ -306,7 +359,10 @@ def home(request):
      }
     return render(request,'main/front_page.html',context)
 
+<<<<<<< HEAD
 >>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
+=======
+>>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
 def detail(request, id):
     specific_file = Image_Model.objects.filter(id=id)
     media_head_url = settings.MEDIA_URL  
@@ -419,10 +475,14 @@ def detail(request, id):
                 each_image.delete()
     else:
 <<<<<<< HEAD
+<<<<<<< HEAD
         expired_link = "The link has expired!"
 =======
         expired_link = "Error > The link has expired!"
 >>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
+=======
+        expired_link = "The link has expired!"
+>>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
         template = get_template('main/_expired_link.html').render({"expired_link":expired_link})
         messages.error(request, template,"alert alert-warning alert-dismissible")
         return redirect(reverse("main:home")) 
@@ -441,23 +501,32 @@ def detail(request, id):
     return render(request,'main/detail_page.html',context)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
 def detail_link(request, encode_id):
     title = "Link Detail"
     # Arrangements doesnt really matter here
     link_id_strip = encode_id.replace("encoded_link_","")
     specific_link = Link_Model.objects.filter(unique_id_link=link_id_strip)
+<<<<<<< HEAD
 =======
 def detail_link(request, slug, unique_id):
     title = "Link Detail"
     # Arrangements doesnt really matter here
     specific_link = Link_Model.objects.filter(slug=slug, unique_id=unique_id)
 >>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
+=======
+>>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
     link_head_url = settings.ENCODE_URL
     if specific_link:
         for each_item in specific_link:
             formatedDate = each_item.timestamp.strftime("%Y-%m-%d %H:%M:%S")
             try:
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
                 url = each_item.url       
                 r = requests.head(url)
                 if r.headers["content-type"] in image_formats:
@@ -558,6 +627,7 @@ def detail_link(request, slug, unique_id):
                             image_name_with_txt_extension = image_name_without_extension + ".txt"
                             second_part = requests.get(url).content
                             filenamex =  image_name_with_extension
+<<<<<<< HEAD
 =======
                 url = each_item.url
                 if url:          
@@ -568,6 +638,8 @@ def detail_link(request, slug, unique_id):
                             second_part = requests.get(url).content
                             filenamex =  image_name
 >>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
+=======
+>>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
                             r = requests.get(url, allow_redirects=False)
                             full_file_path = os.path.join(settings.ENCODE_ROOT, str(filenamex))
                             with open(str(full_file_path), 'wb+') as f:
@@ -588,9 +660,13 @@ def detail_link(request, slug, unique_id):
                                                 full_path_remove =  os.path.join(settings.ENCODE_ROOT, str(each_file))
                                                 os.remove(full_path_remove)
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
+=======
+
+>>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
                             width, height = Image.open(full_file_path).size
                             image_dimension = (u"{0} x {1}".format(width, height))
                             # Getting file size using logic in logic.py
@@ -609,6 +685,7 @@ def detail_link(request, slug, unique_id):
                                     # Not really the code that is transformed to image
                                     extension = full_file_path.split(".")[-1]
                                     full_base64 = u"data:image/{0};base64,{1}".format(extension, wierdo_string).replace("b'", "").replace("'","")
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
                                 ########################################
@@ -641,6 +718,8 @@ def detail_link(request, slug, unique_id):
                                 image_name_with_txt_extension = image_name_without_extension + ".txt"
                                 full_image_name = image_name_with_extension
 >>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
+=======
+>>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
 
                                 txt_path = os.path.join(settings.ENCODE_ROOT, str(image_name_with_txt_extension))
                                 with open(str(txt_path), 'w+') as f:
@@ -655,10 +734,14 @@ def detail_link(request, slug, unique_id):
                                     f.write(image_data)
                                 # delete call...
 <<<<<<< HEAD
+<<<<<<< HEAD
                                 all_links = Link_Model.objects.all().exclude(unique_id_link=link_id_strip)
 =======
                                 all_links = Link_Model.objects.all().exclude(slug=slug, unique_id=unique_id)
 >>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
+=======
+                                all_links = Link_Model.objects.all().exclude(unique_id_link=link_id_strip)
+>>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
                                 # Delete all other images excluding the current one.
                                 for each_link in all_links:
                                     each_link.delete()
@@ -679,6 +762,9 @@ def detail_link(request, slug, unique_id):
                                 return redirect(reverse("main:home"))  
                             
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
                 else:
                     all_files = Link_Model.objects.all()
                     for each_file in all_files:
@@ -686,6 +772,7 @@ def detail_link(request, slug, unique_id):
                     template = get_template('main/_wrong_format.html').render()
                     messages.error(request, template,"alert alert-warning alert-dismissible")
                     return redirect(reverse("main:home")) 
+<<<<<<< HEAD
 =======
                     else:
                         # if url does not end with any of the provided suffix
@@ -697,6 +784,8 @@ def detail_link(request, slug, unique_id):
                         messages.error(request, template,"alert alert-warning alert-dismissible")
                         return redirect(reverse("main:home")) 
 >>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
+=======
+>>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
             except:
                 template = get_template('main/_network_error.html').render()
                 messages.error(request, template,"alert alert-warning alert-dismissible")
@@ -714,10 +803,14 @@ def detail_link(request, slug, unique_id):
     "file":specific_link,
     "wierdo_string":full_base64,
 <<<<<<< HEAD
+<<<<<<< HEAD
     "image_name":image_name_with_extension,
 =======
     "image_name":image_name,
 >>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
+=======
+    "image_name":image_name_with_extension,
+>>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
     "image_dimension":image_dimension,
     "converted_byte":converted_byte,
     }
@@ -1236,6 +1329,9 @@ def update(request, update_id):
     }
     return render(request,'update/update.html',context)
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
 
 
 
@@ -1316,5 +1412,8 @@ def post_contact_view(request):
     
 
 
+<<<<<<< HEAD
 =======
 >>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
+=======
+>>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff

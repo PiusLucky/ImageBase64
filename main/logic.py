@@ -21,7 +21,10 @@ def humanbytes(B):
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 =======
 >>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
+=======
+>>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff

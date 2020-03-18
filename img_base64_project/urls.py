@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
 <<<<<<< HEAD
+<<<<<<< HEAD
 from django.urls import path, re_path, include
 from rest_framework.documentation import include_docs_urls
 from rest_framework.schemas import get_schema_view
@@ -44,10 +45,14 @@ permission_classes=(permissions.AllowAny,),
 =======
 from django.urls import path, include
 >>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
+=======
+from django.urls import path, include
+>>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path(r'', include(('main.urls', 'main'), namespace='main')),
+<<<<<<< HEAD
 <<<<<<< HEAD
     path('api/v1/', include('api.urls')), 
     path('api-auth/', include('rest_framework.urls')),
@@ -63,6 +68,8 @@ urlpatterns = [
 
 =======
 >>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
+=======
+>>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
 ]
 
 if settings.DEBUG or not settings.DEBUG:
@@ -79,6 +86,7 @@ if settings.DEBUG or not settings.DEBUG:
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 admin.site.site_header = 'ImageBase64 Administrator@Pius_Lucky'
 admin.site.site_title = 'ImageBase64 Administrator@Pius_Lucky'
 =======
@@ -86,3 +94,8 @@ admin.site.site_header = 'TipArticle.com Administrator@Pius_Lucky'
 admin.site.site_title = 'TipArticle.com Administrator@Pius_Lucky'
 
 >>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
+=======
+admin.site.site_header = 'ImageBase64 Administrator@Pius_Lucky'
+admin.site.site_title = 'ImageBase64 Administrator@Pius_Lucky'
+
+>>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
