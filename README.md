@@ -62,7 +62,7 @@ Then, run the following lines of code:<br>
 
 ## Using Javascript:
 
-```
+```javascript
 // One unique way of debugging the code in chrome is byusing:
 // 1. Network > XHR > reload the page > Name ( click on the link )
 // 2. Keep an eye on the Preview Tab ( for live view of the server error).
