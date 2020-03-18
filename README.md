@@ -40,6 +40,7 @@ https://imagebase64.herokuapp.com/api/doc/?format=openapi<br>
 
 First install requests library <br>
 <code>pip install requests</code><br>
+Then, run the following lines of code:<br>
 <code>import requests</code><br>
 <code> context = {"username": "userabc", "email": "userabc@gmail.com", "password": "userabc12345" } </code> <br>
 <code>r = requests.post('https://imagebase64.herokuapp.com/api/v1/rest-auth/login/', data = context) </code> <br>
