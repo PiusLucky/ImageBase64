@@ -21,10 +21,6 @@ and also, convert your base64 string in any format to Image - Decode"
 
 </ol>
 
-
-
-
-
 # New Release:  ImageBase64 API -  v1.0.1 
 https://imagebase64.herokuapp.com/api/doc/?format=openapi<br>
 A Web API for encoding image to Base64 string and decoding any base64 string back to image.<br>
@@ -38,7 +34,6 @@ https://imagebase64.herokuapp.com/api/doc/?format=openapi<br>
 5. Then copy & paste the generated key into the endpoint [POST] /v1/rest-auth/registration/verify-email/<br>
 6. Ignore the csrf_token error (It is an expected error)<br>
 7. Go to the top and click the "Login" button';<br>
-<br>
 
 # FAQ
 
@@ -77,7 +72,7 @@ Here's a graphical representation of activities behind the scene:
 <br>
 <br>
 <div style="background-color:whitesmoke;width: 510px;max-width: 100%; max-height: auto;">
-	<img src="../../static/front-end/front_end/assets/images/schema.svgz" alt="">
+	<img src="https://imagebase64.herokuapp.com/static/front-end/front_end/assets/images/schema.svgz" alt="">
 </div>
 <br>
 The explanations go thus:
@@ -97,7 +92,7 @@ Question Six:
 <br>
 <br>
 <div style="background-color:whitesmoke;width: 510px;max-width: 100%; max-height: auto;">
-<img src="../../static/front-end/front_end/assets/images/Screenshot.svgz" alt="">
+<img src="https://imagebase64.herokuapp.com/static/front-end/front_end/assets/images/Screenshot.svgz" alt="">
 </div>
 
 </div>
