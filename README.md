@@ -36,37 +36,33 @@ https://imagebase64.herokuapp.com/api/doc/?format=openapi<br>
 7. Go to the top and click the "Login" button';<br>
 
 
-# Guide on consuming ImageBase64API on by a third-party app via the terminal
-# developed with love by Pius Lucky
-<code>
-import requests
-# r = requests.get("http://localhost:8000/api/v1/link/encode/")
-context = {
-  "username": "PiusLucky",
-  "email": "luckypius50@gmail.com",
-  "password": "luckypius5"
-}
-r = requests.post('http://localhost:8000/api/v1/rest-auth/login/', data = context)
-print(r.text)
-my_token = "874c818885100912f940647714d1763c1d8b81c8"
+# Guide on consuming ImageBase64API on by a third-party app via the terminal (Using the requests library)
 
-
-
-url = {
+First install requests library <br>
+<code>pip install requests</code><br>
+<code>import requests</code><br>
+<code> context = {"username": "userabc", "email": "userabc@gmail.com", "password": "userabc12345" } </code> <br>
+<code>r = requests.post('https://imagebase64.herokuapp.com/api/v1/rest-auth/login/', data = context) </code> <br>
+<code>print(r.text)</code> <br>
+	
+<code>url = {
   "url": "http://localhost:8000/media/photo-1511469054436-c7dedf24c66b.jpg"
 }
-#Getting 401 (unauthorized), this might be dew to the fact that the access token has expired. Try refreshing that token.
-#Getting 401 after that, just get a new token and refresh. works like charm!
-#Use requests documentation to check for the parameters you can always pass in!
-encode_link = requests.post("http://localhost:8000/api/v1/link/encode/", data = url, headers={ 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTgyNzI2Nzk0LCJqdGkiOiI1YzBiNjY5ODIxNWY0ZjNiYmU4ODhjOWZlMzBjMjYxNCIsInVzZXJfaWQiOjN9.84hv-O12BvcIjOyESelPT9-ReoAna3w4505BWu9HHrc' })
+</code><br>
 
-# print(r)
-# print(r.text)
-print(encode_link)
-output_dict = encode_link.json()
-print(output_dict["image_info"])
+# Getting 401 (unauthorized), this might be due to the fact that the access token has expired. Try refreshing that token.
+# Getting 401 after that, just get a new token and refresh. works like charm!
+# Use requests documentation to check for the parameters you can always pass in!
 
-</code>
+<code> encode_link = requests.post("http://localhost:8000/api/v1/link/encode/", data = url, headers={ 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTgyNzI2Nzk0LCJqdGkiOiI1YzBiNjY5ODIxNWY0ZjNiYmU4ODhjOWZlMzBjMjYxNCIsInVzZXJfaWQiOjN9.84hv-O12BvcIjOyESelPT9-ReoAna3w4505BWu9HHrc' })</code> <br>
+
+print(r)</code> <br>
+<code> print(r.text)</code> <br>
+<code> print(encode_link)</code> <br>
+<code> output_dict = encode_link.json()</code> <br>
+<code> print(output_dict["image_info"])</code> <br>
+
+
 
 
 # FAQ
