@@ -37,28 +37,32 @@ https://imagebase64.herokuapp.com/api/doc/?format=openapi<br>
 
 
 ## Guide on consuming ImageBase64API on by a third-party app via the terminal (Using the requests library)
-
+## Using Python
 First install requests library <br>
-<code>pip install requests</code><br>
-Then, run the following lines of code:<br>
-<code>import requests</code><br>
-<code> context = {"username": "userabc", "email": "userabc@gmail.com", "password": "userabc12345" } </code> <br>
-<code>r = requests.post('https://imagebase64.herokuapp.com/api/v1/rest-auth/login/', data = context) </code> <br>
-<code>print(r.text)</code> <br>
-	
-<code>url = {"url": "https://imagebase64.herokuapp.com/media/photo-1511469054436-c7dedf24c66b.jpg"}</code><br>
+```python
+
+pip install requests
+Then, run the following lines of code:
+import requests
+context = {"username": "userabc", "email": "userabc@gmail.com", "password": "userabc12345" }  
+r = requests.post('https://imagebase64.herokuapp.com/api/v1/rest-auth/login/', data = context)  
+print(r.text) 
+
+url = {"url": "https://imagebase64.herokuapp.com/media/photo-1511469054436-c7dedf24c66b.jpg"}
 
 ### Getting 401 (unauthorized), this might be due to the fact that the access token has expired. Try refreshing that token.
 ### Getting 401 after that, just get a new token and refresh. works like charm!
 ### Use requests documentation to check for the parameters you can always pass in!
 
-<code> encode_link = requests.post("https://imagebase64.herokuapp.com/api/v1/link/encode/", data = url, headers={ 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTgyNzI2Nzk0LCJqdGkiOiI1YzBiNjY5ODIxNWY0ZjNiYmU4ODhjOWZlMzBjMjYxNCIsInVzZXJfaWQiOjN9.84hv-O12BvcIjOyESelPT9-ReoAna3w4505BWu9HHrc' })</code> <br>
+encode_link = requests.post("https://imagebase64.herokuapp.com/api/v1/link/encode/", data = url, headers={ 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTgyNzI2Nzk0LCJqdGkiOiI1YzBiNjY5ODIxNWY0ZjNiYmU4ODhjOWZlMzBjMjYxNCIsInVzZXJfaWQiOjN9.84hv-O12BvcIjOyESelPT9-ReoAna3w4505BWu9HHrc' }) 
 
-<code> print(r)</code> <br>
-<code> print(r.text)</code> <br>
-<code> print(encode_link)</code> <br>
-<code> output_dict = encode_link.json()</code> <br>
-<code> print(output_dict["image_info"])</code> <br>
+print(r) 
+print(r.text) 
+print(encode_link) 
+output_dict = encode_link.json() 
+print(output_dict["image_info"])
+
+```
 
 ## Using Javascript:
 
@@ -74,9 +78,9 @@ $.ajax({
 method: "POST",
 url: 'https://imagebase64.herokuapp.com/api/v1/rest-auth/login/',  //the url to call
 data: {
-	"username": "userabc",
-	"email": "userabc@gmail.com",
-	"password": "userabc12345"
+	"username": "PiusLucky",
+	"email": "luckypius50@gmail.com",
+	"password": "luckypius5"
 }, 
 // jwt: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTgyNzI5NTMxLCJqdGkiOiIzMWRmNDZlNTFhMzg0OWFlYWUzMmFhYjc0YWY4NmZlZSIsInVzZXJfaWQiOjN9.yy9_Wlg77S5eMYWU-B3_hHAUz6dsdeMkAbabdHd93Uw",           
 headers: {
@@ -103,9 +107,9 @@ $.ajax({
 	url: 'http://localhost:8000/api/v1/link/encode/',  //the url to call
 	data: JSON.stringify({
 	"url": link,
-	"username": "userabc",
-	"email": "userabc@gmail.com",
-	"password": "userabc12345"
+	"username": "PiusLucky",
+	"email": "luckypius50@gmail.com",
+	"password": "luckypius5"
 }), 
 	headers: {
 		"Accept": "application/json",
