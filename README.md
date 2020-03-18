@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://imagebase64.herokuapp.com/static/front-end/front_end/assets/images/nav_icon2.svgz" width="30%" title="imageBase64">
+  <img src="https://imagebase64.herokuapp.com/static/front-end/front_end/assets/images/nav_icon2.svgz" width="50%" title="imageBase64">
 </p>
 
 
@@ -39,8 +39,8 @@ https://imagebase64.herokuapp.com/api/doc/?format=openapi<br>
 7. Go to the top and click the "Login" button';<br>
 
 
-## Guide on consuming ImageBase64API on by a third-party app via the terminal (Using the requests library)
-## Using Python
+## Guide on consuming ImageBase64API via the terminal (Using the requests library)
+## Python Case
 First install requests library <br>
 ```python
 pip install requests
