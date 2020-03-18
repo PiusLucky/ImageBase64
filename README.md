@@ -1,4 +1,4 @@
-# ImageBase64 <img src="https://imagebase64.herokuapp.com/static/front-end/front_end/assets/images/nav_icon2.svgz" width="30%" title="webpagetoPdf">
+# <img src="https://imagebase64.herokuapp.com/static/front-end/front_end/assets/images/nav_icon2.svgz" width="30%" title="webpagetoPdf">
 
 
 "Conveniently convert png, jpg, webp and gif to base64 string - Encode
