@@ -52,7 +52,7 @@ Then, run the following lines of code:<br>
 ### Getting 401 after that, just get a new token and refresh. works like charm!
 ### Use requests documentation to check for the parameters you can always pass in!
 
-<code> encode_link = requests.post("http://localhost:8000/api/v1/link/encode/", data = url, headers={ 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTgyNzI2Nzk0LCJqdGkiOiI1YzBiNjY5ODIxNWY0ZjNiYmU4ODhjOWZlMzBjMjYxNCIsInVzZXJfaWQiOjN9.84hv-O12BvcIjOyESelPT9-ReoAna3w4505BWu9HHrc' })</code> <br>
+<code> encode_link = requests.post("https://imagebase64.herokuapp.com/api/v1/link/encode/", data = url, headers={ 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTgyNzI2Nzk0LCJqdGkiOiI1YzBiNjY5ODIxNWY0ZjNiYmU4ODhjOWZlMzBjMjYxNCIsInVzZXJfaWQiOjN9.84hv-O12BvcIjOyESelPT9-ReoAna3w4505BWu9HHrc' })</code> <br>
 
 <code> print(r)</code> <br>
 <code> print(r.text)</code> <br>
@@ -63,7 +63,7 @@ Then, run the following lines of code:<br>
 ## Using Javascript:
 
 ```javascript
-// One unique way of debugging the code in chrome is byusing:
+// One unique way of debugging the code in chrome is by using:
 // 1. Network > XHR > reload the page > Name ( click on the link )
 // 2. Keep an eye on the Preview Tab ( for live view of the server error).
 // 3. Keep an eye on the Response Tab ( for live view of the response from server).
@@ -72,7 +72,7 @@ Then, run the following lines of code:<br>
 // This will return the login key
 $.ajax({
 method: "POST",
-url: 'http://localhost:8000/api/v1/rest-auth/login/',  //the url to call
+url: 'https://imagebase64.herokuapp.com/api/v1/rest-auth/login/',  //the url to call
 data: {
 	"username": "PiusLucky",
 	"email": "luckypius50@gmail.com",
