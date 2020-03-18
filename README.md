@@ -25,7 +25,7 @@ and also, convert your base64 string in any format to Image - Decode"
 https://imagebase64.herokuapp.com/api/doc/?format=openapi<br>
 A Web API for encoding image to Base64 string and decoding any base64 string back to image.<br>
 
-# Instructions to registering for the ImageBase64 Integrated API
+## Instructions to registering for the ImageBase64 Integrated API
 https://imagebase64.herokuapp.com/api/doc/?format=openapi<br>
 1. Click on the api endpoint [POST] /v1/rest-auth/registration/<br>
 2. Click on the "Try it Out" button <br>
@@ -36,7 +36,7 @@ https://imagebase64.herokuapp.com/api/doc/?format=openapi<br>
 7. Go to the top and click the "Login" button';<br>
 
 
-# Guide on consuming ImageBase64API on by a third-party app via the terminal (Using the requests library)
+## Guide on consuming ImageBase64API on by a third-party app via the terminal (Using the requests library)
 
 First install requests library <br>
 <code>pip install requests</code><br>
@@ -45,18 +45,15 @@ First install requests library <br>
 <code>r = requests.post('https://imagebase64.herokuapp.com/api/v1/rest-auth/login/', data = context) </code> <br>
 <code>print(r.text)</code> <br>
 	
-<code>url = {
-  "url": "http://localhost:8000/media/photo-1511469054436-c7dedf24c66b.jpg"
-}
-</code><br>
+<code>url = {"url": "https://imagebase64.herokuapp.com/media/photo-1511469054436-c7dedf24c66b.jpg"}</code><br>
 
-# Getting 401 (unauthorized), this might be due to the fact that the access token has expired. Try refreshing that token.
-# Getting 401 after that, just get a new token and refresh. works like charm!
-# Use requests documentation to check for the parameters you can always pass in!
+### Getting 401 (unauthorized), this might be due to the fact that the access token has expired. Try refreshing that token.
+### Getting 401 after that, just get a new token and refresh. works like charm!
+### Use requests documentation to check for the parameters you can always pass in!
 
 <code> encode_link = requests.post("http://localhost:8000/api/v1/link/encode/", data = url, headers={ 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTgyNzI2Nzk0LCJqdGkiOiI1YzBiNjY5ODIxNWY0ZjNiYmU4ODhjOWZlMzBjMjYxNCIsInVzZXJfaWQiOjN9.84hv-O12BvcIjOyESelPT9-ReoAna3w4505BWu9HHrc' })</code> <br>
 
-print(r)</code> <br>
+<code> print(r)</code> <br>
 <code> print(r.text)</code> <br>
 <code> print(encode_link)</code> <br>
 <code> output_dict = encode_link.json()</code> <br>
