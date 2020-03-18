@@ -1,14 +1,6 @@
 import requests
 from main.utils import generate_session_id
-<<<<<<< HEAD
-<<<<<<< HEAD
 from main.models import Update_Model, Contact_Me_Model
-=======
-from main.models import Update_Model
->>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
-=======
-from main.models import Update_Model, Contact_Me_Model
->>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
 from django.conf import settings
 from django.shortcuts import render
 
@@ -74,10 +66,6 @@ def update(request):
     return {
     "updates":specific_update,
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
 
 def contact_count(request):
     all_msg = Contact_Me_Model.objects.all().count
@@ -85,8 +73,3 @@ def contact_count(request):
     'count_contacts' : all_msg,
     }
 
-<<<<<<< HEAD
-=======
->>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
-=======
->>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff

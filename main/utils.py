@@ -1,13 +1,6 @@
 import string
 import secrets
-<<<<<<< HEAD
-<<<<<<< HEAD
 from random import randint
-=======
->>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
-=======
-from random import randint
->>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
 
 
 def generate_unique_id():
@@ -51,11 +44,6 @@ def update_unique_id():
     generated_id =  str(secret_key)
     return generated_id
 
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
 def auth_code():
     length = 7
     initial = "authentication_token_"
@@ -71,10 +59,4 @@ def ticket_id():
     return generated
 
 
-
-<<<<<<< HEAD
-=======
->>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
-=======
->>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
 

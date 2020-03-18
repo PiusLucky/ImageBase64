@@ -1,5 +1,4 @@
 import os
-
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from .formatChecker import ContentTypeRestrictedFileField
@@ -12,16 +11,8 @@ from .utils import (
 	generate_unique_id_file,
 	generate_unique_id_link,
 	update_unique_id,
-<<<<<<< HEAD
-<<<<<<< HEAD
 	auth_code,
 	ticket_id,
-=======
->>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
-=======
-	auth_code,
-	ticket_id,
->>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
 )
 from django.core.files.storage import FileSystemStorage
 from datetime import datetime, timezone
@@ -54,29 +45,14 @@ class Image_Model(models.Model):
 	    return str(self.id)
 		
 	class Meta:
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-		# abstract = True #if the model Post is abstract,it cannot be registered with admin.
->>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
-=======
->>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
 		ordering = ["-timestamp"]
 
 
 class Link_Model(models.Model):
-<<<<<<< HEAD
-<<<<<<< HEAD
-	url = models.URLField(blank=False, null=False, max_length=2000, help_text="Input link of image with 1MB or below in size.")
-	unique_id_link = models.CharField(
-	verbose_name=_('unique_link_encode'), max_length=28,
-	default = generate_unique_id_link,
-=======
 	url = models.URLField(blank=False, null=False, max_length=2000, help_text="https://www.google.com/example.jpg")
 	unique_id_link = models.CharField(
 	verbose_name=_('unique_link_encode'), max_length=28,
 	default = generate_unique_id_link
->>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
 	)
 	timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
 
@@ -93,38 +69,6 @@ class Link_Model(models.Model):
 		ordering = ["-timestamp"]
 
 
-<<<<<<< HEAD
-=======
-	url = models.URLField(blank=False, null=False, max_length=2000, help_text="https://www.google.com/example.jpg")
-	slug = models.SlugField(unique=False, blank=True, null=True)
-	unique_id = models.CharField(
-	verbose_name=_('unique_id'), max_length=18,
-	default = generate_unique_id
-	)
-	@property
-	def slug_for_title(self):
-	    return slugify(self.url)
-
-	def get_absolute_url(self):
-		return reverse("main:detail2",
-		args = [self.slug, self.unique_id
-		])
-	timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
-	def imgs(self):
-		return self.image
-	def __str__(self):
-		# This will basically return the the objects ID(s) in cases like
-		# print(Link_Model.objects.all()) --- when called in view.py
-	    return str(self.url)
-	class Meta:
-		# abstract = True #if the model Post is abstract,it cannot be registered with admin.
-		ordering = ["-timestamp"]
-
-
-
->>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
-=======
->>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
 ##########################################################################################
 				# DECODE SECTION BY LUCKY P. (JUST ANOTHER PROGRAMMER)
 ##########################################################################################
@@ -156,20 +100,6 @@ class File_Model(models.Model):
 	    return str(self.file_field)
 		
 	class Meta:
-<<<<<<< HEAD
-<<<<<<< HEAD
-		ordering = ["-timestamp"]
-
-class Field_Model(models.Model):
-	paste = models.TextField(help_text="Paste in large chunk of your Base64 string here!")
-	unique_id_paste = models.CharField(
-	verbose_name=_('unique_id'), max_length=29,
-	default = generate_unique_id_field,
-
-=======
-		# abstract = True #if the model Post is abstract,it cannot be registered with admin.
-=======
->>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
 		ordering = ["-timestamp"]
 
 class Field_Model(models.Model):
@@ -177,10 +107,6 @@ class Field_Model(models.Model):
 	unique_id_paste = models.CharField(
 	verbose_name=_('unique_id'), max_length=29,
 	default = generate_unique_id_field
-<<<<<<< HEAD
->>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
-=======
->>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
 	)
 	timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
 	@property
@@ -195,13 +121,6 @@ class Field_Model(models.Model):
 		# print(Link_Model.objects.all()) --- when called in view.py
 	    return str(self.paste)
 	class Meta:
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-		# abstract = True #if the model Post is abstract,it cannot be registered with admin.
->>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
-=======
->>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
 		ordering = ["-timestamp"]
 
 class Link_Model_Decode(models.Model):
@@ -224,13 +143,6 @@ class Link_Model_Decode(models.Model):
 		# print(Link_Model_Decode.objects.all()) --- when called in view.py
 	    return str(self.url)
 	class Meta:
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-		# abstract = True #if the model Post is abstract,it cannot be registered with admin.
->>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
-=======
->>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
 		ordering = ["-timestamp"]
 
 
@@ -238,13 +150,6 @@ class Link_Model_Decode(models.Model):
 ##########################################################################################
 				# UPDATE SECTION BY LUCKY P. (JUST ANOTHER PROGRAMMER)
 ##########################################################################################
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-# Recall 1MB = 1048576 bytes (in Binary)
->>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
-=======
->>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
 
 class Update_Model(models.Model):
 	top_update = models.TextField(
@@ -282,10 +187,6 @@ class Update_Model(models.Model):
 	    return str(self.update_id)
 		
 	class Meta:
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
 		ordering = ["-updated"]
 
 
@@ -404,10 +305,3 @@ class Contact_Me_Model(models.Model):
 		ordering = ["-updated"]
 
 
-<<<<<<< HEAD
-=======
-		# abstract = True #if the model Post is abstract,it cannot be registered with admin.
-		ordering = ["-updated"]
->>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
-=======
->>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff

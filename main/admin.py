@@ -1,25 +1,15 @@
 from django.contrib import admin
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
 from .models import (
-Image_Model, 
-Link_Model,
-File_Model,
-Field_Model,
-Link_Model_Decode,
-Update_Model,
-Faq_Model,
-My_Contact_Model,
-Contact_Me_Model,
+	Image_Model, 
+	Link_Model,
+	File_Model,
+	Field_Model,
+	Link_Model_Decode,
+	Update_Model,
+	Faq_Model,
+	My_Contact_Model,
+	Contact_Me_Model,
 )
-<<<<<<< HEAD
-=======
-from .models import Image_Model, Link_Model, File_Model, Field_Model, Link_Model_Decode, Update_Model
->>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
-=======
->>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
 
 class Image_ModelAdmin(admin.ModelAdmin):
 	list_display = ["id","timestamp"]
@@ -74,10 +64,6 @@ class Update_ModelAdmin(admin.ModelAdmin):
 	class Meta:
 		exclude = ("updated",)
 		model = Update_Model
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
 admin.site.register(Update_Model, Update_ModelAdmin)
 
 
@@ -107,9 +93,5 @@ class Contact_Me_ModelAdmin(admin.ModelAdmin):
 		model = Contact_Me_Model
 admin.site.register(Contact_Me_Model, Contact_Me_ModelAdmin)
 
-<<<<<<< HEAD
-=======
+
 admin.site.register(Update_Model, Update_ModelAdmin)
->>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
-=======
->>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff

@@ -88,12 +88,6 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
-    'main'
-]
-
-MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -110,11 +104,6 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 
 ROOT_URLCONF = 'img_base64_project.urls'
-
-
-# ROOT_URLCONF = 'img_base64_project.urls'
-
-ROOT_URLCONF = 'img_base64_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -128,7 +117,6 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'main.contextprocessors.landing',
                 'main.contextprocessors.update',
-                'main.contextprocessors.contact_count',
                 'main.contextprocessors.contact_count',
             ],
         },
@@ -187,10 +175,6 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
-DOMAIN_NAME =  "http://localhost:8000"
-
-# DOMAIN_NAME =  "http://localhost:8000"
-DOMAIN_NAME =  "https://imagebase64.herokuapp.com"
 
 SITE_NAME  = "img2Base64.io"
 # Static files (CSS, JavaScript, Images)

@@ -4,7 +4,6 @@ import requests
 import re
 import urllib.request
 import posixpath
-
 from django.shortcuts import render
 from django.urls import reverse
 from .models import Image_Model, Link_Model, File_Model, Field_Model, Link_Model_Decode, Update_Model

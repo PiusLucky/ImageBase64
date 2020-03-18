@@ -2,15 +2,10 @@
 import re
 
 from django import forms
-<<<<<<< HEAD
-<<<<<<< HEAD
 from .models import Image_Model, Link_Model, File_Model, Field_Model, Link_Model_Decode, Contact_Me_Model
-=======
 from .models import Image_Model, Link_Model, File_Model, Field_Model, Link_Model_Decode
->>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
-=======
 from .models import Image_Model, Link_Model, File_Model, Field_Model, Link_Model_Decode, Contact_Me_Model
->>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
+
 
 
 
@@ -35,10 +30,6 @@ class LinkDecodeForm(forms.ModelForm):
             "url",
         )
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
  
 
 class Contact_Me_Form(forms.ModelForm):
@@ -56,11 +47,6 @@ class Contact_Me_Form(forms.ModelForm):
         )
 
 
-<<<<<<< HEAD
-=======
->>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
-=======
->>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
 class FieldForm(forms.ModelForm):
     paste = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'placeholder':'data:image/png;base64,iVr....'}), required=True, label="", help_text='<small><div align="left" >\
 	 \

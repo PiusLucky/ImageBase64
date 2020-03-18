@@ -32,13 +32,6 @@
 {% endblock script1 %}
 </head>
 <body>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
->>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
-=======
->>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
 <div id="particle_id"></div>
 <div class="container card-0 justify-content-center" style="margin-top: -52%" >
     <div class="card-body px-sm-4 px-0">
@@ -93,10 +86,6 @@
                                 <a class="nav-link" href="/decode/">Decode Instead?</a>
                             </li>
                             {% endif %}
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
                             {% for each_update in updates %}
                             {% if forloop.first %}
                             <li class="nav-item">
@@ -108,21 +97,10 @@
                                 <a class="nav-link" href="{% url 'main:faq' %}">FAQ</a>
                             </li>
                             <li class="nav-item">
-<<<<<<< HEAD
                                 <a class="nav-link" href="/api/doc/">API</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url 'main:cnt' %}">Contact</a>
-=======
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">FAQ</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Contact</a>
->>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
-=======
-                                <a class="nav-link" href="{% url 'main:cnt' %}">Contact</a>
->>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
                             </li>
                         </ul>
                     </div>
@@ -138,20 +116,9 @@
                 {% block main %}
                     <div class="row justify-content-center">
                         <div class="col-lg-10 col-md-12 col-sm-12">
-<<<<<<< HEAD
-<<<<<<< HEAD
                             <h3 class="font-weight-bold ml-md-0 mx-auto text-center text-sm-left"><img src='{% static "front-end/front_end/assets/images/browser_icons/encode.svgz" %}' alt="">&nbsp;Encode Image </h3>
                             <p class="mt-md-4 ml-md-0 ml-2 text-justify text-sm-left"> Convert your image to a Base64 string, you have the option to either paste in a direct link of the image or 'Drag n Drop' the image into the upload box directly.</p>
                            
-=======
-                            <h3 class="font-weight-bold ml-md-0 mx-auto text-center text-sm-left"><i class="fas fa-code"></i>&nbsp;Encode Image </h3>
-                            <p class="mt-md-4 ml-md-0 ml-2 text-center text-sm-left"> Convert your image to a Base64 string, you have the option to either paste in a direct link of the image or 'Drag n Drop' the image into the upload box directly.</p>
->>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
-=======
-                            <h3 class="font-weight-bold ml-md-0 mx-auto text-center text-sm-left"><img src='{% static "front-end/front_end/assets/images/browser_icons/encode.svgz" %}' alt="">&nbsp;Encode Image </h3>
-                            <p class="mt-md-4 ml-md-0 ml-2 text-justify text-sm-left"> Convert your image to a Base64 string, you have the option to either paste in a direct link of the image or 'Drag n Drop' the image into the upload box directly.</p>
-                           
->>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
 
                             <div class="media">
                                 <div class="media-body">
@@ -168,15 +135,7 @@
                             <!--  Drafting the first form -->
                             <form method="post" enctype="multipart/form-data" id="first_form">
                                 {% csrf_token %}
-<<<<<<< HEAD
-<<<<<<< HEAD
                                 <div class="form-group"><label for="id_url">Paste Link</label><input type="url" name="url" maxlength="2000" required id="id_url" class="form-control size" placeholder="Paste in direct image url(link) here!"> </div>
-=======
-                                <div class="form-group"><label for="id_url">Paste Link</label><input type="url" name="url" maxlength="2000" required id="id_url" class="form-control size" placeholder="Type/Paste URL (https://www.google.com/example.png)"> </div>
->>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
-=======
-                                <div class="form-group"><label for="id_url">Paste Link</label><input type="url" name="url" maxlength="2000" required id="id_url" class="form-control size" placeholder="Paste in direct image url(link) here!"> </div>
->>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
                                 <div class="row justify-content-start mb-5">
                                     <div class="col-lg-4 col-auto ">
                                         <button  type="submit" class="btn btn-primary btn-block" value="get_link_value" name="get_link_name">
@@ -185,23 +144,9 @@
                                     </div>
                                 </div>
                             </form>
-<<<<<<< HEAD
-<<<<<<< HEAD
                         </div> 
                     </div>
                     <div style="text-align: center;margin-top:-1.2rem"><hr> <i class="far fa-upload"  style="color:#248bcc;"></i> Upload Image file directly Instead?<hr></div>
-=======
-
-
-                        </div> 
-                    </div>
-                    <div style="text-align: center;"><hr> <i class="far fa-upload"  style="color:#248bcc;"></i> Upload Image file directly Instead?<hr></div>
->>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
-=======
-                        </div> 
-                    </div>
-                    <div style="text-align: center;margin-top:-1.2rem"><hr> <i class="far fa-upload"  style="color:#248bcc;"></i> Upload Image file directly Instead?<hr></div>
->>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
                     <br>
                     <form method="post" enctype="multipart/form-data">
                         {% csrf_token %}    
@@ -212,31 +157,13 @@
                                 </div>
                             </div>
                             <div class="col-md-12 col-lg-10 col-12" align="middle">
-<<<<<<< HEAD
-<<<<<<< HEAD
                                 <img src="#" style="display: none;max-width: 100%;max-height:auto;
-=======
-                                <img src="#" style="display: none; height: 400px;
-                                width:400px;max-width: 100%;max-height:auto;
->>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
-=======
-                                <img src="#" style="display: none; height: 400px;
-                                width:400px;max-width: 100%;max-height:auto;
->>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
                                 object-fit: cover;" id="imagee">
                                 <div  style="text-align: center;vertical-align: middle;display: none;" id="image_stand" ><i class="fas fa-check" style="color: green;"></i> Image preview window&nbsp;<span id="extension"></span></div>
                             </div>
                         </div>
                         <br>
-<<<<<<< HEAD
-<<<<<<< HEAD
                         <div class="row justify-content-center" style="text-align: center;margin-top:-1.2rem">
-=======
-                        <div class="row justify-content-center" style="text-align: center;">
->>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
-=======
-                        <div class="row justify-content-center" style="text-align: center;margin-top:-1.2rem">
->>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
                             <div class="col-md-12 col-lg-10 col-12">
                                 <div class="row justify-content-start mb-5">
                                     <div class="col-lg-4 col-auto ">
@@ -274,10 +201,6 @@
                    }
                </style>
                <div class="col-md-12" style="text-align: center;" id="main_icon">
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
                 <div class="icons padd text-justify">
                     <div style="text-align: center;"><b>Browser Support</b></div>
                     <hr>
@@ -289,21 +212,6 @@
                     Firefox
                     <img src='{% static "front-end/front_end/assets/images/browser_icons/opera.png" %}' alt="" style="max-width: 100%;max-height: auto;">
                     Opera (Do turn Datasaving off)
-<<<<<<< HEAD
-=======
-                <div class="icons padd" style="text-align: center;">
-                    <b>Browser Support</b>
-                    <p >The following browsers are fully supported and tested compatible with encode to Base64 string and decode to image (with .png, .jpeg, .webp and .gif extensions).</p>
-                    <div class="icon_images">
-                    <img src='{% static "front-end/front_end/assets/images/browser_icons/chrome.png" %}' alt="" style="max-width: 100%;max-height: auto;">
-                    Chrome
-                    <img src='{% static "front-end/front_end/assets/images/browser_icons/firefox.png" %}' alt="" style="max-width: 100%;max-height: auto;">
-                    Firefox
-                    <img src='{% static "front-end/front_end/assets/images/browser_icons/opera.png" %}' alt="" style="max-width: 100%;max-height: auto;">
-                    Opera
->>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
-=======
->>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
                     <img src='{% static "front-end/front_end/assets/images/browser_icons/safari.png" %}' alt="" style="max-width: 100%;max-height: auto;">
                     Safari
                     <img src='{% static "front-end/front_end/assets/images/browser_icons/edge.png" %}' alt="" style="max-width: 100%;max-height: auto;">

@@ -3,15 +3,9 @@ BACKEND
 ##############################################
 1. Python
 2. Django Web Framework
-<<<<<<< HEAD
-<<<<<<< HEAD
 3. Request Library
-=======
 
->>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
-=======
-3. Request Library
->>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
+
 
 ##############################################
 FRONTEND
@@ -19,11 +13,5 @@ FRONTEND
 1. ParticleJS
 2. Noty (for notification)
     [ https://ned.im/noty/v2/, https://ned.im/noty/#/]
-<<<<<<< HEAD
-<<<<<<< HEAD
 3. IntroJS
-=======
->>>>>>> 03e218cf9638771148b7fc638f13fc66fa822b6e
-=======
-3. IntroJS
->>>>>>> eee8e180e0a87a6e3b46c614cdc8f61d3df6d0ff
+
