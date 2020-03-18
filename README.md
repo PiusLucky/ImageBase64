@@ -83,9 +83,9 @@ $.ajax({
 method: "POST",
 url: 'https://imagebase64.herokuapp.com/api/v1/rest-auth/login/',  //the url to call
 data: {
-	"username": "PiusLucky",
-	"email": "luckypius50@gmail.com",
-	"password": "luckypius5"
+	"username": "userabc12345",
+	"email": "userabc12345@gmail.com",
+	"password": "userabc12345"
 }, 
 // jwt: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTgyNzI5NTMxLCJqdGkiOiIzMWRmNDZlNTFhMzg0OWFlYWUzMmFhYjc0YWY4NmZlZSIsInVzZXJfaWQiOjN9.yy9_Wlg77S5eMYWU-B3_hHAUz6dsdeMkAbabdHd93Uw",           
 headers: {
@@ -109,12 +109,12 @@ var link = 'https://www.sample-videos.com/img/Sample-jpg-image-50kb.jpg'
 // jwt = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTgyNzM4MjY2LCJqdGkiOiIwYmQ3NTJjOGVmYWU0Y2I2ODQzNTJhZmU2ZTU4ZTNmYSIsInVzZXJfaWQiOjN9.lNf3CffykS7J00khBFoNy83g7haWp6IdHiNxgIm0YUU"
 $.ajax({
 	method: "POST",
-	url: 'http://localhost:8000/api/v1/link/encode/',  //the url to call
+	url: 'https://imagebase64.herokuapp.com/api/v1/link/encode/',  //the url to call
 	data: JSON.stringify({
 	"url": link,
-	"username": "PiusLucky",
-	"email": "luckypius50@gmail.com",
-	"password": "luckypius5"
+	"username": "userabc12345",
+	"email": "userabc12345@gmail.com",
+	"password": "userabc12345"
 }), 
 	headers: {
 		"Accept": "application/json",
