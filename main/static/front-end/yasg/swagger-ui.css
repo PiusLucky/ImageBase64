@@ -20,7 +20,7 @@ div.topbar{
 }
 
 div.scheme-container:after{
-content:'INSTRUCTIONS TO REGISTER (free):\A\A 1. Click on the api endpoint [POST] /v1/rest-auth/registration/\A\A 2. Click on the "Try it Out" button \A\A 3. Enter your details \A\A 4. Click on the "Execute" button \A\A 5. Then copy & paste the generated key into the endpoint [POST] /v1/rest-auth/registration/verify-email/ \A\A 6. Ignore the csrf_token error (It is an expected error) \A\A 7. Go to the top and click the "Login" button';
+content:'INSTRUCTIONS TO REGISTER [Free]:\A\A 1. Click on the api endpoint [POST] /v1/rest-auth/registration/\A\A 2. Click on the "Try it Out" button \A\A 3. Enter your details \A\A 4. Click on the "Execute" button \A\A 5. Then copy & paste the generated key into the endpoint [POST] /v1/rest-auth/registration/verify-email/ \A\A 6. Ignore the csrf_token error (It is an expected error) \A\A 7. Go to the top and click the "Login" button';
 white-space: pre-wrap;
 color: #49cc90;
 /*color: white;*/

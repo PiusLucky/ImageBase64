@@ -29,7 +29,7 @@ from drf_yasg import openapi
 
 API_TITLE = 'ImageBase64 API'
 API_DESCRIPTION = 'A Web API for encoding image to Base64 string and decoding any base64 string back to image.'
-API_VERSION = 'v1.0.0'
+API_VERSION = 'v1.0.1'
 schema_view = get_schema_view(
 openapi.Info(
 title= API_TITLE,
