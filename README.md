@@ -39,6 +39,68 @@ https://imagebase64.herokuapp.com/api/doc/?format=openapi<br>
 6. Ignore the csrf_token error (It is an expected error)<br>
 7. Go to the top and click the "Login" button';<br>
 <br>
+
+# FAQ
+
+Question One:
+
+<div> <b>  <code style="color: green">What is Base64?</code></b></div>
+<br>
+<div style="text-align: justify;">According to <a href="https://www.techopedia.com/definition/27209/base64" target="_blank">techopedia.com</a>, Base64 is an encoding and decoding technique used to convert binary data to an American Standard for Information Interchange (ASCII) text format, and vice versa. It is used to transfer data over a medium that only supports ASCII formats, such as email messages on Multipurpose Internet Mail Extension (MIME) and Extensible Markup Language (XML) data. Base64 is also known as Base64 Content-Transfer-Encoding.<br>
+It is worthy of note that some tools used in rendering HTML into PDF requires an image file first be converted to Base64 before it can be rendered. 
+</div>
+
+Question Two:
+
+<div> <b>  <code style="color: green">Is base64 URL safe?</code></b></div>
+<br>
+<div style="text-align: justify;">By consisting only in ASCII characters, base64 strings are generally url-safe, and that's why they can be used to encode data in Data URLs.</div>
+
+Question Three:
+
+<div> <b>  <code style="color: green">Can the encoded Base64 string be compiled in a text file?</code></b></div>
+<br>
+<div style="text-align: justify;">Yes!, the encoded base64 string is usually compiled in a text file (i.e .txt file) or can be copied directly by hitting the copy icon located at the right-hand side of the encoded output box. Meanwhile, the text file can be downloaded freely by hitting the download button.</div>
+
+Question Four:
+
+<div> <b>  <code style="color: green">why is 1.00 MB the maximum allowed for file upload?</code></b></div>
+<br>
+<div style="text-align: justify;">The main reason for this is that the service rendered by ImageBase64 is free and hosted on a private server, and as such we try as much as possible to keep the total uploads as small in size as possible. Though, you can always <a href="/contact/"> contact me</a> if you intend on encoding an image with a far larger size.</div>
+
+Question Five:
+
+<div> <b>  <code style="color: green">Are uploaded files saved permanently? </code></b></div>
+<br>
+<div style="text-align: justify;">
+Here's a graphical representation of activities behind the scene:
+<br>
+<br>
+<div style="background-color:whitesmoke;width: 510px;max-width: 100%; max-height: auto;">
+	<img src="../../static/front-end/front_end/assets/images/schema.svgz" alt="">
+</div>
+<br>
+The explanations go thus:
+<ul>
+	<li>The image is uploaded to a specific folder depending on process.</li>
+	<li>The image data is read and encoded to a base64 string.</li>
+	<li>The image metadata, like size and mimetype, is read.</li>
+	<li>The image is then deleted.</li>
+</ul>
+</div>
+
+Question Six:
+
+<div> <b>  <code style="color: green">How can I save the decoded Base64 string (i.e result)?</code></b></div>
+<br>
+<div style="text-align: justify;">Yes!, all you got to do is click on the BLUE button circled by the red rectangle in the screenshot below:
+<br>
+<br>
+<div style="background-color:whitesmoke;width: 510px;max-width: 100%; max-height: auto;">
+<img src="../../static/front-end/front_end/assets/images/Screenshot.svgz" alt="">
+</div>
+
+</div>
 <p align="center">
   <img src="https://imagebase64.herokuapp.com/static/front-end/front_end/assets/images/nav_icon2.svgz" width="30%" title="webpagetoPdf">
 </p>
