@@ -74,9 +74,9 @@ $.ajax({
 method: "POST",
 url: 'https://imagebase64.herokuapp.com/api/v1/rest-auth/login/',  //the url to call
 data: {
-	"username": "PiusLucky",
-	"email": "luckypius50@gmail.com",
-	"password": "luckypius5"
+	"username": "userabc",
+	"email": "userabc@gmail.com",
+	"password": "userabc12345"
 }, 
 // jwt: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTgyNzI5NTMxLCJqdGkiOiIzMWRmNDZlNTFhMzg0OWFlYWUzMmFhYjc0YWY4NmZlZSIsInVzZXJfaWQiOjN9.yy9_Wlg77S5eMYWU-B3_hHAUz6dsdeMkAbabdHd93Uw",           
 headers: {
@@ -103,9 +103,9 @@ $.ajax({
 	url: 'http://localhost:8000/api/v1/link/encode/',  //the url to call
 	data: JSON.stringify({
 	"url": link,
-	"username": "PiusLucky",
-	"email": "luckypius50@gmail.com",
-	"password": "luckypius5"
+	"username": "userabc",
+	"email": "userabc@gmail.com",
+	"password": "userabc12345"
 }), 
 	headers: {
 		"Accept": "application/json",
