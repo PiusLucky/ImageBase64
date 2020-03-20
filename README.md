@@ -1,4 +1,4 @@
-<p align="center">
+<p align="center" style="background: black;padding-left:50px;padding-right: 50px;padding-top: 12px;padding-bottom: 12px;">
   <img src="https://imagebase64.herokuapp.com/static/front-end/front_end/assets/images/nav_icon2.svgz" width="50%" title="imageBase64">
 </p>
 
