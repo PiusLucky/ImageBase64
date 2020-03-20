@@ -11,7 +11,7 @@
 and also, convert your base64 string in any format to Image - Decode"
 
 
-# 🚀 Features:
+## 🚀 Features:
 <ol>
 	<li>File formats accepted include jpeg, png, gif, and webp</li>
 	<li>Encoding of all file formats listed above</li>
@@ -28,11 +28,11 @@ and also, convert your base64 string in any format to Image - Decode"
 
 </ol>
 
-# 🚀 New Release:  ImageBase64 API -  v1.0.1 
+## 🚀 New Release:  ImageBase64 API -  v1.0.1 
 https://imagebase64.herokuapp.com/api/doc/?format=openapi<br>
 A Web API for encoding image to Base64 string and decoding any base64 string back to image.<br>
 
-## Instructions to registering for the ImageBase64 Integrated API
+### Instructions to registering for the ImageBase64 Integrated API
 https://imagebase64.herokuapp.com/api/doc/?format=openapi<br>
 1. Click on the api endpoint [POST] /v1/rest-auth/registration/<br>
 2. Click on the "Try it Out" button <br>
@@ -43,8 +43,8 @@ https://imagebase64.herokuapp.com/api/doc/?format=openapi<br>
 7. Go to the top and click the "Login" button';<br>
 
 
-## Guide on consuming ImageBase64API via the terminal (Using the requests library)
-## Python Case
+### Guide on consuming ImageBase64API via the terminal (Using the requests library)
+### Python Case
 First install requests library <br>
 ```python
 pip install requests
@@ -69,7 +69,7 @@ print(output_dict["image_info"])
 
 ```
 
-## Using Javascript:
+### Using Javascript:
 Use the link below for the corresponding HTML for the javascript snippet<br>
 <code><a href="https://github.com/PiusLucky/ImageBase64/blob/master/ConsumeAPI%20Test/APP/javascript/index.html">https://github.com/PiusLucky/ImageBase64/blob/master/ConsumeAPI%20Test/APP/javascript/index.html</a></code>
 <br>
@@ -138,7 +138,7 @@ $.ajax({
 ```
 
 
-# 🚀 FAQ
+## 🚀 FAQ
 
 <div> <b>  <code style="color: green">What is Base64?</code></b></div>
 <br>
