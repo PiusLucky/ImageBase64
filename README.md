@@ -70,7 +70,9 @@ print(output_dict["image_info"])
 ```
 
 ## Using Javascript:
-
+Use the link below for the corresponding HTML for the javascript snippet<br>
+<code><a href="https://github.com/PiusLucky/ImageBase64/blob/master/ConsumeAPI%20Test/APP/javascript/index.html">https://github.com/PiusLucky/ImageBase64/blob/master/ConsumeAPI%20Test/APP/javascript/index.html</a></code>
+<br>
 ```javascript
 // One unique way of debugging the code in chrome is by using:
 // 1. Network > XHR > reload the page > Name ( click on the link )
