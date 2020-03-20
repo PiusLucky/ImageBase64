@@ -55,10 +55,6 @@ print(r.text)
 
 url = {"url": "https://imagebase64.herokuapp.com/media/photo-1511469054436-c7dedf24c66b.jpg"}
 
-### Getting 401 (unauthorized), this might be due to the fact that the access token has expired. Try refreshing that token.
-### Getting 401 after that, just get a new token and refresh. works like charm!
-### Use requests documentation to check for the parameters you can always pass in!
-
 encode_link = requests.post("https://imagebase64.herokuapp.com/api/v1/link/encode/", data = url, headers={ 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTgyNzI2Nzk0LCJqdGkiOiI1YzBiNjY5ODIxNWY0ZjNiYmU4ODhjOWZlMzBjMjYxNCIsInVzZXJfaWQiOjN9.84hv-O12BvcIjOyESelPT9-ReoAna3w4505BWu9HHrc' }) 
 
 print(r) 
@@ -74,13 +70,6 @@ Use the link below for the corresponding HTML for the javascript snippet<br>
 <code><a href="https://github.com/PiusLucky/ImageBase64/blob/master/ConsumeAPI%20Test/APP/javascript/index.html">https://github.com/PiusLucky/ImageBase64/blob/master/ConsumeAPI%20Test/APP/javascript/index.html</a></code>
 <br>
 ```javascript
-// One unique way of debugging the code in chrome is by using:
-// 1. Network > XHR > reload the page > Name ( click on the link )
-// 2. Keep an eye on the Preview Tab ( for live view of the server error).
-// 3. Keep an eye on the Response Tab ( for live view of the response from server).
-
-
-// This will return the login key
 $.ajax({
 method: "POST",
 url: 'https://imagebase64.herokuapp.com/api/v1/rest-auth/login/',  //the url to call
@@ -89,26 +78,22 @@ data: {
 	"email": "userabc12345@gmail.com",
 	"password": "userabc12345"
 }, 
-// jwt: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTgyNzI5NTMxLCJqdGkiOiIzMWRmNDZlNTFhMzg0OWFlYWUzMmFhYjc0YWY4NmZlZSIsInVzZXJfaWQiOjN9.yy9_Wlg77S5eMYWU-B3_hHAUz6dsdeMkAbabdHd93Uw",           
+
 headers: {
 	"Accept": "application/json",
-	// "Authorization": "Bearer " + jwt,
 },
+
 dataType: "json",
 
 success: function (x) {
 	const login_key = document.getElementById("login_key")
-	login_key.append(x["key"])
-
-    
+	login_key.append(x["key"])    
 }
 
 });
 
-
 // NB: valid link must include "www"
 var link = 'https://www.sample-videos.com/img/Sample-jpg-image-50kb.jpg' 
-// jwt = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTgyNzM4MjY2LCJqdGkiOiIwYmQ3NTJjOGVmYWU0Y2I2ODQzNTJhZmU2ZTU4ZTNmYSIsInVzZXJfaWQiOjN9.lNf3CffykS7J00khBFoNy83g7haWp6IdHiNxgIm0YUU"
 $.ajax({
 	method: "POST",
 	url: 'https://imagebase64.herokuapp.com/api/v1/link/encode/',  //the url to call
@@ -121,7 +106,6 @@ $.ajax({
 	headers: {
 		"Accept": "application/json",
 		"Content-Type":"application/json",
-		// "Authorization": "Bearer " + jwt,
 	},
 	contentType: "application/json",
 	dataType: "json",
@@ -133,25 +117,17 @@ $.ajax({
 		const image_extension = document.getElementById("image_extension")
 		const image_name = document.getElementById("image_name")
 		const image_dimension = document.getElementById("image_dimension")
-
 		encode_id.append(response["encode_id"])
 		image_size.append(response["image_info"]["image_size"])
 		image_extension.append(response["image_info"]["image_extension"])
 		image_name.append(response["image_info"]["image_name"])
 		image_dimension.append(response["image_info"]["image_dimension"])
 		encode_info.append(response["raw_copy_base64"])
-
 	},
 	error: function(response){
 	const encode_info = document.getElementById("encode_info")
-	// encode_info.append(JSON.stringify(response))
 	result = JSON.stringify(response)
 	encode_info.append(result)
-	//This shows all like so:
-	// {"readyState":4,"responseText":"{\"title\":\"Link Detail\",\"name\":\"img2Base64.io\",
-	// \"error_message\":\"Network Error: The link could not be accessed.
-	//  Try again!\"}","responseJSON":{"title":"Link Detail","name":"img2Base64.io",
-	//  "error_message":"Network Error: The link could not be accessed. Try again!"},"status":400,"statusText":"Bad Request"}
 	}
 	});
 
