@@ -3,7 +3,7 @@
   <img src="https://imagebase64.herokuapp.com/static/front-end/front_end/assets/images/nav_icon2.svgz" width="50%" title="imageBase64">
 </div>
 <h1 align="center">
-  imagebase64.herokuapp.com/
+  imagebase64.herokuapp.com
 </h1>
 
 
@@ -11,7 +11,7 @@
 and also, convert your base64 string in any format to Image - Decode"
 
 
-# Features:
+# 🚀 Features:
 <ol>
 	<li>File formats accepted include jpeg, png, gif, and webp</li>
 	<li>Encoding of all file formats listed above</li>
@@ -28,7 +28,7 @@ and also, convert your base64 string in any format to Image - Decode"
 
 </ol>
 
-# New Release:  ImageBase64 API -  v1.0.1 
+# 🚀 New Release:  ImageBase64 API -  v1.0.1 
 https://imagebase64.herokuapp.com/api/doc/?format=openapi<br>
 A Web API for encoding image to Base64 string and decoding any base64 string back to image.<br>
 
@@ -138,7 +138,7 @@ $.ajax({
 ```
 
 
-# FAQ
+# 🚀 FAQ
 
 <div> <b>  <code style="color: green">What is Base64?</code></b></div>
 <br>
@@ -159,8 +159,6 @@ It is worthy of note that some tools used in rendering HTML into PDF requires an
 <div> <b>  <code style="color: green">why is 1.00 MB the maximum allowed for file upload?</code></b></div>
 <br>
 <div style="text-align: justify;">The main reason for this is that the service rendered by ImageBase64 is free and hosted on a private server, and as such we try as much as possible to keep the total uploads as small in size as possible. Though, you can always <a href="/contact/"> contact me</a> if you intend on encoding an image with a far larger size.</div>
-
-
 <div> <b>  <code style="color: green">Are uploaded files saved permanently? </code></b></div>
 <br>
 <div style="text-align: justify;">
