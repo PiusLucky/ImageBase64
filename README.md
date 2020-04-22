@@ -115,12 +115,12 @@ $.ajax({
 	dataType: "json",
 
 	success: function (response) {
-		const encode_info = document.getElementById("encode_info")
-		const encode_id = document.getElementById("encode_id")
-		const image_size = document.getElementById("image_size")
-		const image_extension = document.getElementById("image_extension")
-		const image_name = document.getElementById("image_name")
-		const image_dimension = document.getElementById("image_dimension")
+		const encode_info = document.querySelector("#encode_info")
+		const encode_id = document.querySelector("#encode_id")
+		const image_size = document.querySelector("#image_size")
+		const image_extension = document.querySelector("#image_extension")
+		const image_name = document.querySelector("#image_name")
+		const image_dimension = document.querySelector("#image_dimension")
 		encode_id.append(response["encode_id"])
 		image_size.append(response["image_info"]["image_size"])
 		image_extension.append(response["image_info"]["image_extension"])
