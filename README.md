@@ -90,7 +90,7 @@ headers: {
 dataType: "json",
 
 success: function (x) {
-	const login_key = document.getElementById("login_key")
+	const login_key = document.querySelector("#login_key")
 	login_key.append(x["key"])    
 }
 
