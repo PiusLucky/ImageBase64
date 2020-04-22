@@ -129,7 +129,7 @@ $.ajax({
 		encode_info.append(response["raw_copy_base64"])
 	},
 	error: function(response){
-	const encode_info = document.getElementById("encode_info")
+	const encode_info = document.querySelector("#encode_info")
 	result = JSON.stringify(response)
 	encode_info.append(result)
 	}
