@@ -1,4 +1,4 @@
-# Guide on consuming ImageBase64API on by a third-party app via the terminal
+# Guide on consuming ImageBase64API by a third-party app via the terminal
 # developed with love by Pius Lucky
 
 # You must have installed requests using the pip command
