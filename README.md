@@ -29,7 +29,7 @@ and also, convert your base64 string in any format to Image - Decode"
 </ol>
 
 ## 🚀 New Release:  ImageBase64 API -  v1.0.1 
-https://www.imagebase64.joint-access-programmer.com/api/doc/?format=openapi<br>
+https://www.imagebase64.joint-access-programmer.com/api/doc/<br>
 A Web API for encoding image to Base64 string and decoding any base64 string back to image.<br>
 
 ### Instructions to registering for the ImageBase64 Integrated API
