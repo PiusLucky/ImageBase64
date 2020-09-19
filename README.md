@@ -33,7 +33,7 @@ https://www.imagebase64.joint-access-programmer.com/api/doc/<br>
 A Web API for encoding image to Base64 string and decoding any base64 string back to image.<br>
 
 ### Instructions to registering for the ImageBase64 Integrated API
-https://www.imagebase64.joint-access-programmer.com/api/doc/?format=openapi<br>
+https://www.imagebase64.joint-access-programmer.com/api/doc/<br>
 1. Click on the api endpoint [POST] /v1/rest-auth/registration/<br>
 2. Click on the "Try it Out" button <br>
 3. Enter your details <br>
@@ -166,7 +166,7 @@ Here's a graphical representation of activities behind the scene:
 <br>
 <br>
 <div style="background-color:whitesmoke;width: 510px;max-width: 100%; max-height: auto;">
-	<img src="https://www.imagebase64.joint-access-programmer.com/static/front-end/front_end/assets/images/schema.svgz" alt="">
+	<img src="https://www.imagebase64.joint-access-programmer.com/static/front-end/front_end/assets/images/schema.svgz" width="50%" alt="">
 </div>
 <br>
 The explanations go thus:
