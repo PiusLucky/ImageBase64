@@ -149,7 +149,7 @@ It is worthy of note that some tools used in rendering HTML into PDF requires an
 
 <div> <b>  <code style="color: green">why is 1.00 MB the maximum allowed for file upload?</code></b></div>
 <br>
-<div style="text-align: justify;">The main reason for this is that the service rendered by ImageBase64 is free and hosted on a private server, and as such we try as much as possible to keep the total uploads as small in size as possible. Though, you can always <a href="/contact/"> contact me</a> if you intend on encoding an image with a far larger size.</div>
+<div style="text-align: justify;">The main reason for this is that the service rendered by ImageBase64 is free and hosted on a private server, and as such we try as much as possible to keep the total uploads as small in size as possible. Though, you can always <a href="https://image2base64.herokuapp.com/contact"> contact me</a> if you intend on encoding an image with a far larger size.</div>
 <div> <b>  <code style="color: green">Are uploaded files saved permanently? </code></b></div>
 <br>
 <div style="text-align: justify;">
@@ -157,7 +157,7 @@ Here's a graphical representation of activities behind the scene:
 <br>
 <br>
 <div style="background-color:whitesmoke;width: 510px;max-width: 100%; max-height: auto;">
-	<img src="https://image2base64.herokuapp.com/static/front-end/front_end/assets/images/schema.svgz" width="50%" alt="">
+	<img src="https://image2base64.herokuapp.com/static/front-end/front_end/assets/images/schema.svg" width="50%" alt="">
 </div>
 <br>
 The explanations go thus:
@@ -169,13 +169,22 @@ The explanations go thus:
 </ul>
 </div>
 
+<div> <b>  <code style="color: green">Take a look at the background processess:</code></b></div>
+
+
+<div style="background-color:whitesmoke;width: 510px;max-width: 100%; max-height: auto;">
+	<img src="https://image2base64.herokuapp.com/static/front-end/front_end/assets/images/prorotype_imagebase64_svg.jpg" width="50%" alt="">
+</div>
+
+
+
 <div> <b>  <code style="color: green">How can I save the decoded Base64 string (i.e result)?</code></b></div>
 <br>
 <div style="text-align: justify;">Yes!, all you got to do is click on the BLUE button circled by the red rectangle in the screenshot below:
 <br>
 <br>
 <div style="background-color:whitesmoke;width: 510px;max-width: 100%; max-height: auto;">
-<img src="https://image2base64.herokuapp.com/static/front-end/front_end/assets/images/Screenshot.svgz" alt="">
+<img src="https://image2base64.herokuapp.com/static/front-end/front_end/assets/images/Screenshot.svg" alt="">
 </div>
 
 </div>
