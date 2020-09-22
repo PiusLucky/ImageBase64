@@ -171,12 +171,13 @@ The explanations go thus:
 
 <div> <b>  <code style="color: green">Take a look at the background processess:</code></b></div>
 
+<br>
 
 <div style="background-color:whitesmoke;width: 510px;max-width: 100%; max-height: auto;">
 	<img src="https://image2base64.herokuapp.com/static/front-end/front_end/assets/images/prorotype_imagebase64_svg.jpg" width="100%" alt="">
 </div>
 
-
+<br>
 
 <div> <b>  <code style="color: green">How can I save the decoded Base64 string (i.e result)?</code></b></div>
 <br>
