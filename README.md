@@ -173,7 +173,7 @@ The explanations go thus:
 
 
 <div style="background-color:whitesmoke;width: 510px;max-width: 100%; max-height: auto;">
-	<img src="https://image2base64.herokuapp.com/static/front-end/front_end/assets/images/prorotype_imagebase64_svg.jpg" width="50%" alt="">
+	<img src="https://image2base64.herokuapp.com/static/front-end/front_end/assets/images/prorotype_imagebase64_svg.jpg" width="100%" alt="">
 </div>
 
 
