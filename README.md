@@ -1,12 +1,3 @@
-
-<div align="center" style="background:black;">
-  <img src="https://www.imagebase64.joint-access-programmer.com/static/front-end/front_end/assets/images/nav_icon2.svgz" width="50%" title="imageBase64">
-</div>
-<h1 align="center">
-  https://www.imagebase64.joint-access-programmer.com/
-</h1>
-
-
 "Conveniently convert png, jpg, webp and gif to base64 string - Encode
 and also, convert your base64 string in any format to Image - Decode"
 
@@ -29,11 +20,11 @@ and also, convert your base64 string in any format to Image - Decode"
 </ol>
 
 ## 🚀 New Release:  ImageBase64 API -  v1.0.1 
-https://www.imagebase64.joint-access-programmer.com/api/doc/<br>
+https://image2base64.herokuapp.com/api/doc/<br>
 A Web API for encoding image to Base64 string and decoding any base64 string back to image.<br>
 
 ### Instructions to registering for the ImageBase64 Integrated API
-https://www.imagebase64.joint-access-programmer.com/api/doc/<br>
+https://image2base64.herokuapp.com/api/doc/<br>
 1. Click on the api endpoint [POST] /v1/rest-auth/registration/<br>
 2. Click on the "Try it Out" button <br>
 3. Enter your details <br>
@@ -54,12 +45,12 @@ Then, run the following lines of code:
 ```python
 import requests
 context = {"username": "userabc", "email": "userabc@gmail.com", "password": "userabc12345" }  
-r = requests.post('https://www.imagebase64.joint-access-programmer.com/api/v1/rest-auth/login/', data = context)  
+r = requests.post('https://image2base64.herokuapp.com/api/v1/rest-auth/login/', data = context)  
 print(r.text) 
 
-url = {"url": "https://www.imagebase64.joint-access-programmer.com/media/photo-1511469054436-c7dedf24c66b.jpg"}
+url = {"url": "https://image2base64.herokuapp.com/media/photo-1511469054436-c7dedf24c66b.jpg"}
 
-encode_link = requests.post("https://www.imagebase64.joint-access-programmer.com/api/v1/link/encode/", data = url, headers={ 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTgyNzI2Nzk0LCJqdGkiOiI1YzBiNjY5ODIxNWY0ZjNiYmU4ODhjOWZlMzBjMjYxNCIsInVzZXJfaWQiOjN9.84hv-O12BvcIjOyESelPT9-ReoAna3w4505BWu9HHrc' }) 
+encode_link = requests.post("https://image2base64.herokuapp.com/api/v1/link/encode/", data = url, headers={ 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTgyNzI2Nzk0LCJqdGkiOiI1YzBiNjY5ODIxNWY0ZjNiYmU4ODhjOWZlMzBjMjYxNCIsInVzZXJfaWQiOjN9.84hv-O12BvcIjOyESelPT9-ReoAna3w4505BWu9HHrc' }) 
 
 print(r) 
 print(r.text) 
@@ -76,7 +67,7 @@ Use the link below for the corresponding HTML for the javascript snippet<br>
 ```javascript
 $.ajax({
 method: "POST",
-url: 'https://www.imagebase64.joint-access-programmer.com/api/v1/rest-auth/login/',  //the url to call
+url: 'https://image2base64.herokuapp.com/api/v1/rest-auth/login/',  //the url to call
 data: {
 	"username": "userabc12345",
 	"email": "userabc12345@gmail.com",
@@ -100,7 +91,7 @@ success: function (x) {
 var link = 'https://www.sample-videos.com/img/Sample-jpg-image-50kb.jpg' 
 $.ajax({
 	method: "POST",
-	url: 'https://www.imagebase64.joint-access-programmer.com/api/v1/link/encode/',  //the url to call
+	url: 'https://image2base64.herokuapp.com/api/v1/link/encode/',  //the url to call
 	data: JSON.stringify({
 	"url": link,
 	"username": "userabc12345",
@@ -166,7 +157,7 @@ Here's a graphical representation of activities behind the scene:
 <br>
 <br>
 <div style="background-color:whitesmoke;width: 510px;max-width: 100%; max-height: auto;">
-	<img src="https://www.imagebase64.joint-access-programmer.com/static/front-end/front_end/assets/images/schema.svgz" width="50%" alt="">
+	<img src="https://image2base64.herokuapp.com/static/front-end/front_end/assets/images/schema.svgz" width="50%" alt="">
 </div>
 <br>
 The explanations go thus:
@@ -184,7 +175,7 @@ The explanations go thus:
 <br>
 <br>
 <div style="background-color:whitesmoke;width: 510px;max-width: 100%; max-height: auto;">
-<img src="https://www.imagebase64.joint-access-programmer.com/static/front-end/front_end/assets/images/Screenshot.svgz" alt="">
+<img src="https://image2base64.herokuapp.com/static/front-end/front_end/assets/images/Screenshot.svgz" alt="">
 </div>
 
 </div>
