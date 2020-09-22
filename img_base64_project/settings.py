@@ -1,29 +1,17 @@
 import os
 import dj_database_url
 import django_heroku
-# Normally what should be uploaded should not be more than 2MB
-# This applies for both images and files(.txt and .html).
-# The idea is to limit image upload to be 1MB, this can be done
-# in the views
-DATA_UPLOAD_MAX_MEMORY_SIZE = 2097152 # 2MB set
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+DATA_UPLOAD_MAX_MEMORY_SIZE = os.environ['DATA_UPLOAD_MAX_MEMORY_SIZE']
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
+SECRET_KEY = os.environ['SECRET_KEY']
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '-1oto@m@$v%pg#m73w)u_%*!v%rm1zhb^#u6=ds&ly$2c)^gvt'
-
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
-
-
-# Application definition
+ALLOWED_HOSTS = [os.environ['ALLOWED_HOST']]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -33,10 +21,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    # 3rd party
     'rest_framework', 
     'corsheaders',
-     # Add this to prevent "type object 'Token' has no attribute 'objects'"
     'rest_framework.authtoken',
     'rest_framework_swagger',
     'drf_yasg',
@@ -45,41 +31,35 @@ INSTALLED_APPS = [
     'allauth.account', 
     'allauth.socialaccount', 
     'rest_auth.registration', 
-    
-    # Local
     'main.apps.MainConfig',
-    'api.apps.ApiConfig', # new
+    'api.apps.ApiConfig',
 ]
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' # new
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' 
 SITE_ID = 1 
 
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
            'rest_framework.permissions.IsAuthenticated',
-           # 'rest_framework.permissions.AllowAny', # for test
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
            'rest_framework_simplejwt.authentication.JWTAuthentication',
            'rest_framework.authentication.SessionAuthentication',
        ],
-    # This helps to prevent 'AutoSchema' object 
-    # has no attribute 'get_link' error in Django RF.
     "DEFAULT_SCHEMA_CLASS":"rest_framework.schemas.coreapi.AutoSchema"
 }
 
-# DOMAIN_NAME =  "http://localhost:8000"
-DOMAIN_NAME =  "https://imagebase64.herokuapp.com"
+DOMAIN_NAME =  "https://image2base64.herokuapp.com"
 
 API_URL =  u'{0}/{1}'.format(DOMAIN_NAME,"api/v1/")
 
 
 
 SWAGGER_SETTINGS = {
-'LOGIN_URL': 'rest_framework:login',
-'LOGOUT_URL': 'rest_framework:logout',
-'DEFAULT_API_URL': API_URL,
+    'LOGIN_URL': 'rest_framework:login',
+    'LOGOUT_URL': 'rest_framework:logout',
+    'DEFAULT_API_URL': API_URL,
 }
 
 
@@ -95,19 +75,19 @@ MIDDLEWARE = [
     'main.middleware.RequestDataTooBigMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-# Use this in production
-# CORS_ORIGIN_WHITELIST = (
-# 'http://localhost:8000',
-# )
-# Set true for testing only!
-CORS_ORIGIN_ALLOW_ALL = True
+
+
+CORS_ORIGIN_WHITELIST = (
+  'https://image2base64.herokuapp.com'
+)
+
 
 
 ROOT_URLCONF = 'img_base64_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR + '/templates/',],
+        'DIRS': [BASE_DIR + '/templates/'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -126,8 +106,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'img_base64_project.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
     'default': {
@@ -136,9 +114,6 @@ DATABASES = {
     }
 }
 
-
-# Password validation
-# https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -156,9 +131,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Internationalization
-# https://docs.djangoproject.com/en/3.0/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'Africa/Lagos'
@@ -169,22 +141,21 @@ USE_L10N = True
 
 USE_TZ = True
 
-# For production
+
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
 
-SITE_NAME  = "img2Base64.io"
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.0/howto/static-files/
+SITE_NAME  = "Image2base64"
+
+
 
 CSRF_FAILURE_VIEW = "main.views.csrf_byepass"
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
-
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
@@ -201,6 +172,5 @@ LINK_ROOT = os.path.join(BASE_DIR, 'link/')
 ENCODE_URL = '/encode_link/'
 ENCODE_ROOT = os.path.join(BASE_DIR, 'encode_link/')
 
-#front-end workable links
 FRONTEND_URL = '/front-end/'
 FRONTEND_ROOT = os.path.join(BASE_DIR, 'front-end/')

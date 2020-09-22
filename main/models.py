@@ -21,8 +21,6 @@ from datetime import datetime, timezone
 ##########################################################################################
 				# ENCODE SECTION BY LUCKY P. (JUST ANOTHER PROGRAMMER)
 ##########################################################################################
-
-
 # Recall 1024 bytes = 1 kilobyte
 # 1024 x 300 = 300 kilobyte
 # 1048576 Bytes = 1MB

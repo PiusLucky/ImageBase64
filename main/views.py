@@ -1055,7 +1055,7 @@ def post_contact_view(request):
     if request.method == "POST" and request.is_ajax():
         form = Contact_Me_Form(request.POST)
         ticket_list = []
-        if form["seven_digit_auth_code"].value() == form["seven_digit_auth_code_enter"].value():
+        if form["ticket_id"].value() == form["seven_digit_auth_code_enter"].value():
             form_current_ticket = form["ticket_id"].value()
             all_tickets = Contact_Me_Model.objects.all()
             for each_item in all_tickets:

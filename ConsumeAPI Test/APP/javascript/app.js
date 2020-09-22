@@ -1,4 +1,4 @@
-// One unique way of debugging the code in chrome is byusing:
+// One unique way of debugging the code in chrome is by using:
 // 1. Network > XHR > reload the page > Name ( click on the link )
 // 2. Keep an eye on the Preview Tab ( for live view of the server error).
 // 3. Keep an eye on the Response Tab ( for live view of the response from server).
@@ -7,11 +7,11 @@
 // This will return the login key
 $.ajax({
 method: "POST",
-url: 'http://localhost:8000/api/v1/rest-auth/login/',  //the url to call
+url: 'https://imagebase64.herokuapp.com/api/v1/rest-auth/login/',  //the url to call
 data: {
-	"username": "PiusLucky",
-	"email": "luckypius50@gmail.com",
-	"password": "luckypius5"
+	"username": "userabc",
+	"email": "userabc@gmail.com",
+	"password": "userabc12345"
 }, 
 // jwt: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTgyNzI5NTMxLCJqdGkiOiIzMWRmNDZlNTFhMzg0OWFlYWUzMmFhYjc0YWY4NmZlZSIsInVzZXJfaWQiOjN9.yy9_Wlg77S5eMYWU-B3_hHAUz6dsdeMkAbabdHd93Uw",           
 headers: {
@@ -38,9 +38,9 @@ $.ajax({
 	url: 'http://localhost:8000/api/v1/link/encode/',  //the url to call
 	data: JSON.stringify({
 	"url": link,
-	"username": "PiusLucky",
-	"email": "luckypius50@gmail.com",
-	"password": "luckypius5"
+	"username": "userabc",
+	"email": "userabc@gmail.com",
+	"password": "userabc12345"
 }), 
 	headers: {
 		"Accept": "application/json",
@@ -78,6 +78,3 @@ $.ajax({
 	//  "error_message":"Network Error: The link could not be accessed. Try again!"},"status":400,"statusText":"Bad Request"}
 	}
 	});
-
-
-
