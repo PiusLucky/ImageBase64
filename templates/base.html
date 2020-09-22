@@ -120,20 +120,20 @@
 
                     <h4 class="ellipsis">
                       {% for each_update in updates %}
-                      {% if forloop.first %}
+                      {% if forloop.last %}
                       <a href="{% url 'main:update' each_update.update_id  %}">
                       Update {{each_update.version_of_update}}
                       </a>
                       {% endif %}
                       {% endfor %}
                     </h4>
-                    <span class="quantity"><span class="amount">{% for each_update in updates %}{% if forloop.first %}{{each_update.updated}}{% endif %}{% endfor %}</span></span>
+                    <span class="quantity"><span class="amount">{% for each_update in updates %}{% if forloop.last %}{{each_update.updated}}{% endif %}{% endfor %}</span></span>
                   </div>
                 </div>
 
                 <div class="btn-group pull-right m-15">
                   {% for each_update in updates %}
-                  {% if forloop.first %}
+                  {% if forloop.last %}
                   <a href="{% url 'main:update' each_update.update_id  %}" class="btn btn-default btn-sm">View Update <span class="badge bg-primary">new</span></a>
                   {% endif %}
                   {% endfor %}
