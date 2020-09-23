@@ -58,15 +58,16 @@ urlpatterns = [
 
 ]
 
-urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-# Customized by Lucky_P (I try as much as possible to prevent files conflict)
-urlpatterns += static(settings.FILE_URL, document_root=settings.FILE_ROOT)
-urlpatterns += static(settings.PASTE_URL, document_root=settings.PASTE_ROOT)
-urlpatterns += static(settings.LINK_URL, document_root=settings.LINK_ROOT)
-urlpatterns += static(settings.ENCODE_URL, document_root=settings.ENCODE_ROOT)
-# for front-end.
-urlpatterns += static(settings.FRONTEND_URL, document_root=settings.FRONTEND_ROOT)
+if settings.DEBUG or not settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    # Customized by Lucky_P (I try as much as possible to prevent files conflict)
+    urlpatterns += static(settings.FILE_URL, document_root=settings.FILE_ROOT)
+    urlpatterns += static(settings.PASTE_URL, document_root=settings.PASTE_ROOT)
+    urlpatterns += static(settings.LINK_URL, document_root=settings.LINK_ROOT)
+    urlpatterns += static(settings.ENCODE_URL, document_root=settings.ENCODE_ROOT)
+    # for front-end.
+    urlpatterns += static(settings.FRONTEND_URL, document_root=settings.FRONTEND_ROOT)
 
 
 
