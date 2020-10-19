@@ -115,12 +115,21 @@ body {
         text-align: center
     }
 
-    #id_image,#id_file_field {
+/*     #id_image,#id_file_field {
         display: inline-block;
         width: 100%;
         padding: 95px 0 0 100%;
         background: url('../front_end/assets/images/upload_icon.png') top center no-repeat #fff;
         background-size: 55px 55px
+    }
+ */
+    #id_image, #id_file_field {
+        display: inline-block;
+        width: 100%;
+        max-width: 100%;
+        padding: 45px;
+        background: url(../front_end/assets/images/upload_icon.png) top center no-repeat #fff;
+        background-size: 5%;
     }
 
     .card-1{
