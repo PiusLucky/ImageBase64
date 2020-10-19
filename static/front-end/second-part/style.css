@@ -197,3 +197,7 @@ body {
         cursor: pointer;
       }
 
+
+input#file-upload-button {
+ display:none!important;
+}
